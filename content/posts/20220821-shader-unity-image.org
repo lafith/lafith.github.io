@@ -1,0 +1,25 @@
+#+TITLE: Unity Shader scripts for image manipulation
+#+DATE: <2022-08-21>
+#+OPTIONS: ^:nil
+
+Shaders are small scripts that contain the mathematical calculations and 
+algorithms for calculating the colour of each pixel rendered, based on the 
+lighting input and the Material configuration. These scripts are run on GPU. This work is my
+attempt to implement common image manipulation in Unity Shader Scripts.
+
+Code is available [[https://github.com/lafith/Fragment_Shaders_Image_Manipulation/tree/main/Assets/Shaders][here]]
+
+#+begin_center
+#+CAPTION: Sample result
+[[./figures/edge.gif]]
+#+end_center
+
+Basic idea is to treat the image as a texture. This will enable us to access the nearby
+texels(pixels), hence enabling us to implement kernel convolution. In this Unity project I have implemented following
+image effects:
+- Edge Detection using Sobel Operator
+- Sharpening
+- Blur
+- Contrast Enhancement
+- Image negative
+

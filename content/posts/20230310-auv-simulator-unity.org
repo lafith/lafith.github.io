@@ -1,0 +1,44 @@
+#+TITLE: AUV-Simulator
+#+DATE: <2023-03-10>
+#+OPTIONS: ^:nil
+
+#+begin_center
+#+CAPTION: AUV Simulator 
+[[./figures/auvdemo.gif]]
+#+end_center
+
+* Overview
+
+A simulator recreates a real-world system virtually such that one can test the system rigorously.
+In the case of robotics a simulator can be very useful for the software development team for testing and optimizing their code
+before the deployment of the robot/vehicle.
+
+Code is available [[https://github.com/lafith/AUV-Simulator-Unity][here]]
+
+A game engine is a very powerful software and in fact an easier choice as we have to simulate a noisy underwater environment. Further the aim was to
+create different competion arenas with many 3D obstacles. Aforementioned reasons 
+led to the choice of [[https://unity.com/][Unity]] as the main development tool 
+and [[https://www.blender.org/][Blender]] for creating 3D models as it is easier to import models from blender to Unity.
+
+The main software stack containing the control algorithm and the image processing pipeline were done 
+using [[https://www.ros.org/][ROS]] nodes. Hence a [[https://github.com/MathiasCiarlo/ROSBridgeLib][ROSBridge library]] at the Unity end 
+and [[http://wiki.ros.org/rosbridge_suite][RosBridge suite]] at the ROS end were used to communicate and transfer data between the both systems. This simulator 
+contains  the arenas for [[https://sauvc.org/][SAUVC]]-2020 and [[https://robosub.org/][ROBOSUB]]-2019. 
+
+* What is simulated
+
+A noisy underwater environment using the fog system of Unity as well as the underwater caustics. Following the design of Tiburon's AUV the model
+has two cameras (front & bottom). Now lets discuss about the important data transfer implemented.
+Simulator will obtain following data every frame:
+
+1. Orientation
+2. Acceleration
+3. At what depth AUV is from the surface level
+4. Forward velocity
+
+This data is converted into a 8 point floating array which then will be sent over a ros topic named =/combined=.
+The frames captured by both cameras will be compressed and then encoded into Base64 String format. These will also be combined and sent over the
+ros topic =/images=. In turn simulator will recieve the thruster values to be applied for all 6 thrusters using ROS subscriber over the ros topic
+=/thruster_speeds=.
+
+This is the main cycle of transfer of simulated data, further one can write more ROS Publishers and ROS Subscribers as per their usecase.
