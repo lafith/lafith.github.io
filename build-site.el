@@ -8,16 +8,16 @@
 (package-refresh-contents)
 
 ;; Check and install dependencies
-(dolist (package '(htmlize julia-mode ess ox-rss webfeeder esxml))
+(dolist (package '(htmlize ess esxml))
   (unless (package-installed-p package)
     (package-install package)))
 
-(require 'julia-mode)
+;; (require 'julia-mode)
 
 ;; Load publishing system
 (require 'ox-publish)
-(require 'ox-rss)
-(require 'webfeeder)
+;; (require 'ox-rss)
+;; (require 'webfeeder)
 (require 'esxml)
 
 ;;; Sitemap preprocessing
