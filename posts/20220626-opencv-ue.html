@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Use OpenCV in Unreal Engine</title>
+<meta name="generator" content="Org mode">
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+<link rel="stylesheet" type="text/css" href="/orgstyle.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+<link rel="icon" href="spock-favicon.png" type="image/png">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<hr style="border-top: 1px solid black;">
+<div class='topnav' style='display: flex; justify-content: space-between; align-items: center;'>
+  <a href="/index.html"><h2 style='margin-top: 0; margin-bottom: 0; margin-left:0px;'>Lafith Mattara</h2></a>
+  <div class='topnav2' style='color:#cfcaca;'>
+    <a href='/archive.html' style='font-weight:bold; font-style:italic;'>Blog </a> / 
+    <a href='/about.html' style='font-weight:bold; font-style:italic;'>About Me </a> /
+  </div>
+</div>
+<hr style="border-top: 1px solid black;">
+</div>
+<div id="content">
+<header>
+<h1 class="title">Use OpenCV in Unreal Engine</h1>
+</header><nav id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org26a722d">UE5</a></li>
+<li><a href="#org3775512">UE4</a></li>
+</ul>
+</div>
+</nav>
+<p>
+OpenCV is widely used to read, process, analyse and modify images and videos. While Unreal engine
+is an extremely powerful game engine. By using OpenCV in Unreal engine one can create interesting applications.
+Integration of OpenCV is different between UE4 and UE5 as UE5 released a standalone plugin for OpenCV in beta.
+</p>
+
+<div id="outline-container-org26a722d" class="outline-2">
+<h2 id="org26a722d">UE5</h2>
+<div class="outline-text-2" id="text-org26a722d">
+<p>
+After installing Unreal Engine 5 create a new C++ project. Open the project in the editor then go to <code>Edit-&gt;Plugins</code>.
+Search for OpenCV and install it, you may have to restart the engine after that.
+Edit your <code>build.cs</code> file to include the correct modules. This file would be present at <code>[ProjectName]/Source/[ProjectName].build.cs</code>.
+</p>
+
+<p>
+Change the public and private dependencies in to the following:
+</p>
+<div class="org-src-container">
+<pre class="src src-csharp">PublicDependencyModuleNames.AddRange(
+  new string[] {
+    "Core",
+    "CoreUObject",
+    "Engine",
+    "OpenCV",
+    "OpenCVHelper",
+    "InputCore"
+  });
+PrivateDependencyModuleNames.AddRange(
+  new string[] {
+    "Core",
+    "CoreUObject",
+    "Engine",
+    "Renderer",
+    "RenderCore",
+    "RHI",
+    "RHICore",
+    "D3D12RHI",
+    "OpenCV",
+    "OpenCVHelper"
+    });
+</pre>
+</div>
+
+<p>
+Create a new C++ class and use following code for testing the integration:
+</p>
+
+<p>
+<b>Header file</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-C++"><span class="org-preprocessor">#pragma</span> once
+        
+<span class="org-preprocessor">#include</span> <span class="org-string">"CoreMinimal.h"</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">"GameFramework/Actor.h"</span>
+
+<span class="org-preprocessor">#include</span> <span class="org-string">"PreOpenCVHeaders.h"</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">"OpenCVHelper.h"</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;ThirdParty/OpenCV/include/opencv2/imgproc.hpp&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;ThirdParty/OpenCV/include/opencv2/highgui/highgui.hpp&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;ThirdParty/OpenCV/include/opencv2/core.hpp&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">"PostOpenCVHeaders.h"</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">"Log.h"</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">"MyActor.generated.h"</span>
+
+UCLASS()
+<span class="org-keyword">class</span> <span class="org-type">CVTESTCORE_API</span> <span class="org-variable-name">AMyActor</span> : <span class="org-keyword">public</span> <span class="org-type">AActor</span>
+{
+    GENERATED_BODY()
+
+<span class="org-keyword">public</span>: 
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Sets default values for this actor's properties</span>
+    AMyActor();
+    <span class="org-type">void</span> <span class="org-function-name">TestOpenCV</span>();
+
+<span class="org-keyword">protected</span>:
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Called when the game starts or when spawned</span>
+    <span class="org-keyword">virtual</span> <span class="org-type">void</span> <span class="org-function-name">BeginPlay</span>() <span class="org-keyword">override</span>;
+
+<span class="org-keyword">public</span>: 
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Called every frame</span>
+    <span class="org-keyword">virtual</span> <span class="org-type">void</span> <span class="org-function-name">Tick</span>(<span class="org-type">float</span> <span class="org-variable-name">DeltaTime</span>) <span class="org-keyword">override</span>;
+
+};
+</pre>
+</div>
+
+<p>
+<b>cpp file</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-C++"><span class="org-preprocessor">#include</span> <span class="org-string">"MyActor.h"</span>
+
+<span class="org-comment-delimiter">// </span><span class="org-comment">Sets default values</span>
+<span class="org-constant">AMyActor</span>::<span class="org-function-name">AMyActor</span>()
+{
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.</span>
+PrimaryActorTick.bCanEverTick = <span class="org-constant">true</span>;
+
+}
+
+<span class="org-type">void</span> <span class="org-constant">AMyActor</span>::<span class="org-function-name">TestOpenCV</span>(){
+UE_LOG(LogcvtestCore, Log, TEXT(<span class="org-string">"Testing OpenCV..."</span>));
+<span class="org-type">int</span> <span class="org-variable-name">testDim</span>[3] = {2, 3, 4};
+<span class="org-constant">cv</span>::<span class="org-type">Mat</span> <span class="org-variable-name">testMat</span>(3, testDim, CV_32FC1);
+UE_LOG(
+    LogcvtestCore, Log,
+    TEXT(<span class="org-string">"dimension = %d, %d, %d"</span>),
+    testMat.size[0], testMat.size[1], testMat.size[2]);
+UE_LOG(LogcvtestCore, Log, TEXT(<span class="org-string">"Testing Done!"</span>));
+}
+
+<span class="org-comment-delimiter">// </span><span class="org-comment">Called when the game starts or when spawned</span>
+<span class="org-type">void</span> <span class="org-constant">AMyActor</span>::<span class="org-function-name">BeginPlay</span>()
+{
+<span class="org-constant">Super</span>::BeginPlay();
+TestOpenCV();
+
+}
+
+<span class="org-comment-delimiter">// </span><span class="org-comment">Called every frame</span>
+<span class="org-type">void</span> <span class="org-constant">AMyActor</span>::<span class="org-function-name">Tick</span>(<span class="org-type">float</span> <span class="org-variable-name">DeltaTime</span>)
+{
+<span class="org-constant">Super</span>::Tick(DeltaTime);
+
+}
+
+</pre>
+</div>
+
+<p>
+After compiling the newly created class add the actor in to your map, upon starting the level you should see a log output with the
+dimensions of the cv::Mat object.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3775512" class="outline-2">
+<h2 id="org3775512">UE4</h2>
+<div class="outline-text-2" id="text-org3775512">
+<p>
+Incase of UE4 you need to manually include the binaries from OpenCV installation source in to your UE4 project.
+</p>
+<ul class="org-ul">
+<li>Copy the <code>/build/include/opencv2</code> to the <code>[UE4ProjectDir]/ThirdParty/OpenCV/Includes</code>.</li>
+<li>You will find <code>opencv_world460.dll</code> and <code>opencv_ffmpeg460_64.dll</code> inside the <code>/build/x64/vc14/bin</code>, copy them to <code>[UE4ProjectDir]/ThirdParty/OpenCV/Libraries/Win64</code>.</li>
+<li>Copy <code>opencv_world460.lib</code> from <code>/build/x64/vc14/lib</code> to <code>/build/x64/vc14/lib</code> to <code>[UE4ProjectDir]/ThirdParty/OpenCV/Libraries/Win64</code>.</li>
+<li>Also copy the files mentioned in above two steps into <code>[UE4ProjectDir]/Binaries/Win64</code></li>
+</ul>
+
+<p>
+Link these files by editing the module rule file <code>[UE4ProjectDir]/Source/[Project Name].build.cs</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-csharp">using UnrealBuildTool;
+using System.IO;
+
+public class TestProjectCore : ModuleRules
+{
+string OPENCV_VERSION = "460";
+private string ThirdPartyPath
+    {
+    get
+        {
+    return Path.GetFullPath(Path.Combine(ModuleDirectory, "../../ThirdParty/"));
+        }
+    }
+
+public bool LoadOpenCV(ReadOnlyTargetRules Target)
+    {
+    bool isLibrarySupported = false;
+    string OpenCVPath = Path.Combine(ThirdPartyPath, "OpenCV");
+
+    string LibPath = "";
+    bool isdebug = Target.Configuration == UnrealTargetConfiguration.Debug;
+    if (Target.Platform == UnrealTargetPlatform.Win64)
+    {
+    LibPath = Path.Combine(OpenCVPath, "Libraries", "Win64");
+    isLibrarySupported = true;
+    }
+    else
+    {
+    string Err = string.Format(
+        "{0} dedicated server is made to depend on {1}. We want to avoid this, please correct module dependencies",
+        Target.Platform.ToString(), this.ToString());
+    System.Console.WriteLine(Err);
+        }
+
+    if (isLibrarySupported)
+        {
+    PublicIncludePaths.AddRange(new string[] { Path.Combine(OpenCVPath, "Includes") });
+    PublicAdditionalLibraries.Add(Path.Combine(LibPath, "opencv_world" + OPENCV_VERSION + ".lib"));
+    PublicDelayLoadDLLs.Add("opencv_world" + OPENCV_VERSION + ".dll");
+    PublicDelayLoadDLLs.Add("opencv_videoio_ffmpeg" + OPENCV_VERSION + "_64.dll");
+
+        }
+
+    PublicDefinitions.Add(string.Format("WITH_OPENCV_BINDING={0}", isLibrarySupported ? 1 : 0));
+    return isLibrarySupported;
+    }
+
+    private string poject_root_path
+{
+    get { return Path.Combine(ModuleDirectory, "../.."); }
+}  
+
+public TestProjectCore(ReadOnlyTargetRules Target) : base(Target)
+{
+    PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+    bEnforceIWYU = true;
+
+    PublicDependencyModuleNames.AddRange(new string[] {
+    "Core", "CoreUObject",
+    "Engine", "InputCore"
+    });
+    PublicDependencyModuleNames.AddRange(new string[] {
+    "RHI", "RenderCore",
+    "Media", "MediaAssets"
+    });
+
+
+
+    LoadOpenCV(Target);
+
+
+}
+}
+</pre>
+</div>
+
+<p>
+In order to check the integration you can use the same Actor c++ scripts I used in the case of UE5, but this time the header files
+would be different in the .h file.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C++"><span class="org-preprocessor">#pragma</span> once
+
+<span class="org-preprocessor">#include</span> <span class="org-string">"CoreMinimal.h"</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">"GameFramework/Actor.h"</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">"opencv2/core.hpp"</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;opencv2/imgcodecs.hpp&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;opencv2/highgui.hpp&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">"Log.h"</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">"Misc/Paths.h"</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">"TestActor.generated.h"</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2022-06-26 Sun 00:00</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
+</div>
+</body>
+</html>
