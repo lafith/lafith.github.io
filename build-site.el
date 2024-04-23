@@ -16,8 +16,8 @@
 
 ;; Load publishing system
 (require 'ox-publish)
-;; (require 'ox-rss)
-;; (require 'webfeeder)
+(require 'ox-rss)
+(require 'webfeeder)
 (require 'esxml)
 
 ;;; Sitemap preprocessing
