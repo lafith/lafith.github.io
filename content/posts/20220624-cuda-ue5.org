@@ -1,11 +1,11 @@
-#+TITLE: How to Integrate Cuda with Unreal Engine 5
+#+TITLE: Use Cuda code in Unreal Engine 5
 #+DATE: <2022-06-24>
 #+OPTIONS: ^:nil
 
 CUDA stands for Compute Unified Device Architecture,  a parallel computing platform and an API (Application Programming Interface) model developed by Nvidia.
-Using Cuda programming language we can implement applications involving heavy computations in GPU, making use of it&apos;s parallelism.
+Using Cuda programming language we can implement applications involving heavy computations in GPU, making use of it's parallelism.
 
-Integrating Cuda with Unreal Engine 5 enable us to shift computational heavy steps into GPU,
+Using cuda code in Unreal Engine 5 enable us to shift computational heavy steps into GPU,
 this is extremely useful if you are creating image/voxel analysis and visualization applications in UE5.
 
 Integration of Cuda invloves two phases, building Cuda code into a static library then linking them in UE5 project.
