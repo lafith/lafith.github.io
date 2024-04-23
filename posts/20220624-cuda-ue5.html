@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Integrate Cuda with Unreal Engine 5</title>
+<meta name="generator" content="Org mode">
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+<link rel="stylesheet" type="text/css" href="/orgstyle.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+<link rel="icon" href="spock-favicon.png" type="image/png">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<hr style="border-top: 1px solid black;">
+<div class='topnav' style='display: flex; justify-content: space-between; align-items: center;'>
+  <a href="/index.html"><h2 style='margin-top: 0; margin-bottom: 0; margin-left:0px;'>Lafith Mattara</h2></a>
+  <div>
+    <a href='/archive.html' style='font-weight:bold; font-style:italic;'>Blog</a> / 
+    <a href='/about.html' style='font-weight:bold; font-style:italic;'>About Me</a> /
+  </div>
+</div>
+<hr style="border-top: 1px solid black;">
+</div>
+<div id="content">
+<header>
+<h1 class="title">How to Integrate Cuda with Unreal Engine 5</h1>
+</header><nav id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org5808b7b">Building Cuda scripts into a Static Library</a>
+<ul>
+<li>
+<ul>
+<li><a href="#org38c8e25">test_cudaue.h</a></li>
+<li><a href="#org1016e85">test_cudaue.cu</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgd0e781f">Linking with UE5 Project</a></li>
+</ul>
+</div>
+</nav>
+<p>
+CUDA stands for Compute Unified Device Architecture,  a parallel computing platform and an API (Application Programming Interface) model developed by Nvidia.
+Using Cuda programming language we can implement applications involving heavy computations in GPU, making use of it&amp;apos;s parallelism.
+</p>
+
+<p>
+Integrating Cuda with Unreal Engine 5 enable us to shift computational heavy steps into GPU,
+this is extremely useful if you are creating image/voxel analysis and visualization applications in UE5.
+</p>
+
+<p>
+Integration of Cuda invloves two phases, building Cuda code into a static library then linking them in UE5 project.
+</p>
+
+<div id="outline-container-org5808b7b" class="outline-2">
+<h2 id="org5808b7b">Building Cuda scripts into a Static Library</h2>
+<div class="outline-text-2" id="text-org5808b7b">
+<ul class="org-ul">
+<li>Install Cuda toolkit in Windows from <a href="https://developer.nvidia.com/cuda-downloads">here</a>.</li>
+<li>Create a new project in Visual Studio with Cuda Runtime 11.7 (let say the name is <code>test_cudaue</code>).</li>
+<li>Change the mode from Debug to Release.</li>
+<li>In the Solution Explorer at the right side, right click on the your project name and click on properties.
+In the properties change Configuration Type from application to static library.</li>
+<li>Now remove the automatically generated <code>kernel.cu</code>, instead create two new files named <code>test_cudaue.cu</code>
+and <code>test_cudaue.h</code>. It has a basic function for testing the addition of two arrays in the GPU.</li>
+</ul>
+</div>
+
+<div id="outline-container-org38c8e25" class="outline-4">
+<h4 id="org38c8e25">test_cudaue.h</h4>
+<div class="outline-text-4" id="text-org38c8e25">
+<div class="org-src-container">
+<pre class="src src-C++">{`#pragma once
+
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;string&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">"cuda_runtime.h"</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">"vector_types.h"</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">"vector_functions.h"</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">"device_launch_parameters.h"</span>
+
+cudaError_t testCudaAddition(<span class="org-type">int</span>* <span class="org-variable-name">c</span>, <span class="org-keyword">const</span> <span class="org-type">int</span>* <span class="org-variable-name">a</span>, <span class="org-keyword">const</span> <span class="org-type">int</span>* <span class="org-variable-name">b</span>, <span class="org-type">unsigned</span> <span class="org-type">int</span> <span class="org-variable-name">size</span>, <span class="org-constant">std</span>::<span class="org-type">string</span>* <span class="org-variable-name">error_message</span>);
+  `}
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1016e85" class="outline-4">
+<h4 id="org1016e85">test_cudaue.cu</h4>
+<div class="outline-text-4" id="text-org1016e85">
+<div class="org-src-container">
+<pre class="src src-C++">{`#include <span class="org-string">"test_cudaue.h"</span>
+
+
+__global__ <span class="org-type">void</span> addKernel(<span class="org-type">int</span>* <span class="org-variable-name">c</span>, <span class="org-keyword">const</span> <span class="org-type">int</span>* <span class="org-variable-name">a</span>, <span class="org-keyword">const</span> <span class="org-type">int</span>* <span class="org-variable-name">b</span>)
+{
+    <span class="org-type">int</span> <span class="org-variable-name">i</span> = threadIdx.x;
+    c[i] = a[i] + b[i];
+}
+
+__global__ <span class="org-type">void</span> <span class="org-variable-name">addKernel2</span>(int4* c, <span class="org-keyword">const</span> int4* a, <span class="org-keyword">const</span> int4* b)
+{
+    <span class="org-type">int</span> <span class="org-variable-name">i</span> = threadIdx.x;
+    c[i].x = a[i].x + b[i].x;
+    c[i].y = a[i].y + b[i].y;
+    c[i].z = a[i].z + b[i].z;
+    c[i].w = a[i].w + b[i].w;
+}
+
+<span class="org-comment-delimiter">// </span><span class="org-comment">Helper function for using CUDA to add vectors in parallel.</span>
+<span class="org-type">cudaError_t</span> <span class="org-variable-name">testCudaAddition</span>(<span class="org-type">int</span>* c, <span class="org-keyword">const</span> <span class="org-type">int</span>* a, <span class="org-keyword">const</span> <span class="org-type">int</span>* b, <span class="org-type">unsigned</span> <span class="org-type">int</span> size, <span class="org-constant">std</span>::string* error_message)
+{
+    <span class="org-type">int</span>* <span class="org-variable-name">dev_a</span> = 0;
+    <span class="org-type">int</span>* <span class="org-variable-name">dev_b</span> = 0;
+    <span class="org-type">int</span>* <span class="org-variable-name">dev_c</span> = 0;
+    <span class="org-type">cudaError_t</span> <span class="org-variable-name">cuda_status</span>;
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Choose which GPU to run on, change this on a multi-GPU system.</span>
+    cuda_status = cudaSetDevice(0);
+    <span class="org-keyword">if</span> (cuda_status != cudaSuccess) {
+        *error_message = <span class="org-string">"cudaSetDevice failed!  Do you have a CUDA-capable GPU installed?"</span>;
+        <span class="org-keyword">goto</span> <span class="org-constant">Error</span>;
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Allocate GPU buffers for three vectors (two input, one output)    .</span>
+    cuda_status = cudaMalloc((<span class="org-type">void</span>**)&amp;dev_c, size * <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>));
+    <span class="org-keyword">if</span> (cuda_status != cudaSuccess) {
+        *error_message = <span class="org-string">"cudaMalloc failed!"</span>;
+        <span class="org-keyword">goto</span> <span class="org-constant">Error</span>;
+    }
+
+    cuda_status = cudaMalloc((<span class="org-type">void</span>**)&amp;dev_a, size * <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>));
+    <span class="org-keyword">if</span> (cuda_status != cudaSuccess) {
+        *error_message = <span class="org-string">"cudaMalloc failed!"</span>;
+        <span class="org-keyword">goto</span> <span class="org-constant">Error</span>;
+    }
+
+    cuda_status = cudaMalloc((<span class="org-type">void</span>**)&amp;dev_b, size * <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>));
+    <span class="org-keyword">if</span> (cuda_status != cudaSuccess) {
+        *error_message = <span class="org-string">"cudaMalloc failed!"</span>;
+        <span class="org-keyword">goto</span> <span class="org-constant">Error</span>;
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Copy input vectors from host memory to GPU buffers.</span>
+    cuda_status = cudaMemcpy(dev_a, a, size * <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>), cudaMemcpyHostToDevice);
+    <span class="org-keyword">if</span> (cuda_status != cudaSuccess) {
+        *error_message = <span class="org-string">"cudaMemcpy failed!"</span>;
+        <span class="org-keyword">goto</span> <span class="org-constant">Error</span>;
+    }
+
+    cuda_status = cudaMemcpy(dev_b, b, size * <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>), cudaMemcpyHostToDevice);
+    <span class="org-keyword">if</span> (cuda_status != cudaSuccess) {
+        *error_message = <span class="org-string">"cudaMemcpy failed!"</span>;
+        <span class="org-keyword">goto</span> <span class="org-constant">Error</span>;
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Launch a kernel on the GPU with one thread for each element.</span>
+    addKernel &lt;&lt; &lt;1, size &gt;&gt; &gt; (dev_c, dev_a, dev_b);
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Check for any errors launching the kernel</span>
+    cuda_status = cudaGetLastError();
+    <span class="org-keyword">if</span> (cuda_status != cudaSuccess) {
+        *error_message = <span class="org-string">"addKernel launch failed: "</span> + <span class="org-constant">std</span>::string(cudaGetErrorString(cuda_status));
+        <span class="org-keyword">goto</span> <span class="org-constant">Error</span>;
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">cudaDeviceSynchronize waits for the kernel to finish, and returns</span>
+    <span class="org-comment-delimiter">// </span><span class="org-comment">any errors encountered during the launch.</span>
+    cuda_status = cudaDeviceSynchronize();
+    <span class="org-keyword">if</span> (cuda_status != cudaSuccess) {
+        *error_message = <span class="org-string">"cudaDeviceSynchronize returned error code "</span> + <span class="org-constant">std</span>::to_string(cuda_status) + <span class="org-string">" after launching addKernel!"</span>;
+        <span class="org-keyword">goto</span> <span class="org-constant">Error</span>;
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Copy output vector from GPU buffer to host memory.</span>
+    cuda_status = cudaMemcpy(c, dev_c, size * <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>), cudaMemcpyDeviceToHost);
+    <span class="org-keyword">if</span> (cuda_status != cudaSuccess) {
+        *error_message = <span class="org-string">"cudaMemcpy failed!"</span>;
+        <span class="org-keyword">goto</span> <span class="org-constant">Error</span>;
+    }
+
+<span class="org-constant">Error</span>:
+    cudaFree(dev_c);
+    cudaFree(dev_a);
+    cudaFree(dev_b);
+
+    <span class="org-keyword">return</span> cuda_status;
+}
+`}
+</pre>
+</div>
+<ul class="org-ul">
+<li>Right click on the project name in the solution explorer and click on Build. This should make a <code>test_cudaue.lib</code> in the <code>test_cudaue/x64/Release</code> folder.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd0e781f" class="outline-2">
+<h2 id="orgd0e781f">Linking with UE5 Project</h2>
+<div class="outline-text-2" id="text-orgd0e781f">
+<ul class="org-ul">
+<li>Create <code>[UE5ProjectRoot]/ThirdParty/Cuda/include</code> &amp; <code>[UE5ProjectRoot]/ThirdParty/Cuda/lib</code>.</li>
+<li>Copy the header file (test_cudaue.h) from the cuda project in to this include folder.</li>
+<li>Copy the static lib file (test_cudaue.lib) from the cuda project in to the lib folder.</li>
+<li>Edit the <code>[UE5ProjectRoot]/Source/[ProjectName]/[ProjectName].build.cs</code></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-csharp">using UnrealBuildTool;
+using System.IO;
+
+
+public class [projectname] : ModuleRules
+{
+private string poject_root_path
+{
+	get { return Path.Combine(ModuleDirectory, "../.."); }
+}
+public bool LoadCuda(ReadOnlyTargetRules Target)
+{
+	string custom_cuda_lib_include = "ThirdParty/Cuda/include";
+	string custom_cuda_lib_lib = "ThirdParty/Cuda/lib";
+
+	PublicIncludePaths.Add(Path.Combine(poject_root_path, custom_cuda_lib_include));
+	PublicAdditionalLibraries.Add(Path.Combine(poject_root_path, custom_cuda_lib_lib, "test_cudaue.lib"));
+
+	string cuda_path = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.7";
+	string cuda_include = "include";
+	string cuda_lib = "lib/x64";
+
+	PublicIncludePaths.Add(Path.Combine(cuda_path, cuda_include));
+
+	PublicAdditionalLibraries.Add(Path.Combine(cuda_path, cuda_lib, "cudart_static.lib"));
+	// PublicAdditionalLibraries.Add(Path.Combine(cuda_path, cuda_lib, "nppif.lib"));
+	// PublicAdditionalLibraries.Add(Path.Combine(cuda_path, cuda_lib, "nppicc.lib"));
+	// PublicAdditionalLibraries.Add(Path.Combine(cuda_path, cuda_lib, "nppig.lib"));
+	return true;
+}
+public [projectname](ReadOnlyTargetRules Target) : base(Target)
+{
+	PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+	bEnforceIWYU = true;
+
+	PublicDependencyModuleNames.AddRange(new string[] {
+		"Core",
+			"CoreUObject",
+			"Engine",
+			"InputCore"
+			 });
+		PrivateDependencyModuleNames.AddRange(
+			new string[] {});
+
+			LoadCuda(Target);
+	}
+}
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Change the projectname with yours.</li>
+<li>After compiling create a new C++ Actor class named <code>TestCudaActor</code> and edit <code>TestCudaActor.h</code> into the following with a Blueprint callable function:</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-C++"><span class="org-preprocessor">#pragma</span> once
+
+<span class="org-preprocessor">#include</span> <span class="org-string">"CoreMinimal.h"</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">"GameFramework/Actor.h"</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">"test_cudaue.h"</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">"cuda_runtime.h"</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">"TestCudaActor.generated.h"</span>
+
+UCLASS()
+<span class="org-keyword">class</span> <span class="org-type">PROJECTNAME_API</span> <span class="org-variable-name">ATestCudaActor</span> : <span class="org-keyword">public</span> <span class="org-type">AActor</span>
+{
+        GENERATED_BODY()
+        
+<span class="org-keyword">public</span>: 
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Sets default values for this actor's properties</span>
+        ATestCudaActor();
+        UFUNCTION(BlueprintCallable, Category = <span class="org-string">"projectname"</span>)
+        <span class="org-type">bool</span> <span class="org-function-name">CUDATest</span>() {
+                <span class="org-keyword">const</span> <span class="org-type">int</span> <span class="org-variable-name">size</span> = 2;
+                <span class="org-keyword">const</span> <span class="org-type">int</span> <span class="org-variable-name">arr1</span>[size] = { 5, 4};
+                <span class="org-keyword">const</span> <span class="org-type">int</span> <span class="org-variable-name">arr2</span>[size] = { 2, 8};
+                <span class="org-type">int</span> <span class="org-variable-name">output</span>[size] = { 0 };
+                <span class="org-constant">std</span>::<span class="org-type">string</span> <span class="org-variable-name">error_message</span>;
+        
+                <span class="org-comment-delimiter">// </span><span class="org-comment">run cuda code</span>
+                <span class="org-type">cudaError_t</span> <span class="org-variable-name">cuda_status</span> = testCudaAddition(output, arr1, arr2, size, &amp;error_message);
+                <span class="org-keyword">if</span> (cuda_status != cudaSuccess) {
+                UE_LOG(LogTemp, Warning, TEXT(<span class="org-string">"Cuda addition failed!\n"</span>));
+                UE_LOG(LogTemp, Warning, TEXT(<span class="org-string">"%s"</span>), *FString(error_message.c_str()));
+                <span class="org-keyword">return</span> <span class="org-constant">false</span>;
+                }
+                UE_LOG(LogTemp, Warning, TEXT(<span class="org-string">"{5, 4} + {2, 8} = {%d,%d}"</span>), output[0], output[1]); 
+                <span class="org-keyword">return</span> <span class="org-constant">true</span>;
+        }
+<span class="org-keyword">protected</span>:
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Called when the game starts or when spawned</span>
+        <span class="org-keyword">virtual</span> <span class="org-type">void</span> <span class="org-function-name">BeginPlay</span>() <span class="org-keyword">override</span>;
+
+<span class="org-keyword">public</span>: 
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Called every frame</span>
+        <span class="org-keyword">virtual</span> <span class="org-type">void</span> <span class="org-function-name">Tick</span>(<span class="org-type">float</span> <span class="org-variable-name">DeltaTime</span>) <span class="org-keyword">override</span>;
+
+};
+</pre>
+</div>
+<ul class="org-ul">
+<li>Here also replace the projectname with yours.</li>
+<li>Right click on the <code>TestCudaActor</code> c++ class and create a Blueprint. Then edit its event graph:</li>
+</ul>
+<div class="org-center">
+
+<figure>
+<img src="./figures/bpcuda.png" alt="bpcuda.png">
+
+<figcaption><span class="figure-number">Figure 1: </span>Blueprint Image</figcaption>
+</figure>
+</div>
+<ul class="org-ul">
+<li>Place the blueprint in the level and run the game. You will see the following output log as the confirmation
+of the integration.</li>
+</ul>
+<div class="org-center">
+
+<figure>
+<img src="./figures/cudaoutput.png" alt="cudaoutput.png">
+
+<figcaption><span class="figure-number">Figure 2: </span>Console Output</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2022-06-24 Fri 00:00</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
+</div>
+</body>
+</html>
