@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MultiScale Image Contrast Amplification (MUSICA)- A Python Implementation</title>
+<meta name="generator" content="Org mode">
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+<link rel="stylesheet" type="text/css" href="/orgstyle.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+<link rel="icon" href="spock-favicon.png" type="image/png">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<hr style="border-top: 1px solid black;">
+<div class='topnav' style='display: flex; justify-content: space-between; align-items: center;'>
+  <a href="/index.html"><h2 style='margin-top: 0; margin-bottom: 0; margin-left:0px;'>Lafith Mattara</h2></a>
+  <div class='topnav2' style='color:#cfcaca;'>
+    <a href='/archive.html' style='font-weight:bold; font-style:italic;'>Blog </a> / 
+    <a href='/about.html' style='font-weight:bold; font-style:italic;'>About Me </a> /
+  </div>
+</div>
+<hr style="border-top: 1px solid black;">
+</div>
+<div id="content">
+<header>
+<h1 class="title">MultiScale Image Contrast Amplification (MUSICA)- A Python Implementation</h1>
+</header><p>
+Contrast help us to differentiate different region of interest in radiology. An optimal contrast differential will aid
+physicians in diagnosis by improving the visibility of organs, vessels, bones, tissues etc, which in turn increase the 
+probability of observing abnormality from normalcy.
+</p>
+
+<p>
+Code is available <a href="https://github.com/lafith/pymusica">here</a>.
+</p>
+
+<div class="org-center">
+
+<figure>
+<img src="./figures/musica.png" alt="musica.png">
+
+<figcaption><span class="figure-number">Figure 1: </span>MUSICA-Flow diagram</figcaption>
+</figure>
+</div>
+
+<p>
+This code is a Python implementation of the classic paper titled 
+<a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/2167/0000/Multiscale-image-contrast-amplification-MUSICA/10.1117/12.175090.short">Multiscale Image Contrast Amplification (MUSICA)</a> by Pieter Vuylsteke &amp; Emile Schoeters.
+</p>
+
+<p>
+Firstly an image is decomposed into a multiscale representation. This can be Haar Transform, Wavelet Transform
+or,Laplacian Pyramid, the one which I have used in this <a href="https://www.sciencedirect.com/science/article/pii/B9780080515816500659%22">implementation</a>. Contrast Enhancement is achieved by amplifying this transformed coefficients non-linearly. Then these modified coefficients
+are reconstructed to obtain the enhanced image.
+</p>
+<div class="org-center">
+
+<figure>
+<img src="./figures/musica2.png" alt="musica2.png">
+
+<figcaption><span class="figure-number">Figure 2: </span>MUSICA-Flow diagram</figcaption>
+</figure>
+</div>
+
+<p>
+The non-linear amplification used is also taken from the paper itself, which is as follows:
+</p>
+<div class="org-center">
+
+<figure>
+<img src="./figures/musica3.png" alt="musica3.png">
+
+<figcaption><span class="figure-number">Figure 3: </span>Non-linear amplification formula</figcaption>
+</figure>
+</div>
+<p>
+Here x represents the original Laplacian coefficent.
+</p>
+
+<p>
+After downloading the github repo we need to install the packages using pip:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">pip install -r requirements.txt
+python demo.py
+</pre>
+</div>
+
+<p>
+You can play with parameters a, L and p given in the beginning of the demo script. Where a is amplification factor, L is the total number 
+of levels in the Laplacian pyramid, M is the upper bound of the coefficients and p controls the degree of non-linearity.
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2022-07-23 Sat 00:00</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
+</div>
+</body>
+</html>

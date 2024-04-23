@@ -7,6 +7,7 @@
 body {
     /*margin: 0;*/
     background-color: #232729;
+    /* background-color: #3c3836; */
 }
 
 @media screen and (min-width: 600px) {
@@ -57,7 +58,8 @@ h3 {
 
 h3 a {
 
-    color:#7ea6cf
+    color:#e65722;
+    /* color:#7ea6cf */
 }
 /* h2, h3 { */
 /*     color: white; */
@@ -65,7 +67,7 @@ h3 a {
 /* } */
 
 h4 {
-    color: #6a8bad;
+    color: #cc241d;
     font-style: italic;
 }
 
