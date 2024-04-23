@@ -1,0 +1,9 @@
+.packages/
+public/
+
+*~undo-tree~
+/notes.org
+
+.DS_Store
+
+.env
