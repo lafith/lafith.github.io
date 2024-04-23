@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How to Integrate Cuda with Unreal Engine 5</title>
+<title>Use Cuda code in Unreal Engine 5</title>
 <meta name="generator" content="Org mode">
 <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 <link rel="stylesheet" type="text/css" href="/orgstyle.css"/>
@@ -63,41 +63,41 @@ for the JavaScript code in this tag.
 <hr style="border-top: 1px solid black;">
 <div class='topnav' style='display: flex; justify-content: space-between; align-items: center;'>
   <a href="/index.html"><h2 style='margin-top: 0; margin-bottom: 0; margin-left:0px;'>Lafith Mattara</h2></a>
-  <div>
-    <a href='/archive.html' style='font-weight:bold; font-style:italic;'>Blog</a> / 
-    <a href='/about.html' style='font-weight:bold; font-style:italic;'>About Me</a> /
+  <div class='topnav2' style='color:#cfcaca;'>
+    <a href='/archive.html' style='font-weight:bold; font-style:italic;'>Blog </a> / 
+    <a href='/about.html' style='font-weight:bold; font-style:italic;'>About Me </a> /
   </div>
 </div>
 <hr style="border-top: 1px solid black;">
 </div>
 <div id="content">
 <header>
-<h1 class="title">How to Integrate Cuda with Unreal Engine 5</h1>
+<h1 class="title">Use Cuda code in Unreal Engine 5</h1>
 </header><nav id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org5808b7b">Building Cuda scripts into a Static Library</a>
+<li><a href="#orge9c7c1d">Building Cuda scripts into a Static Library</a>
 <ul>
 <li>
 <ul>
-<li><a href="#org38c8e25">test_cudaue.h</a></li>
-<li><a href="#org1016e85">test_cudaue.cu</a></li>
+<li><a href="#orga2d61a9">test_cudaue.h</a></li>
+<li><a href="#org82802a0">test_cudaue.cu</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgd0e781f">Linking with UE5 Project</a></li>
+<li><a href="#org75e9e32">Linking with UE5 Project</a></li>
 </ul>
 </div>
 </nav>
 <p>
 CUDA stands for Compute Unified Device Architecture,  a parallel computing platform and an API (Application Programming Interface) model developed by Nvidia.
-Using Cuda programming language we can implement applications involving heavy computations in GPU, making use of it&amp;apos;s parallelism.
+Using Cuda programming language we can implement applications involving heavy computations in GPU, making use of it's parallelism.
 </p>
 
 <p>
-Integrating Cuda with Unreal Engine 5 enable us to shift computational heavy steps into GPU,
+Using cuda code in Unreal Engine 5 enable us to shift computational heavy steps into GPU,
 this is extremely useful if you are creating image/voxel analysis and visualization applications in UE5.
 </p>
 
@@ -105,9 +105,9 @@ this is extremely useful if you are creating image/voxel analysis and visualizat
 Integration of Cuda invloves two phases, building Cuda code into a static library then linking them in UE5 project.
 </p>
 
-<div id="outline-container-org5808b7b" class="outline-2">
-<h2 id="org5808b7b">Building Cuda scripts into a Static Library</h2>
-<div class="outline-text-2" id="text-org5808b7b">
+<div id="outline-container-orge9c7c1d" class="outline-2">
+<h2 id="orge9c7c1d">Building Cuda scripts into a Static Library</h2>
+<div class="outline-text-2" id="text-orge9c7c1d">
 <ul class="org-ul">
 <li>Install Cuda toolkit in Windows from <a href="https://developer.nvidia.com/cuda-downloads">here</a>.</li>
 <li>Create a new project in Visual Studio with Cuda Runtime 11.7 (let say the name is <code>test_cudaue</code>).</li>
@@ -119,9 +119,9 @@ and <code>test_cudaue.h</code>. It has a basic function for testing the addition
 </ul>
 </div>
 
-<div id="outline-container-org38c8e25" class="outline-4">
-<h4 id="org38c8e25">test_cudaue.h</h4>
-<div class="outline-text-4" id="text-org38c8e25">
+<div id="outline-container-orga2d61a9" class="outline-4">
+<h4 id="orga2d61a9">test_cudaue.h</h4>
+<div class="outline-text-4" id="text-orga2d61a9">
 <div class="org-src-container">
 <pre class="src src-C++">{`#pragma once
 
@@ -139,9 +139,9 @@ cudaError_t testCudaAddition(<span class="org-type">int</span>* <span class="org
 </div>
 </div>
 
-<div id="outline-container-org1016e85" class="outline-4">
-<h4 id="org1016e85">test_cudaue.cu</h4>
-<div class="outline-text-4" id="text-org1016e85">
+<div id="outline-container-org82802a0" class="outline-4">
+<h4 id="org82802a0">test_cudaue.cu</h4>
+<div class="outline-text-4" id="text-org82802a0">
 <div class="org-src-container">
 <pre class="src src-C++">{`#include <span class="org-string">"test_cudaue.h"</span>
 
@@ -250,9 +250,9 @@ __global__ <span class="org-type">void</span> <span class="org-variable-name">ad
 </div>
 </div>
 
-<div id="outline-container-orgd0e781f" class="outline-2">
-<h2 id="orgd0e781f">Linking with UE5 Project</h2>
-<div class="outline-text-2" id="text-orgd0e781f">
+<div id="outline-container-org75e9e32" class="outline-2">
+<h2 id="org75e9e32">Linking with UE5 Project</h2>
+<div class="outline-text-2" id="text-org75e9e32">
 <ul class="org-ul">
 <li>Create <code>[UE5ProjectRoot]/ThirdParty/Cuda/include</code> &amp; <code>[UE5ProjectRoot]/ThirdParty/Cuda/lib</code>.</li>
 <li>Copy the header file (test_cudaue.h) from the cuda project in to this include folder.</li>
