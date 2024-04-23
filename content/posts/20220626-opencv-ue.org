@@ -1,0 +1,224 @@
+#+TITLE: Use OpenCV in Unreal Engine
+#+DATE: <2022-06-26>
+#+OPTIONS: ^:nil
+
+OpenCV is widely used to read, process, analyse and modify images and videos. While Unreal engine
+is an extremely powerful game engine. By using OpenCV in Unreal engine one can create interesting applications.
+Integration of OpenCV is different between UE4 and UE5 as UE5 released a standalone plugin for OpenCV in beta.
+
+* UE5
+After installing Unreal Engine 5 create a new C++ project. Open the project in the editor then go to =Edit->Plugins=.
+Search for OpenCV and install it, you may have to restart the engine after that.
+Edit your =build.cs= file to include the correct modules. This file would be present at =[ProjectName]/Source/[ProjectName].build.cs=.
+
+Change the public and private dependencies in to the following:
+#+begin_src csharp
+PublicDependencyModuleNames.AddRange(
+  new string[] {
+    "Core",
+    "CoreUObject",
+    "Engine",
+    "OpenCV",
+    "OpenCVHelper",
+    "InputCore"
+  });
+PrivateDependencyModuleNames.AddRange(
+  new string[] {
+    "Core",
+    "CoreUObject",
+    "Engine",
+    "Renderer",
+    "RenderCore",
+    "RHI",
+    "RHICore",
+    "D3D12RHI",
+    "OpenCV",
+    "OpenCVHelper"
+    });
+#+end_src
+
+Create a new C++ class and use following code for testing the integration:
+
+*Header file*
+#+begin_src C++
+#pragma once
+        
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+
+#include "PreOpenCVHeaders.h"
+#include "OpenCVHelper.h"
+#include <ThirdParty/OpenCV/include/opencv2/imgproc.hpp>
+#include <ThirdParty/OpenCV/include/opencv2/highgui/highgui.hpp>
+#include <ThirdParty/OpenCV/include/opencv2/core.hpp>
+#include "PostOpenCVHeaders.h"
+#include "Log.h"
+#include "MyActor.generated.h"
+
+UCLASS()
+class CVTESTCORE_API AMyActor : public AActor
+{
+    GENERATED_BODY()
+
+public:	
+    // Sets default values for this actor's properties
+    AMyActor();
+    void TestOpenCV();
+
+protected:
+    // Called when the game starts or when spawned
+    virtual void BeginPlay() override;
+
+public:	
+    // Called every frame
+    virtual void Tick(float DeltaTime) override;
+
+};
+#+end_src
+
+*cpp file*
+#+begin_src C++
+#include "MyActor.h"
+
+// Sets default values
+AMyActor::AMyActor()
+{
+    // Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+PrimaryActorTick.bCanEverTick = true;
+
+}
+
+void AMyActor::TestOpenCV(){
+UE_LOG(LogcvtestCore, Log, TEXT("Testing OpenCV..."));
+int testDim[3] = {2, 3, 4};
+cv::Mat testMat(3, testDim, CV_32FC1);
+UE_LOG(
+    LogcvtestCore, Log,
+    TEXT("dimension = %d, %d, %d"),
+    testMat.size[0], testMat.size[1], testMat.size[2]);
+UE_LOG(LogcvtestCore, Log, TEXT("Testing Done!"));
+}
+
+// Called when the game starts or when spawned
+void AMyActor::BeginPlay()
+{
+Super::BeginPlay();
+TestOpenCV();
+
+}
+
+// Called every frame
+void AMyActor::Tick(float DeltaTime)
+{
+Super::Tick(DeltaTime);
+
+}
+
+#+end_src
+  
+After compiling the newly created class add the actor in to your map, upon starting the level you should see a log output with the
+dimensions of the cv::Mat object.
+
+* UE4
+
+Incase of UE4 you need to manually include the binaries from OpenCV installation source in to your UE4 project.
+- Copy the =/build/include/opencv2= to the =[UE4ProjectDir]/ThirdParty/OpenCV/Includes=.
+- You will find =opencv_world460.dll= and =opencv_ffmpeg460_64.dll= inside the =/build/x64/vc14/bin=, copy them to =[UE4ProjectDir]/ThirdParty/OpenCV/Libraries/Win64=.
+- Copy =opencv_world460.lib= from =/build/x64/vc14/lib= to =/build/x64/vc14/lib= to =[UE4ProjectDir]/ThirdParty/OpenCV/Libraries/Win64=.
+- Also copy the files mentioned in above two steps into =[UE4ProjectDir]/Binaries/Win64=
+
+Link these files by editing the module rule file =[UE4ProjectDir]/Source/[Project Name].build.cs=
+#+begin_src csharp
+using UnrealBuildTool;
+using System.IO;
+
+public class TestProjectCore : ModuleRules
+{
+string OPENCV_VERSION = "460";
+private string ThirdPartyPath
+    {
+    get
+        {
+    return Path.GetFullPath(Path.Combine(ModuleDirectory, "../../ThirdParty/"));
+        }
+    }
+
+public bool LoadOpenCV(ReadOnlyTargetRules Target)
+    {
+    bool isLibrarySupported = false;
+    string OpenCVPath = Path.Combine(ThirdPartyPath, "OpenCV");
+
+    string LibPath = "";
+    bool isdebug = Target.Configuration == UnrealTargetConfiguration.Debug;
+    if (Target.Platform == UnrealTargetPlatform.Win64)
+    {
+    LibPath = Path.Combine(OpenCVPath, "Libraries", "Win64");
+    isLibrarySupported = true;
+    }
+    else
+    {
+    string Err = string.Format(
+        "{0} dedicated server is made to depend on {1}. We want to avoid this, please correct module dependencies",
+        Target.Platform.ToString(), this.ToString());
+    System.Console.WriteLine(Err);
+        }
+
+    if (isLibrarySupported)
+        {
+    PublicIncludePaths.AddRange(new string[] { Path.Combine(OpenCVPath, "Includes") });
+    PublicAdditionalLibraries.Add(Path.Combine(LibPath, "opencv_world" + OPENCV_VERSION + ".lib"));
+    PublicDelayLoadDLLs.Add("opencv_world" + OPENCV_VERSION + ".dll");
+    PublicDelayLoadDLLs.Add("opencv_videoio_ffmpeg" + OPENCV_VERSION + "_64.dll");
+
+        }
+
+    PublicDefinitions.Add(string.Format("WITH_OPENCV_BINDING={0}", isLibrarySupported ? 1 : 0));
+    return isLibrarySupported;
+    }
+
+    private string poject_root_path
+{
+    get { return Path.Combine(ModuleDirectory, "../.."); }
+}  
+
+public TestProjectCore(ReadOnlyTargetRules Target) : base(Target)
+{
+    PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+    bEnforceIWYU = true;
+
+    PublicDependencyModuleNames.AddRange(new string[] {
+    "Core", "CoreUObject",
+    "Engine", "InputCore"
+    });
+    PublicDependencyModuleNames.AddRange(new string[] {
+    "RHI", "RenderCore",
+    "Media", "MediaAssets"
+    });
+
+
+
+    LoadOpenCV(Target);
+
+
+}
+}
+#+end_src
+
+In order to check the integration you can use the same Actor c++ scripts I used in the case of UE5, but this time the header files
+would be different in the .h file.
+
+#+begin_src C++
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "opencv2/core.hpp"
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/highgui.hpp>
+#include "Log.h"
+#include "Misc/Paths.h"
+#include "TestActor.generated.h"
+#+end_src
+
+
+
