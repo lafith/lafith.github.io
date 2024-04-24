@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MultiScale Image Contrast Amplification (MUSICA)- A Python Implementation</title>
+<title>MultiScale Image Contrast Amplification (MUSICA)- Python Implementation</title>
 <meta name="generator" content="Org mode">
 <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 <link rel="stylesheet" type="text/css" href="/orgstyle.css"/>
@@ -72,7 +72,7 @@ for the JavaScript code in this tag.
 </div>
 <div id="content">
 <header>
-<h1 class="title">MultiScale Image Contrast Amplification (MUSICA)- A Python Implementation</h1>
+<h1 class="title">MultiScale Image Contrast Amplification (MUSICA)- Python Implementation</h1>
 </header><p>
 Contrast help us to differentiate different region of interest in radiology. An optimal contrast differential will aid
 physicians in diagnosis by improving the visibility of organs, vessels, bones, tissues etc, which in turn increase the 
@@ -99,7 +99,7 @@ This code is a Python implementation of the classic paper titled
 
 <p>
 Firstly an image is decomposed into a multiscale representation. This can be Haar Transform, Wavelet Transform
-or,Laplacian Pyramid, the one which I have used in this <a href="https://www.sciencedirect.com/science/article/pii/B9780080515816500659%22">implementation</a>. Contrast Enhancement is achieved by amplifying this transformed coefficients non-linearly. Then these modified coefficients
+or, <a href="https://www.sciencedirect.com/science/article/pii/B9780080515816500659">Laplacian Pyramid</a>, the one which I have used in this implementation. Contrast Enhancement is achieved by amplifying this transformed coefficients non-linearly. Then these modified coefficients
 are reconstructed to obtain the enhanced image.
 </p>
 <div class="org-center">
@@ -112,7 +112,7 @@ are reconstructed to obtain the enhanced image.
 </div>
 
 <p>
-The non-linear amplification used is also taken from the paper itself, which is as follows:
+The non-linear amplification used is as follows:
 </p>
 <div class="org-center">
 
@@ -130,8 +130,8 @@ Here x represents the original Laplacian coefficent.
 After downloading the github repo we need to install the packages using pip:
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">pip install -r requirements.txt
-python demo.py
+<pre class="src src-sh">$<span class="org-variable-name">pip</span> install -r requirements.txt
+$<span class="org-variable-name">python</span> demo.py
 </pre>
 </div>
 
