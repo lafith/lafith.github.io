@@ -33,7 +33,7 @@ Simulator will obtain following data every frame:
 
 1. Orientation
 2. Acceleration
-3. At what depth AUV is from the surface level
+3. Depth of AUV from the surface
 4. Forward velocity
 
 This data is converted into a 8 point floating array which then will be sent over a ros topic named =/combined=.

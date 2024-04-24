@@ -2,9 +2,9 @@
 #+DATE: <2022-07-12>
 #+OPTIONS: ^:nil
 
-The normal methodology of working on a UE C++ project is through visual studio. I found it a very unpleasant
-dev workflow, so I created an easy to use template c++ project with some helper scripts that include a bash script
-which you use to open, run or compile a Unreal engine.
+The normal way of working on a UE C++ project is in visual studio. I didn't like this,
+so I created an easy to use template c++ project with some helper scripts that include a bash script
+which you can use to open, run or compile a Unreal engine.
 
 Project code is available [[https://github.com/lafith/UE5Template][here]]
 
@@ -15,11 +15,11 @@ I followed [[https://www.youtube.com/watch?v=94FvzO1HVzY][Alex Forsythe]]'s vide
 3. =python3 rename_project.py --name [proj_name]=
 4. A Batch file with all necessary commands for editing, playing, building and shipping UE project.
 #+begin_src sh
-./ue.bat build         Compile the modules
-./ue.bat editor        Open the project in the UE5 Editor
-./ue.bat run           Run a playable instance of the game
-./ue.bat buildexe      Build the standalone game
-./ue.bat ship          Cook and Build the standalone game for shipping
+$./ue.bat build         Compile the modules
+$./ue.bat editor        Open the project in the UE5 Editor
+$./ue.bat run           Run a playable instance of the game
+$./ue.bat buildexe      Build the standalone game
+$./ue.bat ship          Cook and Build the standalone game for shipping
 #+end_src
 
 

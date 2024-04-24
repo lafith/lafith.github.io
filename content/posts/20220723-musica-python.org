@@ -1,4 +1,4 @@
-#+TITLE: MultiScale Image Contrast Amplification (MUSICA)- A Python Implementation
+#+TITLE: MultiScale Image Contrast Amplification (MUSICA)- Python Implementation
 #+DATE: <2022-07-23>
 #+OPTIONS: ^:nil
 
@@ -17,14 +17,14 @@ This code is a Python implementation of the classic paper titled
 [[https://www.spiedigitallibrary.org/conference-proceedings-of-spie/2167/0000/Multiscale-image-contrast-amplification-MUSICA/10.1117/12.175090.short][Multiscale Image Contrast Amplification (MUSICA)]] by Pieter Vuylsteke & Emile Schoeters.
 
 Firstly an image is decomposed into a multiscale representation. This can be Haar Transform, Wavelet Transform
-or,Laplacian Pyramid, the one which I have used in this [[https://www.sciencedirect.com/science/article/pii/B9780080515816500659"][implementation]]. Contrast Enhancement is achieved by amplifying this transformed coefficients non-linearly. Then these modified coefficients
+or, [[https://www.sciencedirect.com/science/article/pii/B9780080515816500659][Laplacian Pyramid]], the one which I have used in this implementation. Contrast Enhancement is achieved by amplifying this transformed coefficients non-linearly. Then these modified coefficients
 are reconstructed to obtain the enhanced image.
 #+begin_center
 #+CAPTION: MUSICA-Flow diagram
 [[./figures/musica2.png]]
 #+end_center
 
-The non-linear amplification used is also taken from the paper itself, which is as follows:
+The non-linear amplification used is as follows:
 #+begin_center
 #+CAPTION: Non-linear amplification formula
 [[./figures/musica3.png]]
@@ -33,8 +33,8 @@ Here x represents the original Laplacian coefficent.
 
 After downloading the github repo we need to install the packages using pip:
 #+begin_src sh
-pip install -r requirements.txt
-python demo.py
+$pip install -r requirements.txt
+$python demo.py
 #+end_src
 
 You can play with parameters a, L and p given in the beginning of the demo script. Where a is amplification factor, L is the total number 

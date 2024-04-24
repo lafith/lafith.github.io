@@ -2,7 +2,7 @@
 #+DATE: <2022-06-26>
 #+OPTIONS: ^:nil
 
-OpenCV is widely used to read, process, analyse and modify images and videos. While Unreal engine
+OpenCV is widely used to read, process, analyse and modify images and videos, while Unreal engine
 is an extremely powerful game engine. By using OpenCV in Unreal engine one can create interesting applications.
 Integration of OpenCV is different between UE4 and UE5 as UE5 released a standalone plugin for OpenCV in beta.
 
