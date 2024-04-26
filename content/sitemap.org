@@ -1,10 +1,10 @@
-* [[file:about.org][[Apr 23, 2024] About Me]]
+* [[file:about.org][[Apr 24, 2024] About Me]]
 * [[file:index.org][[Apr 23, 2024] Lafith Mattara]]
 * [[file:archive.org][[Apr 23, 2024] Posts Archive]]
 * posts
 ** [[file:posts/20230310-auv-simulator-unity.org][[Mar 10, 2023] AUV-Simulator]]
 ** [[file:posts/20220821-shader-unity-image.org][[Aug 21, 2022] Unity Shader scripts for image manipulation]]
-** [[file:posts/20220723-musica-python.org][[Jul 23, 2022] MultiScale Image Contrast Amplification (MUSICA)- A Python Implementation]]
+** [[file:posts/20220723-musica-python.org][[Jul 23, 2022] MultiScale Image Contrast Amplification (MUSICA)- Python Implementation]]
 ** [[file:posts/20220712-bash-ue.org][[Jul 12, 2022] A Template C++ Unreal Engine project]]
 ** [[file:posts/20220626-opencv-ue.org][[Jun 26, 2022] Use OpenCV in Unreal Engine]]
 ** [[file:posts/20220624-cuda-ue5.org][[Jun 24, 2022] Use Cuda code in Unreal Engine 5]]
