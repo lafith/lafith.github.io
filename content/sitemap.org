@@ -1,6 +1,6 @@
-* [[file:about.org][[Apr 24, 2024] About Me]]
-* [[file:index.org][[Apr 23, 2024] Lafith Mattara]]
-* [[file:archive.org][[Apr 23, 2024] Posts Archive]]
+* [[file:index.org][[Sep 28, 2024] Lafith Mattara]]
+* [[file:archive.org][[Sep 28, 2024] Posts Archive]]
+* [[file:about.org][[Sep 28, 2024] About Me]]
 * posts
 ** [[file:posts/20230310-auv-simulator-unity.org][[Mar 10, 2023] AUV-Simulator]]
 ** [[file:posts/20220821-shader-unity-image.org][[Aug 21, 2022] Unity Shader scripts for image manipulation]]
