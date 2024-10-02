@@ -1,0 +1,178 @@
+#+TITLE: Extracting Image Tiles from Annotated Regions in Whole Slide Images: Using Python, Slideflow & OpenSlide
+#+DATE: <2024-10-02>
+#+OPTIONS: ^:nil
+
+Whole Slide Images (WSIs) are increasingly used in digital pathology to provide high-resolution representations of tissue samples. Annotations within these images are crucial for identifying areas of interest for further analysis. This post goes through the process of extracting image tiles from annotated regions in WSIs using Slideflow and OpenSlide. The extracted tile dataset can be used for deep learning tasks, such as tile classification.
+
+*Prerequisites*
+1. [[https://www.python.org/downloads/][Python]]
+2. [[https://slideflow.dev/installation/][Slideflow]]
+3. [[https://openslide.org/download/][OpenSlide]]
+4. [[https://pypi.org/project/openslide-python/][Openslide-Python]]
+
+* Slideflow
+Since we are using Slideflow library the WSIs should be inside a folder named *slides,* with a subfolder *rois* containing annotation files. Annotation files should be in the CSV format described in the documentation.
+
+#+begin_src python
+import os
+import shutil
+import pandas as pd
+import multiprocessing
+import slideflow as sf
+
+# .ndpi wsis require libvips
+os.environ["SF_SLIDE_BACKEND"] = "libvips"
+
+data_dir = "./data"
+proj_dest = "sf_proj"
+tile_size=224
+mag = "22.1x"
+tile_data = f"tile_df_{mag}.csv"
+
+# remove a slideflow project if already exists
+if os.path.exists(os.path.join(data_dir,proj_dest)):
+    shutil.rmtree(os.path.join(data_dir,proj_dest))
+
+# create a slideflow project
+sf_project = sf.create_project(
+    root=os.path.join(data_dir,proj_dest),
+    slides=os.path.join(data_dir,"slides"))
+
+# specify tile size and magnification level
+dataset = sf_project.dataset(
+    tile_px=tile_size,
+    tile_um=mag)
+
+# extract dataframe with tile locations and labels
+df = dataset.get_tile_dataframe(roi_method='inside')
+df.to_csv(os.path.join(data_dir,tile_data), sep=',', index=False)
+
+# extract tiles as .png with reinhard normalization
+_ = dataset.extract_tiles(
+    save_tiles=True,
+    roi_method='inside',
+    img_format='png',
+    randomize_origin = True,
+    num_threads=multiprocessing.cpu_count()-2,
+    # max_tiles=1000,
+    skip_extracted=False,
+    report=True,
+    normalizer="reinhard")
+#+end_src
+Above can be used to extract all tiles from each WSI in the slides folder.
+
+* Slideflow + OpenSlide
+ I wanted to save the tiles into different rois/labels. So in this section I am using OpenSlide to extract tiles from the tile dataframe generated using Slideflow.
+
+#+begin_src python
+import os
+import shutil
+import pandas as pd
+import multiprocessing
+import slideflow as sf
+from functools import partial
+import time
+from openslide import open_slide
+from openslide.deepzoom import DeepZoomGenerator
+import numpy as np
+from PIL import Image
+
+os.environ["SF_SLIDE_BACKEND"] = "libvips"
+os.environ["SF_BACKEND"] = "torch"
+
+data_dir = "./"
+proj_dest = "sf_proj"
+tile_dest = "tiles"
+tile_size=224
+mag = "22.1x"
+level=1
+tile_data = f"tile_data_{mag}.csv"
+#+end_src
+
+Following function uses OpenSlide for reading WSI file & DeepZoomGenerator for tile extraction.
+#+begin_src python
+def process_slide(slide_id, df, data_dir, tile_fd, level):
+    start_time = time.time()
+    slide_df = df[df['slide'] == slide_id]
+    print(f"Starting to process slide: {slide_id}, shape: {slide_df.shape}")
+    slide_path = os.path.join(data_dir, "slides", f"{slide_id}.ndpi")
+    slide = open_slide(slide_path)
+    tiles = DeepZoomGenerator(slide, tile_size=224, overlap=0, limit_bounds=False)
+    print("extracting from level ", level)
+    new_level = tiles.level_count - level - 1
+    M = slide_df.shape[0]
+    
+    tiles_processed = 0
+    for _, row in slide_df.iterrows():
+        x, y = row['grid_x'], row['grid_y']
+        label = row['label']
+        os.makedirs(os.path.join(data_dir, tile_fd, label), exist_ok=True)
+        
+        tile = tiles.get_tile(new_level, (x, y))
+        tile_RGB = tile.convert('RGB')
+        tile = np.array(tile_RGB)
+        
+        if tile.mean() < 230 and tile.std() > 15:
+            tile_id = f"{slide_id}_{x}_{y}"
+            im = Image.fromarray(tile)
+            im.save(os.path.join(data_dir, tile_fd, label, f"{tile_id}.png"))
+        tiles_processed += 1
+        
+        if tiles_processed % 10000 == 0:
+            print(f"Slide {slide_id}: Processed {tiles_processed}/{M} tiles")
+
+    end_time = time.time()
+    processing_time = end_time - start_time
+    print(f"Finished processing slide: {slide_id}")
+    print(f"Total tiles processed for slide {slide_id}: {tiles_processed}")
+    print(f"Time taken to process slide {slide_id}: {processing_time:.2f} seconds")
+    return slide_id, tiles_processed, processing_time
+#+end_src
+
+Let's create the Slideflow project, generate the tile dataframe and use multiprocessing to distribute the workload across multiple CPU cores.
+#+begin_src python
+if os.path.exists(os.path.join(data_dir,proj_dest)):
+    shutil.rmtree(os.path.join(data_dir,proj_dest))
+
+sf_project = sf.create_project(
+    root=os.path.join(data_dir,proj_dest),
+    slides=os.path.join(data_dir,"slides"))
+
+dataset = sf_project.dataset(
+    tile_px=tile_size,
+    tile_um=mag)
+
+df = dataset.get_tile_dataframe(roi_method='inside')
+# df.to_csv(os.path.join(data_dir,tile_data), sep=',', index=False)
+
+slide_ids = list(set(df['slide'].tolist()))
+N = len(slide_ids)
+print(f"Total number of slides: {N}")
+
+# Create a partial function with fixed arguments
+process_slide_partial = partial(process_slide, df=df, data_dir=data_dir, tile_fd=tile_dest,level=level)
+
+# Use all available CPU cores except one
+num_processes = multiprocessing.cpu_count()-2
+print(f"Using {num_processes} processes")
+
+# Create a pool of workers
+start_time = time.time()
+with multiprocessing.Pool(processes=num_processes) as pool:
+    # Map the work to the pool
+    results = pool.map(process_slide_partial, slide_ids)
+
+end_time = time.time()
+total_processing_time = end_time - start_time
+total_tiles_processed = sum(result[1] for result in results)
+
+print("\nProcessing complete.")
+print(f"Total slides processed: {N}")
+print(f"Total tiles processed: {total_tiles_processed}")
+print(f"Total processing time: {total_processing_time:.2f} seconds")
+
+# Print summary for each slide
+print("\nPer-slide summary:")
+for slide_id, tiles_processed, processing_time in results:
+    print(f"Slide {slide_id}: {tiles_processed} tiles, {processing_time:.2f} seconds")
+#+end_src

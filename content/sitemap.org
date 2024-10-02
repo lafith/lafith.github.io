@@ -3,6 +3,7 @@
 * [[file:about.org][[Oct 02, 2024] About Me]]
 * posts
 ** [[file:posts/20241002-imagescope-to-slideflow.org][[Oct 02, 2024] Converting Aperio Imagescope XML Annotations to Slideflow's CSV Format]]
+** [[file:posts/20241002-extract-tiles-from-wsi.org][[Oct 02, 2024] Extracting Image Tiles from Annotated Regions in Whole Slide Images: Using Python, Slideflow & OpenSlide]]
 ** [[file:posts/20230310-auv-simulator-unity.org][[Mar 10, 2023] AUV-Simulator]]
 ** [[file:posts/20220821-shader-unity-image.org][[Aug 21, 2022] Unity Shader scripts for image manipulation]]
 ** [[file:posts/20220723-musica-python.org][[Jul 23, 2022] MultiScale Image Contrast Amplification (MUSICA)- Python Implementation]]
