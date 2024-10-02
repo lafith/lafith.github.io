@@ -1,7 +1,8 @@
-* [[file:index.org][[Sep 28, 2024] Lafith Mattara]]
-* [[file:archive.org][[Sep 28, 2024] Posts Archive]]
-* [[file:about.org][[Sep 28, 2024] About Me]]
+* [[file:archive.org][[Oct 02, 2024] Posts Archive]]
+* [[file:index.org][[Oct 02, 2024] Lafith Mattara]]
+* [[file:about.org][[Oct 02, 2024] About Me]]
 * posts
+** [[file:posts/20241002-imagescope-to-slideflow.org][[Oct 02, 2024] Converting Aperio Imagescope XML Annotations to Slideflow's CSV Format]]
 ** [[file:posts/20230310-auv-simulator-unity.org][[Mar 10, 2023] AUV-Simulator]]
 ** [[file:posts/20220821-shader-unity-image.org][[Aug 21, 2022] Unity Shader scripts for image manipulation]]
 ** [[file:posts/20220723-musica-python.org][[Jul 23, 2022] MultiScale Image Contrast Amplification (MUSICA)- Python Implementation]]

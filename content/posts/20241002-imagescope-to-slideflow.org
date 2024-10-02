@@ -1,0 +1,109 @@
+#+TITLE: Converting Aperio Imagescope XML Annotations to Slideflow's CSV Format
+#+DATE: <2024-10-02>
+#+OPTIONS: ^:nil
+
+Working with digital pathology often involves handling annotations from various software platforms. [[https://www.leicabiosystems.com/digital-pathology/manage/aperio-imagescope/][Aperio ImageScope]] is a popular tool for viewing and annotating digital pathology images and  [[https://slideflow.dev/][Slideflow]] is a Python framework used for deep learning tasks in digital pathology. While *ImageScope* saves the annotations in XML format, *Slideflow* saves it in a CSV format.
+
+In this post I will share a python function that allows you to convert Aperio Imagescope XML annotations into a format that Slideflow can easily work with.
+
+Here is an example of a typical ImageScope XML file structure that contains annotations for regions of interest (ROIs) on a digital slide.
+#+BEGIN_SRC xml
+<Annotations>
+  <Annotation Id="0" Name="Annotation 1">
+    <Attributes>
+      <Attribute Name="RegionType" Value="Tissue"/>
+    </Attributes>
+    <Regions>
+      <Region Id="0" Type="1" NegativeROA="0">
+        <Vertices>
+          <Vertex X="100.0" Y="150.0"/>
+          <Vertex X="200.0" Y="250.0"/>
+          <Vertex X="300.0" Y="350.0"/>
+          <Vertex X="100.0" Y="150.0"/>
+        </Vertices>
+      </Region>
+      <Region Id="1" Type="1" NegativeROA="0">
+        <Vertices>
+          <Vertex X="400.0" Y="450.0"/>
+          <Vertex X="500.0" Y="550.0"/>
+          <Vertex X="600.0" Y="650.0"/>
+        </Vertices>
+      </Region>
+    </Regions>
+  </Annotation>
+
+  <Annotation Id="1" Name="Annotation 2">
+   ...
+  </Annotation>
+</Annotations>
+#+END_SRC
+
+This is how the same data would be structured in a SlideFlow-compatible CSV format
+#+BEGIN_SRC txt
+roi_name,x_base,y_base,label
+Annotation_1_0,100.0,150.0,Tissue
+Annotation_1_0,200.0,250.0,Tissue
+Annotation_1_0,300.0,350.0,Tissue
+Annotation_1_0,100.0,150.0,Tissue
+Annotation_1_1,400.0,450.0,Tissue
+Annotation_1_1,500.0,550.0,Tissue
+Annotation_1_1,600.0,650.0,Tissue
+Annotation_2_0,700.0,750.0,Tumor
+Annotation_2_0,800.0,850.0,Tumor
+Annotation_2_0,900.0,950.0,Tumor
+#+END_SRC
+
+Following Python function read the XML file given it's file path and returns a pandas dataframe. You can save it using /pd.to_csv()/.
+The aperio2sf function parses the XML file and extracts each region's X and Y coordinates, which are stored in the x_base and y_base columns. The label column corresponds to the region name, and roi_name stores the name of each region, suffixed with a unique index.
+#+begin_src python
+import os
+import shutil
+import pandas as pd
+import xml.dom.minidom as minidom
+
+
+def aperio2sf(annt_path):
+    # read the aperio xml file
+    doc = minidom.parse(annt_path)
+    annotations = doc.getElementsByTagName("Annotation")
+    # initialize relevant columns for slideflow format
+    data = {
+        'roi_name': [],
+        'label':[],
+        'x_base': [],
+        'y_base': []
+    }
+    # extract the corresponding information parsing the xml
+    for annotation in annotations:
+        name = annotation.getElementsByTagName("Attribute")[0].getAttribute("Name")
+        regions = annotation.getElementsByTagName("Region")
+        for i,region in enumerate(regions):
+            vertices = region.getElementsByTagName("Vertex")
+            for j,vertex in enumerate(vertices):
+                data['x_base'].append(vertex.getAttribute("X"))
+                data['y_base'].append(vertex.getAttribute("Y"))
+                data['label'].append(name)
+                data['roi_name'].append(name+"_"+str(i))
+    df = pd.DataFrame(data)
+    return df
+#+end_src
+
+The slideflow project's default config expects the annotations to be at /slides/rois/ location. This function converts all Aperio XML files in the /annotations/ folder to CSV format and saves them in the slides/rois folder, ready for Slideflow to process.
+#+begin_src python
+def convertall(data_dir, sf_dest="rois"):
+    '''
+    convert all aperio xmls into slideflow formats and save into slides/rois folder
+    '''
+    if os.path.exists(os.path.join(data_dir,"slides", sf_dest)):
+        shutil.rmtree(os.path.join(data_dir,"slides", sf_dest))
+    os.makedirs(os.path.join(data_dir,"slides", sf_dest), exist_ok=True)
+    for annt_path in os.listdir(os.path.join(data_dir, "annotations")):
+        print(annt_path)
+        annt_path = os.path.join(data_dir,"annotations", annt_path)
+        df = aperio2sf(annt_path)
+        out_path = annt_path.replace("annotations", "slides/"+sf_dest)
+        out_path = out_path.replace("xml", "csv")
+        df.to_csv(out_path, sep=',', index=False)
+#+end_src
+
+Since the CSV content follows a generic tabular format it can also be used to generate annotation files for other software platforms, such as [[https://qupath.github.io/][QuPath]].
