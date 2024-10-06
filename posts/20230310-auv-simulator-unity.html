@@ -9,7 +9,9 @@
 <link rel="stylesheet" type="text/css" href="/orgstyle.css"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<!-- <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
 <link rel="icon" href="spock-favicon.png" type="image/png">
 <script type="text/javascript">
 /*
@@ -64,8 +66,8 @@ for the JavaScript code in this tag.
 <div class='topnav' style='display: flex; justify-content: space-between; align-items: center;'>
   <a href="/index.html"><h2 style='margin-top: 0; margin-bottom: 0; margin-left:0px;'>Lafith Mattara</h2></a>
   <div class='topnav2' style='color:#cfcaca;'>
-    <a href='/archive.html' style='font-weight:bold; font-style:italic;'>Blog </a> / 
-    <a href='/about.html' style='font-weight:bold; font-style:italic;'>About Me </a> /
+    <a href='/archive.html' style='font-weight:bold; font-style:italic;'>Blog </a> 
+    <!-- <a href='/about.html' style='font-weight:bold; font-style:italic;'>About Me </a> / -->
     <!-- <a href='https://lfzmap.github.io' style='font-weight:bold; font-style:italic;'>&#127793;</a>  -->
   </div>
 </div>
@@ -74,16 +76,7 @@ for the JavaScript code in this tag.
 <div id="content">
 <header>
 <h1 class="title">AUV-Simulator</h1>
-</header><nav id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#org5a36a08">Overview</a></li>
-<li><a href="#orgdd6bf31">What is simulated</a></li>
-</ul>
-</div>
-</nav>
-<div class="org-center">
+</header><div class="org-center">
 
 <figure>
 <img src="./figures/auvdemo.gif" alt="auvdemo.gif">
@@ -92,9 +85,9 @@ for the JavaScript code in this tag.
 </figure>
 </div>
 
-<div id="outline-container-org5a36a08" class="outline-2">
-<h2 id="org5a36a08">Overview</h2>
-<div class="outline-text-2" id="text-org5a36a08">
+<div id="outline-container-orgf48ca1a" class="outline-2">
+<h2 id="orgf48ca1a">Overview</h2>
+<div class="outline-text-2" id="text-orgf48ca1a">
 <p>
 A simulator recreates a real-world system virtually such that one can test the system rigorously.
 In the case of robotics a simulator can be very useful for the software development team for testing and optimizing their code
@@ -121,9 +114,9 @@ contains  the arenas for <a href="https://sauvc.org/">SAUVC</a>-2020 and <a href
 </div>
 </div>
 
-<div id="outline-container-orgdd6bf31" class="outline-2">
-<h2 id="orgdd6bf31">What is simulated</h2>
-<div class="outline-text-2" id="text-orgdd6bf31">
+<div id="outline-container-org43c79a4" class="outline-2">
+<h2 id="org43c79a4">What is simulated</h2>
+<div class="outline-text-2" id="text-org43c79a4">
 <p>
 A noisy underwater environment using the fog system of Unity as well as the underwater caustics. Following the design of Tiburon's AUV the model
 has two cameras (front &amp; bottom). Now lets discuss about the important data transfer implemented.
