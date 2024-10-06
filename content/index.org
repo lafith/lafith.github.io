@@ -1,11 +1,28 @@
 #+TITLE: Lafith Mattara
 #+OPTIONS: toc:nil
 #+OPTIONS: title:nil
-#+INCLUDE: about.org :lines "6-10" :only-contents t
-[[./about.org][Read more...]]
+
+#+ATTR_HTML: :width 200px :style float:left;margin:0px 20px 20px 0px;
+[[./about_photo.png]]
+
+My name is Lafith. Currently I am working as a R&D Engineer for the *Image-Guided Robotics Group* at [[https://www.hticiitm.org/][HTIC-IIT Madras]], focused on Deep Learning & Reinforcement Learning.
+
+Prior to this position at HTIC, I was a Visiting Research Scholar under [[https://www.uab.edu/shp/home/about-us/deans-office/staff/ritu-aneja][Dr. Ritu Aneja]], University of Alabama at Birmingham & [[https://math.gsu.edu/jkong/][Dr. Jun Kong]], Georgia State University.
+In this role I was responsible for conducting deep learning based analysis on Whole slide images obtained from breast cancer patients.
+
+I received a BTech in Biomedical Engineering at the National Institute of Rourkela in 2021.
+Following this I worked as Project Engineer for the [[https://www.hticiitm.org/endoscope][Endoscopy]] Development group at HTIC-IITM. Here I made a VR application capable of visualizing video stream from a stereo-endoscope.
+I developed and deployed deep learning models for lesion detection in edge devices.
+
+During my Undergrad I lead the simulator development team for our Autonomous Underwater Vehicle development group-[[https://auvnitrkl.github.io/index.html][Tiburon]]. Here I built a AUV-Simulator usable for
+testing algorithms in a 3D underwater environment.
+
+I have also worked on couple of projects, related to industrial CT scans, at [[https://cci-iitpkd.github.io/][Centre for Computational Imaging-IIT Palakkad]] under the supervision of [[https://www.singaporetech.edu.sg/directory/faculty/mahesh-raveendranatha-panicker][Dr. Mahesh R Panicker]]. 
+
+* Where to Find Me
+- [[http://github.com/lafith][Github]]
+- [[https://www.linkedin.com/in/lafith/][LinkedIn]]
+# - [[https://gitlab.com/dliden/coffeemacs][My emacs config on Github]]
 
 * Recent Posts
-#+INCLUDE: sitemap.org::*posts :lines "-35" :only-contents t
-
-* Post Archive
-[[file:archive.org][All Posts]]
+#+INCLUDE: sitemap.org::*posts :lines "-5" :only-contents t

@@ -53,10 +53,10 @@ https://ogbe.net/blog/blogging_with_org.html"
                             (my/get-preview (concat "content/" entry))
                           ;; "(No preview)")))
                           "")))
-         (format "[[file:%s][[%s] %s]]\n"
-                 entry
+         (format "[%s] [[file:%s][ %s]]\n"
                  (format-time-string "%b %d, %Y"
                                      (org-publish-find-date entry project))
+                 entry
                  (org-publish-find-title entry project) preview)))
         ((eq style 'tree)
          ;; Return only last subdir.

@@ -1,6 +1,7 @@
 #+TITLE: AUV-Simulator
 #+DATE: <2023-03-10>
 #+OPTIONS: ^:nil
+#+OPTIONS: toc:nil
 
 #+begin_center
 #+CAPTION: AUV Simulator 
