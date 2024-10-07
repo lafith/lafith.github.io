@@ -1,4 +1,4 @@
-#+TITLE: All Posts
+#+TITLE: Blog
 #+Author: Lafith Mattara
 #+OPTIONS: toc:nil
 #+OPTIONS: title:nil

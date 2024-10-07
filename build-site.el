@@ -115,7 +115,7 @@ https://ogbe.net/blog/blogging_with_org.html"
   "Generate a posts archive in OUTPUT-FILE from INPUT-FILE under HEADING."
   (let ((content (extract-posts-as-list-items input-file heading)))
     (with-temp-buffer
-      (insert "#+TITLE: All Posts\n")
+      (insert "#+TITLE: Blog\n")
       (insert "#+Author: Lafith Mattara\n")
       (insert "#+OPTIONS: toc:nil\n")
       (insert "#+OPTIONS: title:nil\n")

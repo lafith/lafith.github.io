@@ -1,4 +1,4 @@
-* [Oct 07, 2024] [[file:blog.org][ All Posts]]
+* [Oct 07, 2024] [[file:blog.org][ Blog]]
 * [Oct 07, 2024] [[file:index.org][ Lafith Mattara]]
 * [Sep 28, 2024] [[file:about.org][ About Me]]
 * posts
