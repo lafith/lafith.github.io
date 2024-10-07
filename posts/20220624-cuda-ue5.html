@@ -66,7 +66,7 @@ for the JavaScript code in this tag.
 <div class='topnav' style='display: flex; justify-content: space-between; align-items: center;'>
   <a href="/index.html"><h2 style='margin-top: 0; margin-bottom: 0; margin-left:0px;'>Lafith Mattara</h2></a>
   <div class='topnav2' style='color:#cfcaca;'>
-    <a href='/archive.html' style='font-weight:bold; font-style:italic;'>Blog </a> 
+    <a href='/blog.html' style='font-weight:bold; font-style:bold;'>Blog </a> 
     <!-- <a href='/about.html' style='font-weight:bold; font-style:italic;'>About Me </a> / -->
     <!-- <a href='https://lfzmap.github.io' style='font-weight:bold; font-style:italic;'>&#127793;</a>  -->
   </div>
@@ -80,17 +80,17 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org84109d0">Building Cuda scripts into a Static Library</a>
+<li><a href="#orgf804c0a">Building Cuda scripts into a Static Library</a>
 <ul>
 <li>
 <ul>
-<li><a href="#org437b19f">test_cudaue.h</a></li>
-<li><a href="#org2754f14">test_cudaue.cu</a></li>
+<li><a href="#orgaae4f44">test_cudaue.h</a></li>
+<li><a href="#orgf3fd9b9">test_cudaue.cu</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org76ab8f6">Linking with UE5 Project</a></li>
+<li><a href="#orge7287b3">Linking with UE5 Project</a></li>
 </ul>
 </div>
 </nav>
@@ -108,9 +108,9 @@ this is extremely useful if you are creating image/voxel analysis and visualizat
 Integration of Cuda invloves two phases, building Cuda code into a static library then linking them in UE5 project.
 </p>
 
-<div id="outline-container-org84109d0" class="outline-2">
-<h2 id="org84109d0">Building Cuda scripts into a Static Library</h2>
-<div class="outline-text-2" id="text-org84109d0">
+<div id="outline-container-orgf804c0a" class="outline-2">
+<h2 id="orgf804c0a">Building Cuda scripts into a Static Library</h2>
+<div class="outline-text-2" id="text-orgf804c0a">
 <ul class="org-ul">
 <li>Install Cuda toolkit in Windows from <a href="https://developer.nvidia.com/cuda-downloads">here</a>.</li>
 <li>Create a new project in Visual Studio with Cuda Runtime 11.7 (let say the name is <code>test_cudaue</code>).</li>
@@ -122,9 +122,9 @@ and <code>test_cudaue.h</code>. It has a basic function for testing the addition
 </ul>
 </div>
 
-<div id="outline-container-org437b19f" class="outline-4">
-<h4 id="org437b19f">test_cudaue.h</h4>
-<div class="outline-text-4" id="text-org437b19f">
+<div id="outline-container-orgaae4f44" class="outline-4">
+<h4 id="orgaae4f44">test_cudaue.h</h4>
+<div class="outline-text-4" id="text-orgaae4f44">
 <div class="org-src-container">
 <pre class="src src-C++">{`#pragma once
 
@@ -142,9 +142,9 @@ cudaError_t testCudaAddition(<span class="org-type">int</span>* <span class="org
 </div>
 </div>
 
-<div id="outline-container-org2754f14" class="outline-4">
-<h4 id="org2754f14">test_cudaue.cu</h4>
-<div class="outline-text-4" id="text-org2754f14">
+<div id="outline-container-orgf3fd9b9" class="outline-4">
+<h4 id="orgf3fd9b9">test_cudaue.cu</h4>
+<div class="outline-text-4" id="text-orgf3fd9b9">
 <div class="org-src-container">
 <pre class="src src-C++">{`#include <span class="org-string">"test_cudaue.h"</span>
 
@@ -253,9 +253,9 @@ __global__ <span class="org-type">void</span> <span class="org-variable-name">ad
 </div>
 </div>
 
-<div id="outline-container-org76ab8f6" class="outline-2">
-<h2 id="org76ab8f6">Linking with UE5 Project</h2>
-<div class="outline-text-2" id="text-org76ab8f6">
+<div id="outline-container-orge7287b3" class="outline-2">
+<h2 id="orge7287b3">Linking with UE5 Project</h2>
+<div class="outline-text-2" id="text-orge7287b3">
 <ul class="org-ul">
 <li>Create <code>[UE5ProjectRoot]/ThirdParty/Cuda/include</code> &amp; <code>[UE5ProjectRoot]/ThirdParty/Cuda/lib</code>.</li>
 <li>Copy the header file (test_cudaue.h) from the cuda project in to this include folder.</li>
