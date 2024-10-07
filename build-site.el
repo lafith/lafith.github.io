@@ -77,6 +77,54 @@ https://ogbe.net/blog/blogging_with_org.html"
     (insert-file-contents file)
     (buffer-string)))
 
+
+;;; Generate Posts Archive
+
+(defun extract-posts-as-list-items (file heading)
+  "Extract links from the specified HEADING in FILE, returning them as Org list items."
+  (with-temp-buffer
+    (insert-file-contents file)
+    (goto-char (point-min))
+    ;; Look for the specific heading (single star) and move to the next line
+    (when (re-search-forward (concat "^\\* " (regexp-quote heading)) nil t)
+      (forward-line 1)
+      (let ((start (point))
+            (end (progn
+                   ;; Look for the next top-level heading (single star)
+                   (if (re-search-forward "^\\* " nil t)
+                       (line-beginning-position)
+                     (point-max))))
+            (results ""))
+        (goto-char start)
+        ;; Iterate over the posts and extract date, file path, and title
+        (while (re-search-forward "^\\*\\* \\[\\([^]]+\\)\\] \\(\\[\\[file:\\([^]]+\\)\\]\\[\\([^]]+\\)\\]\\]\\)" end t)
+          (let ((date (match-string 1))
+                (file-path (match-string 3))
+                (title (match-string 4)))
+            ;; Concatenate with Org-mode list item syntax
+            (setq results (concat results 
+                                  "- " 
+                                  date 
+                                  ": [[file:" 
+                                  file-path 
+                                  "][" 
+                                  title 
+                                  "]]\n")))) ;; Single newline here to separate list items
+        results))))
+(defun generate-posts-archive (input-file output-file heading)
+  "Generate a posts archive in OUTPUT-FILE from INPUT-FILE under HEADING."
+  (let ((content (extract-posts-as-list-items input-file heading)))
+    (with-temp-buffer
+      (insert "#+TITLE: All Posts\n")
+      (insert "#+Author: Lafith Mattara\n")
+      (insert "#+OPTIONS: toc:nil\n")
+      (insert "#+OPTIONS: title:nil\n")
+      (insert content)
+      (write-file output-file))))
+
+;;; Example usage
+(generate-posts-archive "content/sitemap.org" "content/blog.org" "posts")
+
 ;;; define publishing project
 (setq org-publish-project-alist
       (list

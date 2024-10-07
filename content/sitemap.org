@@ -1,5 +1,5 @@
+* [Oct 07, 2024] [[file:blog.org][ All Posts]]
 * [Oct 07, 2024] [[file:index.org][ Lafith Mattara]]
-* [Sep 28, 2024] [[file:archive.org][ Posts Archive]]
 * [Sep 28, 2024] [[file:about.org][ About Me]]
 * posts
 ** [Oct 02, 2024] [[file:posts/20241002-imagescope-to-slideflow.org][ Converting Aperio Imagescope XML Annotations to Slideflow's CSV Format]]
