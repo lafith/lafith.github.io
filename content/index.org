@@ -5,14 +5,21 @@
 #+ATTR_HTML: :width 200px :style float:left;margin:0px 20px 20px 0px;
 [[./about_photo.png]]
 
-I am an R&D Engineer at the *Image-Guided Robotics Group*, [[https://www.hticiitm.org/][HTIC-IIT Madras]], currently building a Robotic Fetal Ultrasound System - leveraging multi-modal deep learning architectures for integrating standard plane detection, anatomical segmentation, and biometry extraction. 
+I am an R&D Engineer at the *Image-Guided Robotics Group*, [[https://www.hticiitm.org/][HTIC-IIT Madras]], currently building a Robotic Fetal Ultrasound System - integrating standard plane detection, anatomical segmentation, and biometry extraction. 
 
 Prior to this position at HTIC, I was a Visiting Research Scholar under [[https://www.uab.edu/shp/home/about-us/deans-office/staff/ritu-aneja][Dr. Ritu Aneja]], University of Alabama at Birmingham, where I conducted deep learning based analysis on Whole slide images obtained from breast cancer patients.
 
-I hold a BTech in Biomedical Engineering from the National Institute of Rourkela (2021). My passion lies in driving innovation at the intersection of AI, Robotics and healthcare. I welcome connections and collaborations in this exciting field!
+
+I hold a BTech in Biomedical Engineering from the National Institute of Rourkela (2021). I have expertise in developing multi-modal deep learning architectures, conducting whole slide image analysis for cancer research, creating VR applications using game engines for medical devices, industrial CT enhancement, and building simulator for underwater robots.
+
+My passion lies at the intersection of AI, Robotics and healthcare. I welcome connections and collaborations in this exciting field!
 
 | [[http://github.com/lafith][Github]] | [[https://www.linkedin.com/in/lafith/][LinkedIn]] |
 
+# * Technical Skills
+# Python, C++, C, Rust, C#\\
+# PyTorch, Tensorflow, OpenCV, ROS\\
+# Unreal Engine 5, Unity, Blender
 
 * Recent Posts
 #+INCLUDE: blog.org :lines "-8" 
