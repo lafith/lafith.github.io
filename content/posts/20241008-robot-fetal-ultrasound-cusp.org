@@ -1,0 +1,20 @@
+#+TITLE: Prototype of Robotic Fetal Ultrasound System Presented at CUSP-2024
+#+DATE: <2024-10-08>
+#+OPTIONS: ^:nil
+
+A prototype of our Robotic Fetal UltraSound System was presented at the *XVIII Ultrasonography in Practice ([[https://cusp.org.in/][CUSP]]) conference* held at Chennai trade centre, India.
+
+The system had both standalone AI assistance mode and a robotic assistance mode leveraging the same AI backbone. This is the first iteration which will be expanded into segmentation and biometry retrieval.
+
+#+begin_center
+[[./figures/cusp_ai_assistance.gif]]
+#+end_center
+\\
+The deep learning architecture is capable of detecting 20+2 standard planes with a precision of 96%.
+\\
+
+#+begin_center
+#+attr_html: :width 400px
+[[./figures/cusp_robot.jpg]]
+#+end_center
+
