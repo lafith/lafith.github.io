@@ -26,3 +26,12 @@ I have also worked on couple of projects, related to industrial CT scans, at [[h
 
 * Recent Posts
 #+INCLUDE: blog.org :lines "-8" 
+\\
+\\
+#+begin_center
+#+CAPTION: 
+[[./posts/figures/rain.gif]]
+#+end_center
+/“Your pain is the breaking of the shell that encloses your understanding. It is the bitter potion by which the physician within you heals your sick self. Therefore, trust the physician and drink his remedy in silence and tranquility.”/ 
+\\
+*-- Khalil Gibran*
