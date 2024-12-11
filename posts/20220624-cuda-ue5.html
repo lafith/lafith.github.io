@@ -1,62 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Use Cuda code in Unreal Engine 5</title>
-<meta name="generator" content="Org mode">
+<meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 <link rel="stylesheet" type="text/css" href="/orgstyle.css"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
 <link rel="icon" href="spock-favicon.png" type="image/png">
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -70,24 +24,24 @@ for the JavaScript code in this tag.
 </div>
 <hr style="border-top: 1px solid black;">
 </div>
-<div id="content">
+<div id="content" class="content">
 <header>
 <h1 class="title">Use Cuda code in Unreal Engine 5</h1>
-</header><nav id="table-of-contents">
+</header><nav id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0c3acc3">Building Cuda scripts into a Static Library</a>
+<li><a href="#org9c03637">Building Cuda scripts into a Static Library</a>
 <ul>
 <li>
 <ul>
-<li><a href="#org63dd935">test_cudaue.h</a></li>
-<li><a href="#org15465fc">test_cudaue.cu</a></li>
+<li><a href="#orgc7835b7">test_cudaue.h</a></li>
+<li><a href="#org31f8ba9">test_cudaue.cu</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org44ea2bc">Linking with UE5 Project</a></li>
+<li><a href="#org9096327">Linking with UE5 Project</a></li>
 </ul>
 </div>
 </nav>
@@ -105,9 +59,9 @@ this is extremely useful if you are creating image/voxel analysis and visualizat
 Integration of Cuda invloves two phases, building Cuda code into a static library then linking them in UE5 project.
 </p>
 
-<div id="outline-container-org0c3acc3" class="outline-2">
-<h2 id="org0c3acc3">Building Cuda scripts into a Static Library</h2>
-<div class="outline-text-2" id="text-org0c3acc3">
+<div id="outline-container-org9c03637" class="outline-2">
+<h2 id="org9c03637">Building Cuda scripts into a Static Library</h2>
+<div class="outline-text-2" id="text-org9c03637">
 <ul class="org-ul">
 <li>Install Cuda toolkit in Windows from <a href="https://developer.nvidia.com/cuda-downloads">here</a>.</li>
 <li>Create a new project in Visual Studio with Cuda Runtime 11.7 (let say the name is <code>test_cudaue</code>).</li>
@@ -119,9 +73,9 @@ and <code>test_cudaue.h</code>. It has a basic function for testing the addition
 </ul>
 </div>
 
-<div id="outline-container-org63dd935" class="outline-4">
-<h4 id="org63dd935">test_cudaue.h</h4>
-<div class="outline-text-4" id="text-org63dd935">
+<div id="outline-container-orgc7835b7" class="outline-4">
+<h4 id="orgc7835b7">test_cudaue.h</h4>
+<div class="outline-text-4" id="text-orgc7835b7">
 <div class="org-src-container">
 <pre class="src src-C++">{`#pragma once
 
@@ -139,9 +93,9 @@ cudaError_t testCudaAddition(<span class="org-type">int</span>* <span class="org
 </div>
 </div>
 
-<div id="outline-container-org15465fc" class="outline-4">
-<h4 id="org15465fc">test_cudaue.cu</h4>
-<div class="outline-text-4" id="text-org15465fc">
+<div id="outline-container-org31f8ba9" class="outline-4">
+<h4 id="org31f8ba9">test_cudaue.cu</h4>
+<div class="outline-text-4" id="text-org31f8ba9">
 <div class="org-src-container">
 <pre class="src src-C++">{`#include <span class="org-string">"test_cudaue.h"</span>
 
@@ -250,9 +204,9 @@ __global__ <span class="org-type">void</span> <span class="org-variable-name">ad
 </div>
 </div>
 
-<div id="outline-container-org44ea2bc" class="outline-2">
-<h2 id="org44ea2bc">Linking with UE5 Project</h2>
-<div class="outline-text-2" id="text-org44ea2bc">
+<div id="outline-container-org9096327" class="outline-2">
+<h2 id="org9096327">Linking with UE5 Project</h2>
+<div class="outline-text-2" id="text-org9096327">
 <ul class="org-ul">
 <li>Create <code>[UE5ProjectRoot]/ThirdParty/Cuda/include</code> &amp; <code>[UE5ProjectRoot]/ThirdParty/Cuda/lib</code>.</li>
 <li>Copy the header file (test_cudaue.h) from the cuda project in to this include folder.</li>
@@ -261,52 +215,52 @@ __global__ <span class="org-type">void</span> <span class="org-variable-name">ad
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-csharp">using UnrealBuildTool;
-using System.IO;
+<pre class="src src-csharp"><span class="org-keyword">using</span> <span class="org-variable-name">UnrealBuildTool</span>;
+<span class="org-keyword">using</span> <span class="org-variable-name">System</span>.<span class="org-variable-name">IO</span>;
 
 
-public class [projectname] : ModuleRules
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> [projectname] : ModuleRules
 {
-private string poject_root_path
+<span class="org-keyword">private</span> <span class="org-type">string</span> <span class="org-variable-name">poject_root_path</span>
 {
-	get { return Path.Combine(ModuleDirectory, "../.."); }
+        <span class="org-keyword">get</span> { <span class="org-keyword">return</span> Path.<span class="org-function-name">Combine</span>(ModuleDirectory, <span class="org-string">"../.."</span>); }
 }
-public bool LoadCuda(ReadOnlyTargetRules Target)
+<span class="org-keyword">public</span> <span class="org-type">bool</span> <span class="org-function-name">LoadCuda</span>(<span class="org-type">ReadOnlyTargetRules</span> <span class="org-variable-name">Target</span>)
 {
-	string custom_cuda_lib_include = "ThirdParty/Cuda/include";
-	string custom_cuda_lib_lib = "ThirdParty/Cuda/lib";
+        <span class="org-type">string</span> <span class="org-variable-name">custom_cuda_lib_include</span> = <span class="org-string">"ThirdParty/Cuda/include"</span>;
+        <span class="org-type">string</span> <span class="org-variable-name">custom_cuda_lib_lib</span> = <span class="org-string">"ThirdParty/Cuda/lib"</span>;
 
-	PublicIncludePaths.Add(Path.Combine(poject_root_path, custom_cuda_lib_include));
-	PublicAdditionalLibraries.Add(Path.Combine(poject_root_path, custom_cuda_lib_lib, "test_cudaue.lib"));
+        PublicIncludePaths.<span class="org-function-name">Add</span>(Path.<span class="org-function-name">Combine</span>(poject_root_path, custom_cuda_lib_include));
+        PublicAdditionalLibraries.<span class="org-function-name">Add</span>(Path.<span class="org-function-name">Combine</span>(poject_root_path, custom_cuda_lib_lib, <span class="org-string">"test_cudaue.lib"</span>));
 
-	string cuda_path = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.7";
-	string cuda_include = "include";
-	string cuda_lib = "lib/x64";
+        <span class="org-type">string</span> <span class="org-variable-name">cuda_path</span> = <span class="org-string">"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.7"</span>;
+        <span class="org-type">string</span> <span class="org-variable-name">cuda_include</span> = <span class="org-string">"include"</span>;
+        <span class="org-type">string</span> <span class="org-variable-name">cuda_lib</span> = <span class="org-string">"lib/x64"</span>;
 
-	PublicIncludePaths.Add(Path.Combine(cuda_path, cuda_include));
+        PublicIncludePaths.<span class="org-function-name">Add</span>(Path.<span class="org-function-name">Combine</span>(cuda_path, cuda_include));
 
-	PublicAdditionalLibraries.Add(Path.Combine(cuda_path, cuda_lib, "cudart_static.lib"));
-	// PublicAdditionalLibraries.Add(Path.Combine(cuda_path, cuda_lib, "nppif.lib"));
-	// PublicAdditionalLibraries.Add(Path.Combine(cuda_path, cuda_lib, "nppicc.lib"));
-	// PublicAdditionalLibraries.Add(Path.Combine(cuda_path, cuda_lib, "nppig.lib"));
-	return true;
+        PublicAdditionalLibraries.<span class="org-function-name">Add</span>(Path.<span class="org-function-name">Combine</span>(cuda_path, cuda_lib, <span class="org-string">"cudart_static.lib"</span>));
+        <span class="org-comment-delimiter">// </span><span class="org-comment">PublicAdditionalLibraries.Add(Path.Combine(cuda_path, cuda_lib, "nppif.lib"));</span>
+        <span class="org-comment-delimiter">// </span><span class="org-comment">PublicAdditionalLibraries.Add(Path.Combine(cuda_path, cuda_lib, "nppicc.lib"));</span>
+        <span class="org-comment-delimiter">// </span><span class="org-comment">PublicAdditionalLibraries.Add(Path.Combine(cuda_path, cuda_lib, "nppig.lib"));</span>
+        <span class="org-keyword">return</span> <span class="org-constant">true</span>;
 }
-public [projectname](ReadOnlyTargetRules Target) : base(Target)
+<span class="org-keyword">public</span> [projectname](<span class="org-type">ReadOnlyTargetRules</span> <span class="org-variable-name">Target</span>) : <span class="org-keyword">base</span>(Target)
 {
-	PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
-	bEnforceIWYU = true;
+        PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+        bEnforceIWYU = <span class="org-constant">true</span>;
 
-	PublicDependencyModuleNames.AddRange(new string[] {
-		"Core",
-			"CoreUObject",
-			"Engine",
-			"InputCore"
-			 });
-		PrivateDependencyModuleNames.AddRange(
-			new string[] {});
+        PublicDependencyModuleNames.<span class="org-function-name">AddRange</span>(<span class="org-keyword">new</span> <span class="org-type">string</span>[] {
+                <span class="org-string">"Core"</span>,
+                        <span class="org-string">"CoreUObject"</span>,
+                        <span class="org-string">"Engine"</span>,
+                        <span class="org-string">"InputCore"</span>
+                         });
+                PrivateDependencyModuleNames.<span class="org-function-name">AddRange</span>(
+                        <span class="org-keyword">new</span> <span class="org-type">string</span>[] {});
 
-			LoadCuda(Target);
-	}
+                        <span class="org-function-name">LoadCuda</span>(Target);
+        }
 }
 </pre>
 </div>
@@ -326,13 +280,13 @@ public [projectname](ReadOnlyTargetRules Target) : base(Target)
 <span class="org-preprocessor">#include</span> <span class="org-string">"TestCudaActor.generated.h"</span>
 
 UCLASS()
-<span class="org-keyword">class</span> <span class="org-type">PROJECTNAME_API</span> <span class="org-variable-name">ATestCudaActor</span> : <span class="org-keyword">public</span> <span class="org-type">AActor</span>
+<span class="org-keyword">class</span> <span class="org-type">PROJECTNAME_API</span> <span class="org-type">ATestCudaActor</span> : <span class="org-keyword">public</span> <span class="org-type">AActor</span>
 {
         GENERATED_BODY()
         
 <span class="org-keyword">public</span>: 
         <span class="org-comment-delimiter">// </span><span class="org-comment">Sets default values for this actor's properties</span>
-        ATestCudaActor();
+        <span class="org-function-name">ATestCudaActor</span>();
         UFUNCTION(BlueprintCallable, Category = <span class="org-string">"projectname"</span>)
         <span class="org-type">bool</span> <span class="org-function-name">CUDATest</span>() {
                 <span class="org-keyword">const</span> <span class="org-type">int</span> <span class="org-variable-name">size</span> = 2;
@@ -368,7 +322,7 @@ UCLASS()
 </ul>
 <div class="org-center">
 
-<figure>
+<figure id="org034dd44">
 <img src="./figures/bpcuda.png" alt="bpcuda.png">
 
 <figcaption><span class="figure-number">Figure 1: </span>Blueprint Image</figcaption>
@@ -380,7 +334,7 @@ of the integration.</li>
 </ul>
 <div class="org-center">
 
-<figure>
+<figure id="org614c63d">
 <img src="./figures/cudaoutput.png" alt="cudaoutput.png">
 
 <figcaption><span class="figure-number">Figure 2: </span>Console Output</figcaption>
@@ -391,7 +345,7 @@ of the integration.</li>
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2022-06-24 Fri 00:00</p>
-<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.3 (<a href="https://orgmode.org">Org</a> mode 9.6.15)</p>
 </div>
 </body>
 </html>

@@ -1,62 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Use OpenCV in Unreal Engine</title>
-<meta name="generator" content="Org mode">
+<meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 <link rel="stylesheet" type="text/css" href="/orgstyle.css"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
 <link rel="icon" href="spock-favicon.png" type="image/png">
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -70,15 +24,15 @@ for the JavaScript code in this tag.
 </div>
 <hr style="border-top: 1px solid black;">
 </div>
-<div id="content">
+<div id="content" class="content">
 <header>
 <h1 class="title">Use OpenCV in Unreal Engine</h1>
-</header><nav id="table-of-contents">
+</header><nav id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org252eecf">UE5</a></li>
-<li><a href="#org2a8afe7">UE4</a></li>
+<li><a href="#org5e17f44">UE5</a></li>
+<li><a href="#orgecd68be">UE4</a></li>
 </ul>
 </div>
 </nav>
@@ -88,9 +42,9 @@ is an extremely powerful game engine. By using OpenCV in Unreal engine one can c
 Integration of OpenCV is different between UE4 and UE5 as UE5 released a standalone plugin for OpenCV in beta.
 </p>
 
-<div id="outline-container-org252eecf" class="outline-2">
-<h2 id="org252eecf">UE5</h2>
-<div class="outline-text-2" id="text-org252eecf">
+<div id="outline-container-org5e17f44" class="outline-2">
+<h2 id="org5e17f44">UE5</h2>
+<div class="outline-text-2" id="text-org5e17f44">
 <p>
 After installing Unreal Engine 5 create a new C++ project. Open the project in the editor then go to <code>Edit-&gt;Plugins</code>.
 Search for OpenCV and install it, you may have to restart the engine after that.
@@ -101,27 +55,27 @@ Edit your <code>build.cs</code> file to include the correct modules. This file w
 Change the public and private dependencies in to the following:
 </p>
 <div class="org-src-container">
-<pre class="src src-csharp">PublicDependencyModuleNames.AddRange(
-  new string[] {
-    "Core",
-    "CoreUObject",
-    "Engine",
-    "OpenCV",
-    "OpenCVHelper",
-    "InputCore"
+<pre class="src src-csharp">PublicDependencyModuleNames.<span class="org-function-name">AddRange</span>(
+  <span class="org-keyword">new</span> <span class="org-type">string</span>[] {
+    <span class="org-string">"Core"</span>,
+    <span class="org-string">"CoreUObject"</span>,
+    <span class="org-string">"Engine"</span>,
+    <span class="org-string">"OpenCV"</span>,
+    <span class="org-string">"OpenCVHelper"</span>,
+    <span class="org-string">"InputCore"</span>
   });
-PrivateDependencyModuleNames.AddRange(
-  new string[] {
-    "Core",
-    "CoreUObject",
-    "Engine",
-    "Renderer",
-    "RenderCore",
-    "RHI",
-    "RHICore",
-    "D3D12RHI",
-    "OpenCV",
-    "OpenCVHelper"
+PrivateDependencyModuleNames.<span class="org-function-name">AddRange</span>(
+  <span class="org-keyword">new</span> <span class="org-type">string</span>[] {
+    <span class="org-string">"Core"</span>,
+    <span class="org-string">"CoreUObject"</span>,
+    <span class="org-string">"Engine"</span>,
+    <span class="org-string">"Renderer"</span>,
+    <span class="org-string">"RenderCore"</span>,
+    <span class="org-string">"RHI"</span>,
+    <span class="org-string">"RHICore"</span>,
+    <span class="org-string">"D3D12RHI"</span>,
+    <span class="org-string">"OpenCV"</span>,
+    <span class="org-string">"OpenCVHelper"</span>
     });
 </pre>
 </div>
@@ -149,13 +103,13 @@ Create a new C++ class and use following code for testing the integration:
 <span class="org-preprocessor">#include</span> <span class="org-string">"MyActor.generated.h"</span>
 
 UCLASS()
-<span class="org-keyword">class</span> <span class="org-type">CVTESTCORE_API</span> <span class="org-variable-name">AMyActor</span> : <span class="org-keyword">public</span> <span class="org-type">AActor</span>
+<span class="org-keyword">class</span> <span class="org-type">CVTESTCORE_API</span> <span class="org-type">AMyActor</span> : <span class="org-keyword">public</span> <span class="org-type">AActor</span>
 {
     GENERATED_BODY()
 
 <span class="org-keyword">public</span>: 
     <span class="org-comment-delimiter">// </span><span class="org-comment">Sets default values for this actor's properties</span>
-    AMyActor();
+    <span class="org-function-name">AMyActor</span>();
     <span class="org-type">void</span> <span class="org-function-name">TestOpenCV</span>();
 
 <span class="org-keyword">protected</span>:
@@ -220,9 +174,9 @@ dimensions of the cv::Mat object.
 </div>
 </div>
 
-<div id="outline-container-org2a8afe7" class="outline-2">
-<h2 id="org2a8afe7">UE4</h2>
-<div class="outline-text-2" id="text-org2a8afe7">
+<div id="outline-container-orgecd68be" class="outline-2">
+<h2 id="orgecd68be">UE4</h2>
+<div class="outline-text-2" id="text-orgecd68be">
 <p>
 Incase of UE4 you need to manually include the binaries from OpenCV installation source in to your UE4 project.
 </p>
@@ -237,75 +191,75 @@ Incase of UE4 you need to manually include the binaries from OpenCV installation
 Link these files by editing the module rule file <code>[UE4ProjectDir]/Source/[Project Name].build.cs</code>
 </p>
 <div class="org-src-container">
-<pre class="src src-csharp">using UnrealBuildTool;
-using System.IO;
+<pre class="src src-csharp"><span class="org-keyword">using</span> <span class="org-variable-name">UnrealBuildTool</span>;
+<span class="org-keyword">using</span> <span class="org-variable-name">System</span>.<span class="org-variable-name">IO</span>;
 
-public class TestProjectCore : ModuleRules
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">TestProjectCore</span> : <span class="org-type">ModuleRules</span>
 {
-string OPENCV_VERSION = "460";
-private string ThirdPartyPath
+<span class="org-type">string</span> <span class="org-variable-name">OPENCV_VERSION</span> = <span class="org-string">"460"</span>;
+<span class="org-keyword">private</span> <span class="org-type">string</span> <span class="org-variable-name">ThirdPartyPath</span>
     {
-    get
+    <span class="org-keyword">get</span>
         {
-    return Path.GetFullPath(Path.Combine(ModuleDirectory, "../../ThirdParty/"));
+    <span class="org-keyword">return</span> Path.<span class="org-function-name">GetFullPath</span>(Path.<span class="org-function-name">Combine</span>(ModuleDirectory, <span class="org-string">"../../ThirdParty/"</span>));
         }
     }
 
-public bool LoadOpenCV(ReadOnlyTargetRules Target)
+<span class="org-keyword">public</span> <span class="org-type">bool</span> <span class="org-function-name">LoadOpenCV</span>(<span class="org-type">ReadOnlyTargetRules</span> <span class="org-variable-name">Target</span>)
     {
-    bool isLibrarySupported = false;
-    string OpenCVPath = Path.Combine(ThirdPartyPath, "OpenCV");
+    <span class="org-type">bool</span> <span class="org-variable-name">isLibrarySupported</span> = <span class="org-constant">false</span>;
+    <span class="org-type">string</span> <span class="org-variable-name">OpenCVPath</span> = Path.<span class="org-function-name">Combine</span>(ThirdPartyPath, <span class="org-string">"OpenCV"</span>);
 
-    string LibPath = "";
-    bool isdebug = Target.Configuration == UnrealTargetConfiguration.Debug;
-    if (Target.Platform == UnrealTargetPlatform.Win64)
+    <span class="org-type">string</span> <span class="org-variable-name">LibPath</span> = <span class="org-string">""</span>;
+    <span class="org-type">bool</span> <span class="org-variable-name">isdebug</span> = Target.Configuration == UnrealTargetConfiguration.Debug;
+    <span class="org-keyword">if</span> (Target.Platform == UnrealTargetPlatform.Win64)
     {
-    LibPath = Path.Combine(OpenCVPath, "Libraries", "Win64");
-    isLibrarySupported = true;
+    LibPath = Path.<span class="org-function-name">Combine</span>(OpenCVPath, <span class="org-string">"Libraries"</span>, <span class="org-string">"Win64"</span>);
+    isLibrarySupported = <span class="org-constant">true</span>;
     }
-    else
+    <span class="org-keyword">else</span>
     {
-    string Err = string.Format(
-        "{0} dedicated server is made to depend on {1}. We want to avoid this, please correct module dependencies",
-        Target.Platform.ToString(), this.ToString());
-    System.Console.WriteLine(Err);
+    <span class="org-type">string</span> <span class="org-variable-name">Err</span> = <span class="org-type">string</span>.<span class="org-function-name">Format</span>(
+        <span class="org-string">"{0} dedicated server is made to depend on {1}. We want to avoid this, please correct module dependencies"</span>,
+        Target.Platform.<span class="org-function-name">ToString</span>(), <span class="org-keyword">this</span>.<span class="org-function-name">ToString</span>());
+    System.Console.<span class="org-function-name">WriteLine</span>(Err);
         }
 
-    if (isLibrarySupported)
+    <span class="org-keyword">if</span> (isLibrarySupported)
         {
-    PublicIncludePaths.AddRange(new string[] { Path.Combine(OpenCVPath, "Includes") });
-    PublicAdditionalLibraries.Add(Path.Combine(LibPath, "opencv_world" + OPENCV_VERSION + ".lib"));
-    PublicDelayLoadDLLs.Add("opencv_world" + OPENCV_VERSION + ".dll");
-    PublicDelayLoadDLLs.Add("opencv_videoio_ffmpeg" + OPENCV_VERSION + "_64.dll");
+    PublicIncludePaths.<span class="org-function-name">AddRange</span>(<span class="org-keyword">new</span> <span class="org-type">string</span>[] { Path.<span class="org-function-name">Combine</span>(OpenCVPath, <span class="org-string">"Includes"</span>) });
+    PublicAdditionalLibraries.<span class="org-function-name">Add</span>(Path.<span class="org-function-name">Combine</span>(LibPath, <span class="org-string">"opencv_world"</span> + OPENCV_VERSION + <span class="org-string">".lib"</span>));
+    PublicDelayLoadDLLs.<span class="org-function-name">Add</span>(<span class="org-string">"opencv_world"</span> + OPENCV_VERSION + <span class="org-string">".dll"</span>);
+    PublicDelayLoadDLLs.<span class="org-function-name">Add</span>(<span class="org-string">"opencv_videoio_ffmpeg"</span> + OPENCV_VERSION + <span class="org-string">"_64.dll"</span>);
 
         }
 
-    PublicDefinitions.Add(string.Format("WITH_OPENCV_BINDING={0}", isLibrarySupported ? 1 : 0));
-    return isLibrarySupported;
+    PublicDefinitions.<span class="org-function-name">Add</span>(<span class="org-type">string</span>.<span class="org-function-name">Format</span>(<span class="org-string">"WITH_OPENCV_BINDING={0}"</span>, isLibrarySupported ? 1 : 0));
+    <span class="org-keyword">return</span> isLibrarySupported;
     }
 
-    private string poject_root_path
+    <span class="org-keyword">private</span> <span class="org-type">string</span> <span class="org-variable-name">poject_root_path</span>
 {
-    get { return Path.Combine(ModuleDirectory, "../.."); }
+    <span class="org-keyword">get</span> { <span class="org-keyword">return</span> Path.<span class="org-function-name">Combine</span>(ModuleDirectory, <span class="org-string">"../.."</span>); }
 }  
 
-public TestProjectCore(ReadOnlyTargetRules Target) : base(Target)
+<span class="org-keyword">public</span> <span class="org-function-name">TestProjectCore</span>(ReadOnlyTargetRules Target) : <span class="org-keyword">base</span>(Target)
 {
     PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
-    bEnforceIWYU = true;
+    bEnforceIWYU = <span class="org-constant">true</span>;
 
-    PublicDependencyModuleNames.AddRange(new string[] {
-    "Core", "CoreUObject",
-    "Engine", "InputCore"
+    PublicDependencyModuleNames.<span class="org-function-name">AddRange</span>(<span class="org-keyword">new</span> <span class="org-type">string</span>[] {
+    <span class="org-string">"Core"</span>, <span class="org-string">"CoreUObject"</span>,
+    <span class="org-string">"Engine"</span>, <span class="org-string">"InputCore"</span>
     });
-    PublicDependencyModuleNames.AddRange(new string[] {
-    "RHI", "RenderCore",
-    "Media", "MediaAssets"
+    PublicDependencyModuleNames.<span class="org-function-name">AddRange</span>(<span class="org-keyword">new</span> <span class="org-type">string</span>[] {
+    <span class="org-string">"RHI"</span>, <span class="org-string">"RenderCore"</span>,
+    <span class="org-string">"Media"</span>, <span class="org-string">"MediaAssets"</span>
     });
 
 
 
-    LoadOpenCV(Target);
+    <span class="org-function-name">LoadOpenCV</span>(Target);
 
 
 }
@@ -336,7 +290,7 @@ would be different in the .h file.
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2022-06-26 Sun 00:00</p>
-<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.3 (<a href="https://orgmode.org">Org</a> mode 9.6.15)</p>
 </div>
 </body>
 </html>
