@@ -21,4 +21,3 @@ I have also worked on couple of projects, related to industrial CT scans, at [[h
 * Where to Find Me
 - [[http://github.com/lafith][Github]]
 - [[https://www.linkedin.com/in/lafith/][LinkedIn]]
-# - [[https://gitlab.com/dliden/coffeemacs][My emacs config on Github]]

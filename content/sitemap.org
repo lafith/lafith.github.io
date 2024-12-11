@@ -1,6 +1,6 @@
-* [Nov 14, 2024] [[file:blog.org][ Blog]]
-* [Nov 02, 2024] [[file:index.org][ Lafith Mattara]]
-* [Nov 02, 2024] [[file:about.org][ About Me]]
+* [Dec 11, 2024] [[file:blog.org][ Blog]]
+* [Dec 11, 2024] [[file:index.org][ Lafith Mattara]]
+* [Dec 11, 2024] [[file:about.org][ About Me]]
 * posts
 ** [Oct 08, 2024] [[file:posts/20241008-robot-fetal-ultrasound-cusp.org][ Prototype of Robotic Fetal Ultrasound System Presented at CUSP-2024]]
 ** [Oct 02, 2024] [[file:posts/20241002-imagescope-to-slideflow.org][ Converting Aperio Imagescope XML Annotations to Slideflow's CSV Format]]

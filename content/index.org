@@ -16,6 +16,8 @@ My passion lies at the intersection of AI, Robotics and healthcare. I welcome co
 
 | [[http://github.com/lafith][Github]] | [[https://www.linkedin.com/in/lafith/][LinkedIn]] |
 
+[[./banner.png]]
+
 # * Technical Skills
 # Python, C++, C, Rust, C#\\
 # PyTorch, Tensorflow, OpenCV, ROS\\
