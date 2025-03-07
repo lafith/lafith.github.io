@@ -1,20 +1,19 @@
-#+TITLE: Prototype of Robotic Fetal Ultrasound System Presented at CUSP-2024
+#+TITLE: AI-Powered Robotic Ultrasound: Transforming Prenatal Screening at CUSP Conference
 #+DATE: <2024-10-08>
 #+OPTIONS: ^:nil
 
-A prototype of our Robotic Fetal UltraSound System was presented at the *XVIII Ultrasonography in Practice ([[https://cusp.org.in/][CUSP]]) conference* held at Chennai trade centre, India.
+Attending the *XVIII Clinical Ultrasonography in Practice* (CUSP) conference was a remarkable experience, providing an opportunity to showcase our AI-driven autonomous antenatal ultrasound robotic system. We were excited to present our advancements in integrating deep learning for real-time fetal standard plane detection and segmentation. The system had both standalone AI assistance mode and a robotic assistance mode leveraging the same AI backbone. Prenatal screening is a critical aspect of maternal healthcare, yet traditional ultrasound examinations require skilled sonographers and can be time-consuming. Our AI-powered robotic system aims to bridge this gap by automating key ultrasound tasks, ensuring accuracy, efficiency, and accessibility.
 
-The system had both standalone AI assistance mode and a robotic assistance mode leveraging the same AI backbone. This is the first iteration which will be expanded into segmentation and biometry retrieval.
-
-#+begin_center
-[[./figures/cusp_ai_assistance.gif]]
-#+end_center
-\\
-The deep learning architecture is capable of detecting 20+2 standard planes with a precision of 96%.
-\\
-
+The CUSP conference provided an ideal platform to engage with leading clinicians and researchers in the field of ultrasonography. Our presentation generated significant interest, with many attendees recognizing the potential of our system to enable large-scale automated prenatal screening. Discussions centered on the practical implications of AI-assisted sonography in reducing the workload of healthcare professionals and expanding access to quality prenatal care in underserved regions.
 #+begin_center
 #+attr_html: :width 400px
 [[./figures/cusp_robot.jpg]]
+#+end_center
+
+\\
+The deep learning architecture is capable of detecting 20+2 standard planes with a precision of 96% and an inference time of 12 ms per image.
+\\
+#+begin_center
+[[./figures/cusp_ai_assistance.gif]]
 #+end_center
 
