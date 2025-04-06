@@ -1,5 +1,5 @@
-* [Mar 07, 2025] [[file:blog.org][ Blog]]
-* [Mar 07, 2025] [[file:index.org][ Lafith Mattara]]
+* [Apr 06, 2025] [[file:blog.org][ Blog]]
+* [Apr 06, 2025] [[file:index.org][ Lafith Mattara]]
 * [Dec 23, 2024] [[file:about.org][ About Me]]
 * posts
 ** [Oct 08, 2024] [[file:posts/20241008-robot-fetal-ultrasound-cusp.org][ AI-Powered Robotic Ultrasound: Transforming Prenatal Screening at CUSP Conference]]
