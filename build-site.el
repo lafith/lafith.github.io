@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t -*-
 ;;; packages
 ;;;; Initialize the package system
 (require 'package)
