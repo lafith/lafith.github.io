@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Build Emacs From Source</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+<link rel="stylesheet" type="text/css" href="/orgstyle.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="spock-favicon.png" type="image/png">
+</head>
+<body>
+<div id="preamble" class="status">
+<hr style="border-top: 1px solid black;">
+<div class='topnav' style='display: flex; justify-content: space-between; align-items: center;'>
+  <a href="/index.html"><h2 style='margin-top: 0; margin-bottom: 0; margin-left:0px;'>Lafith Mattara</h2></a>
+  <div class='topnav2' style='color:#cfcaca;'>
+   / <a href='/blog.html' style='font-weight:bold; font-style:bold;'>All Posts</a> / 
+    <!-- <a href='./LafithCV.pdf' style='font-weight:bold; font-style:bold;'>CV </a> / -->
+    <!-- <a href='./LafithResume.pdf' style='font-weight:bold; font-style:bold;'>Resume </a> -->
+  </div>
+</div>
+<hr style="border-top: 1px solid black;">
+</div>
+<div id="content" class="content">
+<header>
+<h1 class="title">Build Emacs From Source</h1>
+</header><nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org0be0397">Step 1: Install Dependencies</a></li>
+<li><a href="#org4308f07">Step 2: Clone the Emacs Repository</a></li>
+<li><a href="#orgdd4ab66">Step 3: Configure the Build</a></li>
+<li><a href="#orgf9d8cd5">Step 4: Build and Install</a></li>
+<li><a href="#org2e95c79">Optional Bash Script</a></li>
+</ul>
+</div>
+</nav>
+<p>
+Most Linux distributions include Emacs in their package repositories. For example, on Ubuntu, you can install it with: <code>sudo apt-get install emacs</code>. However, if you want the latest bleeding-edge features, or if you're interested in customizing your build (e.g., enabling native compilation or Tree-sitter), you'll want to build Emacs from source.
+</p>
+
+<p>
+This post walks you through the manual steps and provides a handy bash script to automate the whole process.
+</p>
+<div id="outline-container-org0be0397" class="outline-2">
+<h2 id="org0be0397">Step 1: Install Dependencies</h2>
+<div class="outline-text-2" id="text-org0be0397">
+<p>
+First, update your package lists and install the required development packages:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">sudo apt update -y
+sudo apt install -y <span class="org-sh-escaped-newline">\</span>
+    build-essential <span class="org-sh-escaped-newline">\</span>
+    texinfo <span class="org-sh-escaped-newline">\</span>
+    libgnutls28-dev <span class="org-sh-escaped-newline">\</span>
+    libjpeg-dev <span class="org-sh-escaped-newline">\</span>
+    libpng-dev <span class="org-sh-escaped-newline">\</span>
+    libtiff5-dev <span class="org-sh-escaped-newline">\</span>
+    libgif-dev <span class="org-sh-escaped-newline">\</span>
+    libxpm-dev <span class="org-sh-escaped-newline">\</span>
+    libncurses-dev <span class="org-sh-escaped-newline">\</span>
+    libgtk-3-dev <span class="org-sh-escaped-newline">\</span>
+    libtree-sitter-dev <span class="org-sh-escaped-newline">\</span>
+    libmagick++-dev <span class="org-sh-escaped-newline">\</span>
+    gcc-11 <span class="org-sh-escaped-newline">\</span>
+    g++-11 <span class="org-sh-escaped-newline">\</span>
+    libgccjit0 <span class="org-sh-escaped-newline">\</span>
+    libgccjit-11-dev <span class="org-sh-escaped-newline">\</span>
+    autoconf <span class="org-sh-escaped-newline">\</span>
+    libjansson4 <span class="org-sh-escaped-newline">\</span>
+    libjansson-dev <span class="org-sh-escaped-newline">\</span>
+    mailutils
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4308f07" class="outline-2">
+<h2 id="org4308f07">Step 2: Clone the Emacs Repository</h2>
+<div class="outline-text-2" id="text-org4308f07">
+<p>
+You can clone Emacs from the official Savannah Git repository or its GitHub mirror:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">git clone https://git.savannah.gnu.org/git/emacs.git
+<span class="org-comment-delimiter"># </span><span class="org-comment">or</span>
+git clone https://github.com/emacs-mirror/emacs.git
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdd4ab66" class="outline-2">
+<h2 id="orgdd4ab66">Step 3: Configure the Build</h2>
+<div class="outline-text-2" id="text-orgdd4ab66">
+<p>
+Navigate to the Emacs directory and run the following commands to prepare the build. You can tweak the options according to your preferences and recompile later if needed:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span class="org-builtin">cd</span> emacs
+<span class="org-builtin">export</span> /usr/bin/gcc-11 <span class="org-variable-name">CXX</span>=/usr/bin/g++-11
+./autogen.sh
+./configure --with-native-compilation --with-modules --with-mailutils --with-tree-sitter --with-x-toolkit=gtk3 --with-compress-install
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf9d8cd5" class="outline-2">
+<h2 id="orgf9d8cd5">Step 4: Build and Install</h2>
+<div class="outline-text-2" id="text-orgf9d8cd5">
+<div class="org-src-container">
+<pre class="src src-bash">make -j$(nproc) bootstrap
+sudo make install
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2e95c79" class="outline-2">
+<h2 id="org2e95c79">Optional Bash Script</h2>
+<div class="outline-text-2" id="text-org2e95c79">
+<p>
+To streamline this process, I wrote a bash script that automates cloning, configuring, and building Emacs. It also handles situations where cloning from the official repo times out (by falling back to GitHub), and sets the compiler if gcc-10 is available.
+</p>
+
+<p>
+Save the following script as emacs-build.sh
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/usr/bin/</span><span class="org-keyword">env</span><span class="org-comment"> bash</span>
+
+<span class="org-keyword">function</span> <span class="org-function-name">clone_and_build</span>()
+{
+    <span class="org-variable-name">PRIMARY_URL</span>=<span class="org-string">"https://git.savannah.gnu.org/git/emacs.git"</span>
+    <span class="org-variable-name">SECONDARY_URL</span>=<span class="org-string">"https://github.com/emacs-mirror/emacs.git"</span>
+    <span class="org-builtin">echo</span> <span class="org-string">"Cloning Emacs from primary URL with 60s timeout..."</span>
+
+    <span class="org-keyword">if</span> timeout 60 git clone <span class="org-string">"$PRIMARY_URL"</span>; <span class="org-keyword">then</span>
+    <span class="org-builtin">echo</span> <span class="org-string">"Cloned from primary URL successfully."</span>
+    <span class="org-keyword">else</span>
+    <span class="org-builtin">echo</span> <span class="org-string">"Cloning from savannah taking too long, trying github mirror"</span>
+    <span class="org-keyword">if</span> git clone <span class="org-string">"$SECONDARY_URL"</span>; <span class="org-keyword">then</span>
+        <span class="org-builtin">echo</span> <span class="org-string">"Cloned from secondary URL successfully."</span>
+    <span class="org-keyword">else</span>
+        <span class="org-builtin">echo</span> <span class="org-string">"Failed to clone from both URLs."</span>
+        <span class="org-keyword">exit</span> 1
+    <span class="org-keyword">fi</span>
+    <span class="org-keyword">fi</span>
+}
+
+<span class="org-keyword">function</span> <span class="org-function-name">build-emacs</span>()
+{
+    ./autogen.sh
+    ./configure --with-native-compilation --with-modules --with-mailutils --with-tree-sitter --with-x-toolkit=gtk3 --with-compress-install
+    make -j$(nproc) bootstrap
+}
+
+<span class="org-variable-name">dest</span>=<span class="org-string">"${1:-$PWD}"</span>
+<span class="org-keyword">if</span> [[ <span class="org-string">"$dest"</span> == <span class="org-string">"r"</span> ]]; <span class="org-keyword">then</span>
+
+    <span class="org-builtin">echo</span> <span class="org-string">"building emacs..."</span>
+    git pull
+    build-emacs
+<span class="org-keyword">else</span>
+    <span class="org-builtin">echo</span> <span class="org-string">"Cloning into $dest"</span>
+    mkdir -p <span class="org-string">"$dest"</span>
+    <span class="org-builtin">cd</span> <span class="org-string">"$dest"</span>
+    clone_and_build
+    <span class="org-builtin">cd</span> emacs
+    build-emacs
+<span class="org-keyword">fi</span>
+</pre>
+</div>
+<p>
+Make it executable by <code>chmod +x emacs-build.sh</code>
+</p>
+
+<p>
+To clone and build Emacs in a new directory:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">./emacs-build.sh ~/dev
+</pre>
+</div>
+
+<p>
+To rebuild an existing clone after pulling new changes, run it from inside the repo with:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">./emacs-build.sh r
+</pre>
+</div>
+
+<p>
+That’s it! You now have a convenient, repeatable way to build Emacs from source — and stay up to date with the latest features.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2025-05-17 Sat 00:00</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.3 (<a href="https://orgmode.org">Org</a> mode 9.6.15)</p>
+</div>
+</body>
+</html>
