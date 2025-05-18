@@ -53,7 +53,7 @@ sudo make install
 #+end_src
 
 * Optional Bash Script
-To streamline this process, I wrote a bash script that automates cloning, configuring, and building Emacs. It also handles situations where cloning from the official repo times out (by falling back to GitHub), and sets the compiler if gcc-10 is available.
+To streamline this process, I wrote a bash script that automates cloning, configuring, and building Emacs. It also handles situations where cloning from the official repo times out (by falling back to GitHub).
 
 Save the following script as emacs-build.sh
 #+begin_src bash
