@@ -5,7 +5,7 @@
 Hi there! I work as an AI/ML Engineer with the [[https://igrs.hticlab.org/][Image-Guided Robotic Systems Group]] at [[https://www.hticiitm.org/][HTIC–IIT Madras]],  where I build intelligent systems that bridge artificial intelligence, healthcare, and medical robotics.
 \\
 #+BEGIN_CENTER
-/ [[./lafith_cv.pdf][Full CV]] / [[./lafith_resume.pdf][Resume]] / [[http://github.com/lafith][Github]] / [[https://www.linkedin.com/in/lafith/][LinkedIn]] /
+/ [[./lafith_resume.pdf][Resume]] / [[./lafith_cv.pdf][Full CV]] / [[http://github.com/lafith][Github]] / [[https://www.linkedin.com/in/lafith/][LinkedIn]] /
 #+END_CENTER
 
 * Recent Posts
