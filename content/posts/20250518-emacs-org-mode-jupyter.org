@@ -1,0 +1,70 @@
+#+TITLE: Literate Computing with Emacs: Org Mode Meets Jupyter
+#+DATE: <2025-05-18>
+#+OPTIONS: ^:nil
+
+* Why Org Mode is Awesome
+One of the great things about using Emacs as a daily driver is Org mode files. Org mode is not just a markup format, it's a powerful framework for organizing, documenting, and executing ideas in plain text. With the help of org-babel, Org mode supports executable code blocks in multiple languages, allowing you to mix:
+- text
+- code
+- TODOs
+- spreadsheets
+- LaTeX math
+  all in a single document. This makes it an ideal tool for literate programming, reproducible research, and personal knowledge management, especially when combined with tools like org-roam.
+
+* Jupyter Notebooks
+Jupyter notebooks have become the de facto standard for interactive computing in the data science and research communities. They allow you to:
+- Write and execute code in blocks
+- Visualize results inline
+- Combine documentation and computation in one place
+
+* Best of Both Worlds: Org Mode + Jupyter
+However if you are using Emacs and Org mode you would normally like to do jupyter-like development in org mode as well. Thanks to the emacs-jupyter package, you can bring Jupyter kernels directly into Org mode via org-babel. This integration allows you to:
+
+- REPL and Org source block frontends to Jupyter kernels
+- Kernel interactions integrated with Emacs features (e.g., M-. opens help in the *Help* buffer)
+- Inline documentation lookup with back/forward navigation in the help buffer
+- Code completion via Emacs’s completion-at-point
+- Input requests from the kernel handled through the minibuffer
+- Interactive execution of Org Babel blocks
+- Full access to REPL history with isearch
+- Rich outputs (e.g., plots, tables, LaTeX) displayed inline
+- All the version control and editing power of Org mode (undo, diff, folding, etc.)
+
+Here's a basic configuration using use-package:
+#+begin_src elisp
+(use-package jupyter
+  :ensure t
+  :config
+  (add-to-list 'org-babel-load-languages '(jupyter . t))
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   org-babel-load-languages)
+  (add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
+  )
+
+(defun jupyter-refresh-kernelspecs ()
+    "Refresh Jupyter kernelspecs"
+    (interactive)
+    (jupyter-available-kernelspecs t))
+#+end_src
+Let's break this down:
+- =(use-package jupyter ...)= installs and configures the emacs-jupyter package.
+- =add-to-list 'org-babel-load-languages '(jupyter . t)= enables support for Jupyter kernels in org-babel.
+- =org-babel-do-load-languages= reinitializes Org Babel with the updated languages list.
+- The =org-babel-after-execute-hook= ensures that inline images are redisplayed automatically after code execution.
+
+If you're using a Python environment managed with =virtualenvwrapper.el=, make sure to run =M-x jupyter-refresh-kernelspecs= after activating your virtual environment. This refreshes the list of available Jupyter kernels, allowing emacs-jupyter to detect and use the correct Python environment. Without this step, your virtual environment's kernel might not show up, and code execution could fail.
+
+Before using this setup, ensure you have the required Jupyter kernels installed on your system or the python virtual environment. To avoid having to specify the kernel and session name in every code block, add the following line at the top of your Org file:
+#+begin_src org
+#+PROPERTY: header-args:jupyter-python :session main :async yes :kernel <put the kernel name here>
+#+end_src
+
+Now an org-babel code would start with =#+begin_src jupyter-python=.
+
+* Converting Org file to Jupyter notebook
+If you install pandoc by =sudo apt install pandoc=, then you can convert the org mode file into a jupyter notebook.
+#+begin_src bash
+pandoc <org file name>.org -o <notebook name>.ipynb
+#+end_src
+Pandoc will automatically convert Org content into Jupyter cells, preserving your code and text formatting.
