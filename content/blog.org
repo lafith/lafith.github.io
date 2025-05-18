@@ -2,6 +2,7 @@
 #+Author: Lafith Mattara
 #+OPTIONS: toc:nil
 #+OPTIONS: title:nil
+- May 17, 2025: [[file:posts/20250517-emacs-build-source.org][ Build Emacs From Source]]
 - Oct 08, 2024: [[file:posts/20241008-robot-fetal-ultrasound-cusp.org][ AI-Powered Robotic Ultrasound: Transforming Prenatal Screening at CUSP Conference]]
 - Oct 02, 2024: [[file:posts/20241002-imagescope-to-slideflow.org][ Converting Aperio Imagescope XML Annotations to Slideflow's CSV Format]]
 - Oct 02, 2024: [[file:posts/20241002-extract-tiles-from-wsi.org][ Extracting Image Tiles from Annotated Regions in Whole Slide Images: Using Python, Slideflow & OpenSlide]]

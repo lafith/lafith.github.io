@@ -1,0 +1,116 @@
+#+TITLE: Build Emacs From Source
+#+DATE: <2025-05-17>
+#+OPTIONS: ^:nil
+
+Most Linux distributions include Emacs in their package repositories. For example, on Ubuntu, you can install it with: =sudo apt-get install emacs=. However, if you want the latest bleeding-edge features, or if you're interested in customizing your build (e.g., enabling native compilation or Tree-sitter), you'll want to build Emacs from source.
+
+This post walks you through the manual steps and provides a handy bash script to automate the whole process.
+* Step 1: Install Dependencies
+First, update your package lists and install the required development packages:
+#+begin_src bash
+sudo apt update -y
+sudo apt install -y \
+    build-essential \
+    texinfo \
+    libgnutls28-dev \
+    libjpeg-dev \
+    libpng-dev \
+    libtiff5-dev \
+    libgif-dev \
+    libxpm-dev \
+    libncurses-dev \
+    libgtk-3-dev \
+    libtree-sitter-dev \
+    libmagick++-dev \
+    gcc-11 \
+    g++-11 \
+    libgccjit0 \
+    libgccjit-11-dev \
+    autoconf \
+    libjansson4 \
+    libjansson-dev \
+    mailutils
+#+end_src
+* Step 2: Clone the Emacs Repository
+You can clone Emacs from the official Savannah Git repository or its GitHub mirror:
+#+begin_src bash
+git clone https://git.savannah.gnu.org/git/emacs.git
+# or
+git clone https://github.com/emacs-mirror/emacs.git
+#+end_src
+* Step 3: Configure the Build
+Navigate to the Emacs directory and run the following commands to prepare the build. You can tweak the options according to your preferences and recompile later if needed:
+#+begin_src bash
+cd emacs
+export /usr/bin/gcc-11 CXX=/usr/bin/g++-11
+./autogen.sh
+./configure --with-native-compilation --with-modules --with-mailutils --with-tree-sitter --with-x-toolkit=gtk3 --with-compress-install
+#+end_src
+* Step 4: Build and Install
+#+begin_src bash
+make -j$(nproc) bootstrap
+sudo make install
+#+end_src
+
+* Optional Bash Script
+To streamline this process, I wrote a bash script that automates cloning, configuring, and building Emacs. It also handles situations where cloning from the official repo times out (by falling back to GitHub), and sets the compiler if gcc-10 is available.
+
+Save the following script as emacs-build.sh
+#+begin_src bash
+#!/usr/bin/env bash
+
+function clone_and_build()
+{
+    PRIMARY_URL="https://git.savannah.gnu.org/git/emacs.git"
+    SECONDARY_URL="https://github.com/emacs-mirror/emacs.git"
+    echo "Cloning Emacs from primary URL with 60s timeout..."
+
+    if timeout 60 git clone "$PRIMARY_URL"; then
+    echo "Cloned from primary URL successfully."
+    else
+    echo "Cloning from savannah taking too long, trying github mirror"
+    if git clone "$SECONDARY_URL"; then
+	echo "Cloned from secondary URL successfully."
+    else
+	echo "Failed to clone from both URLs."
+	exit 1
+    fi
+    fi
+}
+
+function build-emacs()
+{
+    ./autogen.sh
+    ./configure --with-native-compilation --with-modules --with-mailutils --with-tree-sitter --with-x-toolkit=gtk3 --with-compress-install
+    make -j$(nproc) bootstrap
+}
+
+dest="${1:-$PWD}"
+if [[ "$dest" == "r" ]]; then
+
+    echo "building emacs..."
+    git pull
+    build-emacs
+else
+    echo "Cloning into $dest"
+    mkdir -p "$dest"
+    cd "$dest"
+    clone_and_build
+    cd emacs
+    build-emacs
+fi
+#+end_src
+Make it executable by =chmod +x emacs-build.sh=
+
+To clone and build Emacs in a new directory:
+#+begin_src bash
+./emacs-build.sh ~/dev
+#+end_src
+
+To rebuild an existing clone after pulling new changes, run it from inside the repo with:
+#+begin_src bash
+./emacs-build.sh r
+#+end_src
+
+That’s it! You now have a convenient, repeatable way to build Emacs from source — and stay up to date with the latest features.
+
