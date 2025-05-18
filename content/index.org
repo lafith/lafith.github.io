@@ -2,13 +2,14 @@
 #+OPTIONS: toc:nil
 #+OPTIONS: title:nil
 
-Hi there! I am an AI Engineer at [[https://igrs.hticlab.org/][Image-Guided Robotic Systems Group]], part of [[https://www.hticiitm.org/][HTIC–IIT Madras]], working at the intersection of AI and medical robotics. I develop AI models capable of understanding medical images, guiding robotic systems, and assisting clinicians in diagnostic and interventional procedures.
-
-
-| [[http://github.com/lafith][Github]] | [[https://www.linkedin.com/in/lafith/][LinkedIn]] |
-
-[[./banner.png]]
+Hi there! I work as an AI/ML Engineer with the [[https://igrs.hticlab.org/][Image-Guided Robotic Systems Group]] at [[https://www.hticiitm.org/][HTIC–IIT Madras]],  where I build intelligent systems that bridge artificial intelligence, healthcare, and medical robotics.
+\\
+#+BEGIN_CENTER
+/ [[./lafith_cv.pdf][Full CV]] / [[./lafith_resume.pdf][Resume]] / [[http://github.com/lafith][Github]] / [[https://www.linkedin.com/in/lafith/][LinkedIn]] /
+#+END_CENTER
 
 * Recent Posts
 #+INCLUDE: blog.org :lines "-8" 
 \\
+
+[[./banner.png]]
