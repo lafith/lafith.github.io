@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Literate Computing with Emacs: Org Mode Meets Jupyter</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+<link rel="stylesheet" type="text/css" href="/orgstyle.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="spock-favicon.png" type="image/png">
+</head>
+<body>
+<div id="preamble" class="status">
+<hr style="border-top: 1px solid black;">
+<div class='topnav' style='display: flex; justify-content: space-between; align-items: center;'>
+  <a href="/index.html"><h2 style='margin-top: 0; margin-bottom: 0; margin-left:0px;'>Lafith Mattara</h2></a>
+  <div class='topnav2' style='color:#cfcaca;'>
+   / <a href='/blog.html' style='font-weight:bold; font-style:bold;'>All Posts</a> / 
+    <!-- <a href='./LafithCV.pdf' style='font-weight:bold; font-style:bold;'>CV </a> / -->
+    <!-- <a href='./LafithResume.pdf' style='font-weight:bold; font-style:bold;'>Resume </a> -->
+  </div>
+</div>
+<hr style="border-top: 1px solid black;">
+</div>
+<div id="content" class="content">
+<header>
+<h1 class="title">Literate Computing with Emacs: Org Mode Meets Jupyter</h1>
+</header><nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org790e7ef">Why Org Mode is Awesome</a></li>
+<li><a href="#org54c9c3a">Jupyter Notebooks</a></li>
+<li><a href="#org7e95295">Best of Both Worlds: Org Mode + Jupyter</a></li>
+<li><a href="#org846e2ea">Converting Org file to Jupyter notebook</a></li>
+</ul>
+</div>
+</nav>
+
+<div id="outline-container-org790e7ef" class="outline-2">
+<h2 id="org790e7ef">Why Org Mode is Awesome</h2>
+<div class="outline-text-2" id="text-org790e7ef">
+<p>
+One of the great things about using Emacs as a daily driver is Org mode files. Org mode is not just a markup format, it's a powerful framework for organizing, documenting, and executing ideas in plain text. With the help of org-babel, Org mode supports executable code blocks in multiple languages, allowing you to mix:
+</p>
+<ul class="org-ul">
+<li>text</li>
+<li>code</li>
+<li>TODOs</li>
+<li>spreadsheets</li>
+<li>LaTeX math
+all in a single document. This makes it an ideal tool for literate programming, reproducible research, and personal knowledge management, especially when combined with tools like org-roam.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org54c9c3a" class="outline-2">
+<h2 id="org54c9c3a">Jupyter Notebooks</h2>
+<div class="outline-text-2" id="text-org54c9c3a">
+<p>
+Jupyter notebooks have become the de facto standard for interactive computing in the data science and research communities. They allow you to:
+</p>
+<ul class="org-ul">
+<li>Write and execute code in blocks</li>
+<li>Visualize results inline</li>
+<li>Combine documentation and computation in one place</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7e95295" class="outline-2">
+<h2 id="org7e95295">Best of Both Worlds: Org Mode + Jupyter</h2>
+<div class="outline-text-2" id="text-org7e95295">
+<p>
+However if you are using Emacs and Org mode you would normally like to do jupyter-like development in org mode as well. Thanks to the emacs-jupyter package, you can bring Jupyter kernels directly into Org mode via org-babel. This integration allows you to:
+</p>
+
+<ul class="org-ul">
+<li>REPL and Org source block frontends to Jupyter kernels</li>
+<li>Kernel interactions integrated with Emacs features (e.g., M-. opens help in the <b>Help</b> buffer)</li>
+<li>Inline documentation lookup with back/forward navigation in the help buffer</li>
+<li>Code completion via Emacs’s completion-at-point</li>
+<li>Input requests from the kernel handled through the minibuffer</li>
+<li>Interactive execution of Org Babel blocks</li>
+<li>Full access to REPL history with isearch</li>
+<li>Rich outputs (e.g., plots, tables, LaTeX) displayed inline</li>
+<li>All the version control and editing power of Org mode (undo, diff, folding, etc.)</li>
+</ul>
+
+<p>
+Here's a basic configuration using use-package:
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(<span class="org-keyword">use-package</span> jupyter
+  <span class="org-builtin">:ensure</span> t
+  <span class="org-builtin">:config</span>
+  (add-to-list 'org-babel-load-languages '(jupyter . t))
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   org-babel-load-languages)
+  (add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
+  )
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">jupyter-refresh-kernelspecs</span> ()
+    <span class="org-doc">"Refresh Jupyter kernelspecs"</span>
+    (<span class="org-keyword">interactive</span>)
+    (jupyter-available-kernelspecs t))
+</pre>
+</div>
+<p>
+Let's break this down:
+</p>
+<ul class="org-ul">
+<li><code>(use-package jupyter ...)</code> installs and configures the emacs-jupyter package.</li>
+<li><code>add-to-list 'org-babel-load-languages '(jupyter . t)</code> enables support for Jupyter kernels in org-babel.</li>
+<li><code>org-babel-do-load-languages</code> reinitializes Org Babel with the updated languages list.</li>
+<li>The <code>org-babel-after-execute-hook</code> ensures that inline images are redisplayed automatically after code execution.</li>
+</ul>
+
+<p>
+If you're using a Python environment managed with <code>virtualenvwrapper.el</code>, make sure to run <code>M-x jupyter-refresh-kernelspecs</code> after activating your virtual environment. This refreshes the list of available Jupyter kernels, allowing emacs-jupyter to detect and use the correct Python environment. Without this step, your virtual environment's kernel might not show up, and code execution could fail.
+</p>
+
+<p>
+Before using this setup, ensure you have the required Jupyter kernels installed on your system or the python virtual environment. To avoid having to specify the kernel and session name in every code block, add the following line at the top of your Org file:
+</p>
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-org-meta-line">#+PROPERTY: header-args:jupyter-python :session main :async yes :kernel &lt;put the kernel name here&gt;</span>
+</pre>
+</div>
+
+<p>
+Now an org-babel code would start with <code>#+begin_src jupyter-python</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org846e2ea" class="outline-2">
+<h2 id="org846e2ea">Converting Org file to Jupyter notebook</h2>
+<div class="outline-text-2" id="text-org846e2ea">
+<p>
+If you install pandoc by <code>sudo apt install pandoc</code>, then you can convert the org mode file into a jupyter notebook.
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">pandoc &lt;org file name&gt;.org -o &lt;notebook name&gt;.ipynb
+</pre>
+</div>
+<p>
+Pandoc will automatically convert Org content into Jupyter cells, preserving your code and text formatting.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2025-05-18 Sun 00:00</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.3 (<a href="https://orgmode.org">Org</a> mode 9.6.15)</p>
+</div>
+</body>
+</html>
