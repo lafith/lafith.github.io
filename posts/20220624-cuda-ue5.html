@@ -19,8 +19,6 @@
   <a href="/index.html"><h2 style='margin-top: 0; margin-bottom: 0; margin-left:0px;'>Lafith Mattara</h2></a>
   <div class='topnav2' style='color:#cfcaca;'>
    / <a href='/blog.html' style='font-weight:bold; font-style:bold;'>All Posts</a> / 
-    <!-- <a href='./LafithCV.pdf' style='font-weight:bold; font-style:bold;'>CV </a> / -->
-    <!-- <a href='./LafithResume.pdf' style='font-weight:bold; font-style:bold;'>Resume </a> -->
   </div>
 </div>
 <hr style="border-top: 1px solid black;">
@@ -32,17 +30,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org40fa032">Building Cuda scripts into a Static Library</a>
+<li><a href="#orge9661db">Building Cuda scripts into a Static Library</a>
 <ul>
 <li>
 <ul>
-<li><a href="#orgd979997">test_cudaue.h</a></li>
-<li><a href="#orge93c829">test_cudaue.cu</a></li>
+<li><a href="#orgdbc7bfe">test_cudaue.h</a></li>
+<li><a href="#org37ae36d">test_cudaue.cu</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org244406b">Linking with UE5 Project</a></li>
+<li><a href="#org2f0cffe">Linking with UE5 Project</a></li>
 </ul>
 </div>
 </nav>
@@ -60,9 +58,9 @@ this is extremely useful if you are creating image/voxel analysis and visualizat
 Integration of Cuda invloves two phases, building Cuda code into a static library then linking them in UE5 project.
 </p>
 
-<div id="outline-container-org40fa032" class="outline-2">
-<h2 id="org40fa032">Building Cuda scripts into a Static Library</h2>
-<div class="outline-text-2" id="text-org40fa032">
+<div id="outline-container-orge9661db" class="outline-2">
+<h2 id="orge9661db">Building Cuda scripts into a Static Library</h2>
+<div class="outline-text-2" id="text-orge9661db">
 <ul class="org-ul">
 <li>Install Cuda toolkit in Windows from <a href="https://developer.nvidia.com/cuda-downloads">here</a>.</li>
 <li>Create a new project in Visual Studio with Cuda Runtime 11.7 (let say the name is <code>test_cudaue</code>).</li>
@@ -74,9 +72,9 @@ and <code>test_cudaue.h</code>. It has a basic function for testing the addition
 </ul>
 </div>
 
-<div id="outline-container-orgd979997" class="outline-4">
-<h4 id="orgd979997">test_cudaue.h</h4>
-<div class="outline-text-4" id="text-orgd979997">
+<div id="outline-container-orgdbc7bfe" class="outline-4">
+<h4 id="orgdbc7bfe">test_cudaue.h</h4>
+<div class="outline-text-4" id="text-orgdbc7bfe">
 <div class="org-src-container">
 <pre class="src src-C++">{`#pragma once
 
@@ -94,9 +92,9 @@ cudaError_t testCudaAddition(<span class="org-type">int</span>* <span class="org
 </div>
 </div>
 
-<div id="outline-container-orge93c829" class="outline-4">
-<h4 id="orge93c829">test_cudaue.cu</h4>
-<div class="outline-text-4" id="text-orge93c829">
+<div id="outline-container-org37ae36d" class="outline-4">
+<h4 id="org37ae36d">test_cudaue.cu</h4>
+<div class="outline-text-4" id="text-org37ae36d">
 <div class="org-src-container">
 <pre class="src src-C++">{`#include <span class="org-string">"test_cudaue.h"</span>
 
@@ -205,9 +203,9 @@ __global__ <span class="org-type">void</span> <span class="org-variable-name">ad
 </div>
 </div>
 
-<div id="outline-container-org244406b" class="outline-2">
-<h2 id="org244406b">Linking with UE5 Project</h2>
-<div class="outline-text-2" id="text-org244406b">
+<div id="outline-container-org2f0cffe" class="outline-2">
+<h2 id="org2f0cffe">Linking with UE5 Project</h2>
+<div class="outline-text-2" id="text-org2f0cffe">
 <ul class="org-ul">
 <li>Create <code>[UE5ProjectRoot]/ThirdParty/Cuda/include</code> &amp; <code>[UE5ProjectRoot]/ThirdParty/Cuda/lib</code>.</li>
 <li>Copy the header file (test_cudaue.h) from the cuda project in to this include folder.</li>
@@ -323,7 +321,7 @@ UCLASS()
 </ul>
 <div class="org-center">
 
-<figure id="org19f02a3">
+<figure id="org22e2177">
 <img src="./figures/bpcuda.png" alt="bpcuda.png">
 
 <figcaption><span class="figure-number">Figure 1: </span>Blueprint Image</figcaption>
@@ -335,7 +333,7 @@ of the integration.</li>
 </ul>
 <div class="org-center">
 
-<figure id="org3531f00">
+<figure id="org70bb303">
 <img src="./figures/cudaoutput.png" alt="cudaoutput.png">
 
 <figcaption><span class="figure-number">Figure 2: </span>Console Output</figcaption>

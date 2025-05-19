@@ -19,8 +19,6 @@
   <a href="/index.html"><h2 style='margin-top: 0; margin-bottom: 0; margin-left:0px;'>Lafith Mattara</h2></a>
   <div class='topnav2' style='color:#cfcaca;'>
    / <a href='/blog.html' style='font-weight:bold; font-style:bold;'>All Posts</a> / 
-    <!-- <a href='./LafithCV.pdf' style='font-weight:bold; font-style:bold;'>CV </a> / -->
-    <!-- <a href='./LafithResume.pdf' style='font-weight:bold; font-style:bold;'>Resume </a> -->
   </div>
 </div>
 <hr style="border-top: 1px solid black;">
@@ -32,11 +30,11 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org442809b">Step 1: Install Dependencies</a></li>
-<li><a href="#org6845090">Step 2: Clone the Emacs Repository</a></li>
-<li><a href="#org31ccabe">Step 3: Configure the Build</a></li>
-<li><a href="#org73949eb">Step 4: Build and Install</a></li>
-<li><a href="#org42b4af7">Optional Bash Script</a></li>
+<li><a href="#org80b2fe4">Step 1: Install Dependencies</a></li>
+<li><a href="#orgbda6bae">Step 2: Clone the Emacs Repository</a></li>
+<li><a href="#org9290f4c">Step 3: Configure the Build</a></li>
+<li><a href="#orgf730ac5">Step 4: Build and Install</a></li>
+<li><a href="#org260c6f6">Optional Bash Script</a></li>
 </ul>
 </div>
 </nav>
@@ -47,9 +45,9 @@ Most Linux distributions include Emacs in their package repositories. For exampl
 <p>
 This post walks you through the manual steps and provides a handy bash script to automate the whole process.
 </p>
-<div id="outline-container-org442809b" class="outline-2">
-<h2 id="org442809b">Step 1: Install Dependencies</h2>
-<div class="outline-text-2" id="text-org442809b">
+<div id="outline-container-org80b2fe4" class="outline-2">
+<h2 id="org80b2fe4">Step 1: Install Dependencies</h2>
+<div class="outline-text-2" id="text-org80b2fe4">
 <p>
 First, update your package lists and install the required development packages:
 </p>
@@ -80,9 +78,9 @@ sudo apt install -y <span class="org-sh-escaped-newline">\</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org6845090" class="outline-2">
-<h2 id="org6845090">Step 2: Clone the Emacs Repository</h2>
-<div class="outline-text-2" id="text-org6845090">
+<div id="outline-container-orgbda6bae" class="outline-2">
+<h2 id="orgbda6bae">Step 2: Clone the Emacs Repository</h2>
+<div class="outline-text-2" id="text-orgbda6bae">
 <p>
 You can clone Emacs from the official Savannah Git repository or its GitHub mirror:
 </p>
@@ -94,9 +92,9 @@ git clone https://github.com/emacs-mirror/emacs.git
 </div>
 </div>
 </div>
-<div id="outline-container-org31ccabe" class="outline-2">
-<h2 id="org31ccabe">Step 3: Configure the Build</h2>
-<div class="outline-text-2" id="text-org31ccabe">
+<div id="outline-container-org9290f4c" class="outline-2">
+<h2 id="org9290f4c">Step 3: Configure the Build</h2>
+<div class="outline-text-2" id="text-org9290f4c">
 <p>
 Navigate to the Emacs directory and run the following commands to prepare the build. You can tweak the options according to your preferences and recompile later if needed:
 </p>
@@ -109,9 +107,9 @@ Navigate to the Emacs directory and run the following commands to prepare the bu
 </div>
 </div>
 </div>
-<div id="outline-container-org73949eb" class="outline-2">
-<h2 id="org73949eb">Step 4: Build and Install</h2>
-<div class="outline-text-2" id="text-org73949eb">
+<div id="outline-container-orgf730ac5" class="outline-2">
+<h2 id="orgf730ac5">Step 4: Build and Install</h2>
+<div class="outline-text-2" id="text-orgf730ac5">
 <div class="org-src-container">
 <pre class="src src-bash">make -j$(nproc) bootstrap
 sudo make install
@@ -120,9 +118,9 @@ sudo make install
 </div>
 </div>
 
-<div id="outline-container-org42b4af7" class="outline-2">
-<h2 id="org42b4af7">Optional Bash Script</h2>
-<div class="outline-text-2" id="text-org42b4af7">
+<div id="outline-container-org260c6f6" class="outline-2">
+<h2 id="org260c6f6">Optional Bash Script</h2>
+<div class="outline-text-2" id="text-org260c6f6">
 <p>
 To streamline this process, I wrote a bash script that automates cloning, configuring, and building Emacs. It also handles situations where cloning from the official repo times out (by falling back to GitHub).
 </p>
