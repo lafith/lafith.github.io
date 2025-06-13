@@ -1,5 +1,5 @@
-* [May 18, 2025] [[file:blog.org][ Blog]]
-* [May 18, 2025] [[file:index.org][ Lafith Mattara]]
+* [Jun 13, 2025] [[file:blog.org][ Blog]]
+* [May 19, 2025] [[file:index.org][ Lafith Mattara]]
 * posts
 ** [May 18, 2025] [[file:posts/20250518-emacs-org-mode-jupyter.org][ Literate Computing with Emacs: Org Mode Meets Jupyter]]
 ** [May 17, 2025] [[file:posts/20250517-emacs-build-source.org][ Build Emacs From Source]]
