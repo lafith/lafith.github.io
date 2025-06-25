@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
-<link rel="icon" href="spock-favicon.png" type="image/png">
+<!-- <link rel="icon" href="spock-favicon.png" type="image/png"> -->
 </head>
 <body>
 <div id="preamble" class="status">
@@ -18,7 +18,8 @@
 <div class='topnav' style='display: flex; justify-content: space-between; align-items: center;'>
   <a href="/index.html"><h2 style='margin-top: 0; margin-bottom: 0; margin-left:0px;'>Lafith Mattara</h2></a>
   <div class='topnav2' style='color:#cfcaca;'>
-   / <a href='/blog.html' style='font-weight:bold; font-style:bold;'>All Posts</a> / 
+   / <a href='/projects.html' style='font-weight:bold; font-style:bold;'>Projects</a>  
+   / <a href='/blog.html' style='font-weight:bold; font-style:bold;'>Blog</a> / 
   </div>
 </div>
 <hr style="border-top: 1px solid black;">
@@ -30,17 +31,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0cf6fb8">Why Org Mode is Awesome</a></li>
-<li><a href="#orgb0e1b1d">Jupyter Notebooks</a></li>
-<li><a href="#org9c356c5">Best of Both Worlds: Org Mode + Jupyter</a></li>
-<li><a href="#orgbffe3d2">Converting Org file to Jupyter notebook</a></li>
+<li><a href="#org47f5bf6">Why Org Mode is Awesome</a></li>
+<li><a href="#orgd091736">Jupyter Notebooks</a></li>
+<li><a href="#org5f2d418">Best of Both Worlds: Org Mode + Jupyter</a></li>
+<li><a href="#org46f2073">Converting Org file to Jupyter notebook</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org0cf6fb8" class="outline-2">
-<h2 id="org0cf6fb8">Why Org Mode is Awesome</h2>
-<div class="outline-text-2" id="text-org0cf6fb8">
+<div id="outline-container-org47f5bf6" class="outline-2">
+<h2 id="org47f5bf6">Why Org Mode is Awesome</h2>
+<div class="outline-text-2" id="text-org47f5bf6">
 <p>
 One of the great things about using Emacs as a daily driver is Org mode files. Org mode is not just a markup format, it's a powerful framework for organizing, documenting, and executing ideas in plain text. With the help of org-babel, Org mode supports executable code blocks in multiple languages, allowing you to mix:
 </p>
@@ -55,9 +56,9 @@ all in a single document. This makes it an ideal tool for literate programming, 
 </div>
 </div>
 
-<div id="outline-container-orgb0e1b1d" class="outline-2">
-<h2 id="orgb0e1b1d">Jupyter Notebooks</h2>
-<div class="outline-text-2" id="text-orgb0e1b1d">
+<div id="outline-container-orgd091736" class="outline-2">
+<h2 id="orgd091736">Jupyter Notebooks</h2>
+<div class="outline-text-2" id="text-orgd091736">
 <p>
 Jupyter notebooks have become the de facto standard for interactive computing in the data science and research communities. They allow you to:
 </p>
@@ -69,9 +70,9 @@ Jupyter notebooks have become the de facto standard for interactive computing in
 </div>
 </div>
 
-<div id="outline-container-org9c356c5" class="outline-2">
-<h2 id="org9c356c5">Best of Both Worlds: Org Mode + Jupyter</h2>
-<div class="outline-text-2" id="text-org9c356c5">
+<div id="outline-container-org5f2d418" class="outline-2">
+<h2 id="org5f2d418">Best of Both Worlds: Org Mode + Jupyter</h2>
+<div class="outline-text-2" id="text-org5f2d418">
 <p>
 However if you are using Emacs and Org mode you would normally like to do jupyter-like development in org mode as well. Thanks to the emacs-jupyter package, you can bring Jupyter kernels directly into Org mode via org-babel. This integration allows you to:
 </p>
@@ -136,9 +137,9 @@ Now an org-babel code would start with <code>#+begin_src jupyter-python</code>.
 </div>
 </div>
 
-<div id="outline-container-orgbffe3d2" class="outline-2">
-<h2 id="orgbffe3d2">Converting Org file to Jupyter notebook</h2>
-<div class="outline-text-2" id="text-orgbffe3d2">
+<div id="outline-container-org46f2073" class="outline-2">
+<h2 id="org46f2073">Converting Org file to Jupyter notebook</h2>
+<div class="outline-text-2" id="text-org46f2073">
 <p>
 If you install pandoc by <code>sudo apt install pandoc</code>, then you can convert the org mode file into a jupyter notebook.
 </p>

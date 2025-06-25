@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
-<link rel="icon" href="spock-favicon.png" type="image/png">
+<!-- <link rel="icon" href="spock-favicon.png" type="image/png"> -->
 </head>
 <body>
 <div id="preamble" class="status">
@@ -18,7 +18,8 @@
 <div class='topnav' style='display: flex; justify-content: space-between; align-items: center;'>
   <a href="/index.html"><h2 style='margin-top: 0; margin-bottom: 0; margin-left:0px;'>Lafith Mattara</h2></a>
   <div class='topnav2' style='color:#cfcaca;'>
-   / <a href='/blog.html' style='font-weight:bold; font-style:bold;'>All Posts</a> / 
+   / <a href='/projects.html' style='font-weight:bold; font-style:bold;'>Projects</a>  
+   / <a href='/blog.html' style='font-weight:bold; font-style:bold;'>Blog</a> / 
   </div>
 </div>
 <hr style="border-top: 1px solid black;">
@@ -30,8 +31,8 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3c89da3">Slideflow</a></li>
-<li><a href="#org1098913">Slideflow + OpenSlide</a></li>
+<li><a href="#orgf72fdaf">Slideflow</a></li>
+<li><a href="#org957e6fd">Slideflow + OpenSlide</a></li>
 </ul>
 </div>
 </nav>
@@ -49,9 +50,9 @@ Whole Slide Images (WSIs) are increasingly used in digital pathology to provide 
 <li><a href="https://pypi.org/project/openslide-python/">Openslide-Python</a></li>
 </ol>
 
-<div id="outline-container-org3c89da3" class="outline-2">
-<h2 id="org3c89da3">Slideflow</h2>
-<div class="outline-text-2" id="text-org3c89da3">
+<div id="outline-container-orgf72fdaf" class="outline-2">
+<h2 id="orgf72fdaf">Slideflow</h2>
+<div class="outline-text-2" id="text-orgf72fdaf">
 <p>
 Since we are using Slideflow library the WSIs should be inside a folder named <b>slides,</b> with a subfolder <b>rois</b> containing annotation files. Annotation files should be in the CSV format described in the documentation.
 </p>
@@ -109,9 +110,9 @@ Above can be used to extract all tiles from each WSI in the slides folder.
 </div>
 </div>
 
-<div id="outline-container-org1098913" class="outline-2">
-<h2 id="org1098913">Slideflow + OpenSlide</h2>
-<div class="outline-text-2" id="text-org1098913">
+<div id="outline-container-org957e6fd" class="outline-2">
+<h2 id="org957e6fd">Slideflow + OpenSlide</h2>
+<div class="outline-text-2" id="text-org957e6fd">
 <p>
 I wanted to save the tiles into different rois/labels. So in this section I am using OpenSlide to extract tiles from the tile dataframe generated using Slideflow.
 </p>
