@@ -1,2 +1,2 @@
 #!/bin/sh
-emacs -Q --script build-site.el 
+/home/lfz//emacs-source/emacs-30.1/src/emacs -Q --script build-site.el 

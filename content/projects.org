@@ -1,0 +1,36 @@
+#+TITLE: Projects
+#+Author: Lafith Mattara
+#+OPTIONS: toc:nil
+#+OPTIONS: title:nil
+
+* Real-Time Self-Prompting Adaptation of a Foundation Model for Fetal Ultrasound
+Adapted the Segment Anything (SAM) foundation model to be self-prompting for fetal ultrasound, achieving clinical-grade precision with 96% specificity and an inference time of just 12 ms per image. Deployed in a robotic prototype, the system reduced manual scanning time from 30–45 minutes to 4 minutes—an 85%+ efficiency improvement—enabling high-throughput prenatal screening and drawing strong interest from clinicians at the XVIII Clinical Ultrasonography in Practice (CUSP) conference.
+
+[[./posts/figures/cusp_ai_assistance.gif]]
+
+#+ATTR_HTML: :width 600px
+[[./posts/figures/cusp_robot.jpg]]
+
+* Deep Learning-Based Analysis of Breast Cancer Whole Slide Images
+Developed convolutional and graph neural networks to analyze breast cancer whole slide images, enabling automated interpretation and patch-level annotation with high accuracy (F1 score of 0.95 across 24 classes). This work also explored links between neighborhood deprivation, tumor microenvironment, and race, with findings presented at two research symposia.
+
+[[./media/uab.png]]
+
+* Stereo-Endoscope VR System for Real-Time Medical Visualization
+Designed and built a complete VR application for real-time visualization of stereo-endoscope video streams, integrating video capture, image processing, and 3D rendering. The system was showcased at MEDICA 2024, highlighting its innovation in medical imaging and interactive visualization.
+
+[[./media/endovr.png]]
+
+* Contrast Enhancement of Industrial CT Scans Using Multi-Scale Image Processing
+Enhanced contrast in industrial CT scans using multi-scale image processing techniques. This revealed subtle internal structures, improving clarity for inspection and analysis.
+
+[[./media/contrast.png]]
+
+* Autonomous Underwater Vehicle Simulator
+A 3D underwater simulation environment built in Unity to model the dynamics and control of an Autonomous Underwater Vehicle (AUV). It enables realistic testing of navigation and control algorithms in a virtual underwater setting with support for simulated sensors. Designed for rapid prototyping and validation of AUV software stacks.
+
+*Github Repo* : [[https://github.com/lafith/AUV-Simulator-Unity][AUV-Simulator-Unity]]
+
+[[./media/auv2.gif]]
+
+[[./media/auv1.gif]]
