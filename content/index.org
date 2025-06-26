@@ -8,6 +8,10 @@ Hi there! I work as a Senior AI Engineer with the [[https://igrs.hticlab.org/][I
 / [[./lafith_resume.pdf][Resume]] / [[./lafith_cv.pdf][CV]] / [[http://github.com/lafith][Github]] / [[https://www.linkedin.com/in/lafith/][LinkedIn]] /
 #+END_CENTER
 
+#+BEGIN_CENTER
+What I’m up to [[./now.org][now]].
+#+END_CENTER
+
 * Recent Posts
 #+INCLUDE: blog.org :lines "-8" 
 \\

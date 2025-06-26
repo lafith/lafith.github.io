@@ -1,6 +1,7 @@
 * [Jun 26, 2025] [[file:blog.org][ Blog]]
-* [Jun 26, 2025] [[file:projects.org][ Projects]]
 * [Jun 26, 2025] [[file:index.org][ Lafith Mattara]]
+* [Jun 26, 2025] [[file:now.org][ Now]]
+* [Jun 26, 2025] [[file:projects.org][ Projects]]
 * posts
 ** [May 18, 2025] [[file:posts/20250518-emacs-org-mode-jupyter.org][ Literate Computing with Emacs: Org Mode Meets Jupyter]]
 ** [May 17, 2025] [[file:posts/20250517-emacs-build-source.org][ Build Emacs From Source]]
