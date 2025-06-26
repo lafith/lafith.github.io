@@ -32,11 +32,11 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3098486">Step 1: Install Dependencies</a></li>
-<li><a href="#org10f5668">Step 2: Clone the Emacs Repository</a></li>
-<li><a href="#org2d18272">Step 3: Configure the Build</a></li>
-<li><a href="#org9cb3a01">Step 4: Build and Install</a></li>
-<li><a href="#orge27310c">Optional Bash Script</a></li>
+<li><a href="#org6c4a88d">Step 1: Install Dependencies</a></li>
+<li><a href="#orgba9506c">Step 2: Clone the Emacs Repository</a></li>
+<li><a href="#orgccb5ff6">Step 3: Configure the Build</a></li>
+<li><a href="#org82593cc">Step 4: Build and Install</a></li>
+<li><a href="#orge94de94">Optional Bash Script</a></li>
 </ul>
 </div>
 </nav>
@@ -47,9 +47,9 @@ Most Linux distributions include Emacs in their package repositories. For exampl
 <p>
 This post walks you through the manual steps and provides a handy bash script to automate the whole process.
 </p>
-<div id="outline-container-org3098486" class="outline-2">
-<h2 id="org3098486">Step 1: Install Dependencies</h2>
-<div class="outline-text-2" id="text-org3098486">
+<div id="outline-container-org6c4a88d" class="outline-2">
+<h2 id="org6c4a88d">Step 1: Install Dependencies</h2>
+<div class="outline-text-2" id="text-org6c4a88d">
 <p>
 First, update your package lists and install the required development packages:
 </p>
@@ -80,9 +80,9 @@ sudo apt install -y <span class="org-sh-escaped-newline">\</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org10f5668" class="outline-2">
-<h2 id="org10f5668">Step 2: Clone the Emacs Repository</h2>
-<div class="outline-text-2" id="text-org10f5668">
+<div id="outline-container-orgba9506c" class="outline-2">
+<h2 id="orgba9506c">Step 2: Clone the Emacs Repository</h2>
+<div class="outline-text-2" id="text-orgba9506c">
 <p>
 You can clone Emacs from the official Savannah Git repository or its GitHub mirror:
 </p>
@@ -94,9 +94,9 @@ git clone https://github.com/emacs-mirror/emacs.git
 </div>
 </div>
 </div>
-<div id="outline-container-org2d18272" class="outline-2">
-<h2 id="org2d18272">Step 3: Configure the Build</h2>
-<div class="outline-text-2" id="text-org2d18272">
+<div id="outline-container-orgccb5ff6" class="outline-2">
+<h2 id="orgccb5ff6">Step 3: Configure the Build</h2>
+<div class="outline-text-2" id="text-orgccb5ff6">
 <p>
 Navigate to the Emacs directory and run the following commands to prepare the build. You can tweak the options according to your preferences and recompile later if needed:
 </p>
@@ -109,9 +109,9 @@ Navigate to the Emacs directory and run the following commands to prepare the bu
 </div>
 </div>
 </div>
-<div id="outline-container-org9cb3a01" class="outline-2">
-<h2 id="org9cb3a01">Step 4: Build and Install</h2>
-<div class="outline-text-2" id="text-org9cb3a01">
+<div id="outline-container-org82593cc" class="outline-2">
+<h2 id="org82593cc">Step 4: Build and Install</h2>
+<div class="outline-text-2" id="text-org82593cc">
 <div class="org-src-container">
 <pre class="src src-bash">make -j$(nproc) bootstrap
 sudo make install
@@ -120,9 +120,9 @@ sudo make install
 </div>
 </div>
 
-<div id="outline-container-orge27310c" class="outline-2">
-<h2 id="orge27310c">Optional Bash Script</h2>
-<div class="outline-text-2" id="text-orge27310c">
+<div id="outline-container-orge94de94" class="outline-2">
+<h2 id="orge94de94">Optional Bash Script</h2>
+<div class="outline-text-2" id="text-orge94de94">
 <p>
 To streamline this process, I wrote a bash script that automates cloning, configuring, and building Emacs. It also handles situations where cloning from the official repo times out (by falling back to GitHub).
 </p>
