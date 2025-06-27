@@ -66,17 +66,16 @@ h4 {
 }
 
 a {
-    color: #e65722;
-    /* color: #e65722; */
+    color: #f06f3a;
     text-decoration: none;
 }
 
 .content a {
-    color: #e65722;
+    color:#f06f3a;
     text-decoration: none;
 }
 .content a:visited {
-    color: #e65722;
+    color: #f06f3a;
 }
 
 li{
@@ -85,7 +84,8 @@ li{
 }
 
 #text-table-of-contents a {
-    color: #e65722;
+    /* color: #e65722; */
+    color: #f06f3a;
     text-decoration: inherit;
 }
 
@@ -160,6 +160,19 @@ pre.example {
 .org-src-container .org-comment {
   font-style: italic;
   color: #e06666;
+}
+
+.boxed-center {
+  border: 2px solid #ccc;
+  padding: 10px;
+  margin: 20px auto;
+  max-width: 300px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: #232729; /* slightly lighter than body */
+  /* background-color: #2e2e2e; /\* slightly lighter than body *\/ */
+  color: #eee; /* light text */
+  font-size: 1.1em;
 }
 
 /* Add other language-specific rules as needed */
