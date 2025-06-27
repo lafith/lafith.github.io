@@ -1,6 +1,5 @@
 #+TITLE: Projects
 #+Author: Lafith Mattara
-#+OPTIONS: toc:nil
 #+OPTIONS: title:nil
 
 * Real-Time Self-Prompting Adaptation of a Foundation Model for Fetal Ultrasound

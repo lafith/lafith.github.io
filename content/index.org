@@ -4,12 +4,14 @@
 
 Hi there! I work as a Senior AI Engineer with the [[https://igrs.hticlab.org/][Image-Guided Robotic Systems Group]] at [[https://www.hticiitm.org/][HTIC–IIT Madras]],  where I develop intelligent systems that bridge artificial intelligence, healthcare, and medical robotics. I build deep learning models from scratch, covering architecture design, training, and deployment across a range of real-world tasks.
 \\
-#+BEGIN_CENTER
-/ [[./media/lafith_resume.pdf][*Resume*]] / [[./media/lafith_cv.pdf][*CV*]] / [[http://github.com/lafith][*Github*]] / [[https://www.linkedin.com/in/lafith/][*LinkedIn*]] /
-#+END_CENTER
-
+#+HTML: <div class="boxed-center">
 #+BEGIN_CENTER
 What I’m up to [[./now.org][now]].
+#+END_CENTER
+#+HTML: </div>
+
+#+BEGIN_CENTER
+/ [[./media/lafith_resume.pdf][Resume]] / [[./media/lafith_cv.pdf][CV]] / [[http://github.com/lafith][Github]] / [[https://www.linkedin.com/in/lafith/][LinkedIn]] /
 #+END_CENTER
 
 [[./media/rain.gif]]
