@@ -163,77 +163,15 @@ pre.example {
 }
 
 .boxed-center {
-  border: 2px solid #ccc;
+  border: 2px dashed #ccc;
   padding: 10px;
   margin: 20px auto;
   max-width: 300px;
   text-align: center;
   border-radius: 8px;
   background-color: #232729; /* slightly lighter than body */
-  /* background-color: #2e2e2e; /\* slightly lighter than body *\/ */
   color: #eee; /* light text */
   font-size: 1.1em;
 }
-
-/* Add other language-specific rules as needed */
-/* /\* pre.src::before { *\/ */
-/* /\*   display: inline-block; *\/ */
-/* /\*   position: absolute; *\/ */
-/* /\*   background-color: transparent; *\/ */
-/* /\*   top: unset; *\/ */
-/* /\*   bottom: -16px; *\/ */
-/* /\*   left: 20px; *\/ */
-/* /\*   padding: 0px; *\/ */
-/* /\*   border: none; *\/ */
-/* /\*   font-size: 80%; *\/ */
-/* /\*   font-style: italic; *\/ */
-/* /\*   color: var(--text-light); } *\/ */
-
-/* /\* pre.src:empty { *\/ */
-/* /\*   display: none; } *\/ */
-/* /\* .example, *\/ */
-/* /\* .src { *\/ */
-/* /\*   color: var(--code-foreground); } *\/ */
-/* /\*   .example .org-keyword, *\/ */
-/* /\*   .src .org-keyword { *\/ */
-/* /\*     color: #3a81c3; } *\/ */
-/* /\*   .example .org-variable-name, *\/ */
-/* /\*   .src .org-variable-name { *\/ */
-/* /\*     color: #715ab1; } *\/ */
-/* /\*   .example .org-rainbow-delimiters-depth-1, *\/ */
-/* /\*   .example .org-rainbow-delimiters-depth-2, *\/ */
-/* /\*   .example .org-rainbow-delimiters-depth-3, *\/ */
-/* /\*   .example .org-rainbow-delimiters-depth-4, *\/ */
-/* /\*   .example .org-rainbow-delimiters-depth-5, *\/ */
-/* /\*   .example .org-rainbow-delimiters-depth-6, *\/ */
-/* /\*   .example .org-rainbow-delimiters-depth-7, *\/ */
-/* /\*   .example .org-rainbow-delimiters-depth-8, *\/ */
-/* /\*   .example .org-rainbow-delimiters-depth-9, *\/ */
-/* /\*   .src .org-rainbow-delimiters-depth-1, *\/ */
-/* /\*   .src .org-rainbow-delimiters-depth-2, *\/ */
-/* /\*   .src .org-rainbow-delimiters-depth-3, *\/ */
-/* /\*   .src .org-rainbow-delimiters-depth-4, *\/ */
-/* /\*   .src .org-rainbow-delimiters-depth-5, *\/ */
-/* /\*   .src .org-rainbow-delimiters-depth-6, *\/ */
-/* /\*   .src .org-rainbow-delimiters-depth-7, *\/ */
-/* /\*   .src .org-rainbow-delimiters-depth-8, *\/ */
-/* /\*   .src .org-rainbow-delimiters-depth-9 { *\/ */
-/* /\*     color: #555555; } *\/ */
-/* /\*   .example .org-string, *\/ */
-/* /\*   .src .org-string { *\/ */
-/* /\*     color: #2d9574; } *\/ */
-/* /\*   .example .org-comment, *\/ */
-/* /\*   .example .org-comment-delimiter, *\/ */
-/* /\*   .src .org-comment, *\/ */
-/* /\*   .src .org-comment-delimiter { *\/ */
-/* /\*     color: #555555; } *\/ */
-/* /\*   .example .org-function-name, *\/ */
-/* /\*   .src .org-function-name { *\/ */
-/* /\*     color: var(--code-func); } *\/ */
-/* /\*   .example .org-constant, *\/ */
-/* /\*   .example .org-highlight-numbers-number, *\/ */
-/* /\*   .src .org-constant, *\/ */
-/* /\*   .src .org-highlight-numbers-number { *\/ */
-/* /\*     color: var(--code-const); } *\/ */
 
 
