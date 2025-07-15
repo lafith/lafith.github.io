@@ -3,7 +3,7 @@
 #+OPTIONS: title:nil
 
 * Real-Time Self-Prompting Adaptation of a Foundation Model for Fetal Ultrasound
-Adapted the Segment Anything (SAM) foundation model to be self-prompting for fetal ultrasound, achieving clinical-grade precision with 96% specificity and an inference time of just 12 ms per image. Deployed in a robotic prototype, the system reduced manual scanning time from 30–45 minutes to 4 minutes—an 85%+ efficiency improvement—enabling high-throughput prenatal screening and drawing strong interest from clinicians at the XVIII Clinical Ultrasonography in Practice (CUSP) conference.
+Adapted the Segment Anything (SAM) foundation model to be self-prompting for fetal ultrasound, achieving clinical-grade precision with real-time inference. Deployed in a robotic prototype, the system reduced manual scanning time by over 85%, enabling high-throughput prenatal screening and drawing strong interest from clinicians at the XVIII Clinical Ultrasonography in Practice (CUSP) conference.
 
 [[./posts/figures/cusp_ai_assistance.gif]]
 
@@ -11,7 +11,7 @@ Adapted the Segment Anything (SAM) foundation model to be self-prompting for fet
 [[./posts/figures/cusp_robot.jpg]]
 
 * Deep Learning-Based Analysis of Breast Cancer Whole Slide Images
-Developed convolutional and graph neural networks to analyze breast cancer whole slide images, enabling automated interpretation and patch-level annotation with high accuracy (F1 score of 0.95 across 24 classes). This work also explored links between neighborhood deprivation, tumor microenvironment, and race, with findings presented at two research symposia.
+Developed convolutional and graph neural networks to analyze breast cancer whole slide images, enabling automated patch-level annotation and interpretation. Investigated associations between neighborhood deprivation, the tumor microenvironment, and racial disparities. Findings were presented at two research symposia.
 
 [[./media/uab.png]]
 
