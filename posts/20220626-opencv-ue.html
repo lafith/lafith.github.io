@@ -32,8 +32,8 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgfe14699">UE5</a></li>
-<li><a href="#org0a641ca">UE4</a></li>
+<li><a href="#org390b69f">UE5</a></li>
+<li><a href="#org3521e4b">UE4</a></li>
 </ul>
 </div>
 </nav>
@@ -43,9 +43,9 @@ is an extremely powerful game engine. By using OpenCV in Unreal engine one can c
 Integration of OpenCV is different between UE4 and UE5 as UE5 released a standalone plugin for OpenCV in beta.
 </p>
 
-<div id="outline-container-orgfe14699" class="outline-2">
-<h2 id="orgfe14699">UE5</h2>
-<div class="outline-text-2" id="text-orgfe14699">
+<div id="outline-container-org390b69f" class="outline-2">
+<h2 id="org390b69f">UE5</h2>
+<div class="outline-text-2" id="text-org390b69f">
 <p>
 After installing Unreal Engine 5 create a new C++ project. Open the project in the editor then go to <code>Edit-&gt;Plugins</code>.
 Search for OpenCV and install it, you may have to restart the engine after that.
@@ -109,17 +109,17 @@ UCLASS()
     GENERATED_BODY()
 
 <span class="org-keyword">public</span>: 
-    <span class="org-comment-delimiter">// </span><span class="org-comment">Sets default values for this actor's properties</span>
-    <span class="org-function-name">AMyActor</span>();
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Sets default values for this actor's properties
+</span>    <span class="org-function-name">AMyActor</span>();
     <span class="org-type">void</span> <span class="org-function-name">TestOpenCV</span>();
 
 <span class="org-keyword">protected</span>:
-    <span class="org-comment-delimiter">// </span><span class="org-comment">Called when the game starts or when spawned</span>
-    <span class="org-keyword">virtual</span> <span class="org-type">void</span> <span class="org-function-name">BeginPlay</span>() <span class="org-keyword">override</span>;
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Called when the game starts or when spawned
+</span>    <span class="org-keyword">virtual</span> <span class="org-type">void</span> <span class="org-function-name">BeginPlay</span>() <span class="org-keyword">override</span>;
 
 <span class="org-keyword">public</span>: 
-    <span class="org-comment-delimiter">// </span><span class="org-comment">Called every frame</span>
-    <span class="org-keyword">virtual</span> <span class="org-type">void</span> <span class="org-function-name">Tick</span>(<span class="org-type">float</span> <span class="org-variable-name">DeltaTime</span>) <span class="org-keyword">override</span>;
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Called every frame
+</span>    <span class="org-keyword">virtual</span> <span class="org-type">void</span> <span class="org-function-name">Tick</span>(<span class="org-type">float</span> <span class="org-variable-name">DeltaTime</span>) <span class="org-keyword">override</span>;
 
 };
 </pre>
@@ -131,11 +131,11 @@ UCLASS()
 <div class="org-src-container">
 <pre class="src src-C++"><span class="org-preprocessor">#include</span> <span class="org-string">"MyActor.h"</span>
 
-<span class="org-comment-delimiter">// </span><span class="org-comment">Sets default values</span>
-<span class="org-constant">AMyActor</span>::<span class="org-function-name">AMyActor</span>()
+<span class="org-comment-delimiter">// </span><span class="org-comment">Sets default values
+</span><span class="org-constant">AMyActor</span>::<span class="org-function-name">AMyActor</span>()
 {
-    <span class="org-comment-delimiter">// </span><span class="org-comment">Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.</span>
-PrimaryActorTick.bCanEverTick = <span class="org-constant">true</span>;
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+</span>PrimaryActorTick.bCanEverTick = <span class="org-constant">true</span>;
 
 }
 
@@ -150,16 +150,16 @@ UE_LOG(
 UE_LOG(LogcvtestCore, Log, TEXT(<span class="org-string">"Testing Done!"</span>));
 }
 
-<span class="org-comment-delimiter">// </span><span class="org-comment">Called when the game starts or when spawned</span>
-<span class="org-type">void</span> <span class="org-constant">AMyActor</span>::<span class="org-function-name">BeginPlay</span>()
+<span class="org-comment-delimiter">// </span><span class="org-comment">Called when the game starts or when spawned
+</span><span class="org-type">void</span> <span class="org-constant">AMyActor</span>::<span class="org-function-name">BeginPlay</span>()
 {
 <span class="org-constant">Super</span>::BeginPlay();
 TestOpenCV();
 
 }
 
-<span class="org-comment-delimiter">// </span><span class="org-comment">Called every frame</span>
-<span class="org-type">void</span> <span class="org-constant">AMyActor</span>::<span class="org-function-name">Tick</span>(<span class="org-type">float</span> <span class="org-variable-name">DeltaTime</span>)
+<span class="org-comment-delimiter">// </span><span class="org-comment">Called every frame
+</span><span class="org-type">void</span> <span class="org-constant">AMyActor</span>::<span class="org-function-name">Tick</span>(<span class="org-type">float</span> <span class="org-variable-name">DeltaTime</span>)
 {
 <span class="org-constant">Super</span>::Tick(DeltaTime);
 
@@ -175,9 +175,9 @@ dimensions of the cv::Mat object.
 </div>
 </div>
 
-<div id="outline-container-org0a641ca" class="outline-2">
-<h2 id="org0a641ca">UE4</h2>
-<div class="outline-text-2" id="text-org0a641ca">
+<div id="outline-container-org3521e4b" class="outline-2">
+<h2 id="org3521e4b">UE4</h2>
+<div class="outline-text-2" id="text-org3521e4b">
 <p>
 Incase of UE4 you need to manually include the binaries from OpenCV installation source in to your UE4 project.
 </p>

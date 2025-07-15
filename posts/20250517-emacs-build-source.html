@@ -32,11 +32,11 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc161832">Step 1: Install Dependencies</a></li>
-<li><a href="#org46f0006">Step 2: Clone the Emacs Repository</a></li>
-<li><a href="#orgff7dd23">Step 3: Configure the Build</a></li>
-<li><a href="#org96413e9">Step 4: Build and Install</a></li>
-<li><a href="#org89a89d6">Optional Bash Script</a></li>
+<li><a href="#org1c69dda">Step 1: Install Dependencies</a></li>
+<li><a href="#orgcd9d870">Step 2: Clone the Emacs Repository</a></li>
+<li><a href="#orge321682">Step 3: Configure the Build</a></li>
+<li><a href="#org3cfe153">Step 4: Build and Install</a></li>
+<li><a href="#org1938900">Optional Bash Script</a></li>
 </ul>
 </div>
 </nav>
@@ -47,9 +47,9 @@ Most Linux distributions include Emacs in their package repositories. For exampl
 <p>
 This post walks you through the manual steps and provides a handy bash script to automate the whole process.
 </p>
-<div id="outline-container-orgc161832" class="outline-2">
-<h2 id="orgc161832">Step 1: Install Dependencies</h2>
-<div class="outline-text-2" id="text-orgc161832">
+<div id="outline-container-org1c69dda" class="outline-2">
+<h2 id="org1c69dda">Step 1: Install Dependencies</h2>
+<div class="outline-text-2" id="text-org1c69dda">
 <p>
 First, update your package lists and install the required development packages:
 </p>
@@ -80,23 +80,23 @@ sudo apt install -y <span class="org-sh-escaped-newline">\</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org46f0006" class="outline-2">
-<h2 id="org46f0006">Step 2: Clone the Emacs Repository</h2>
-<div class="outline-text-2" id="text-org46f0006">
+<div id="outline-container-orgcd9d870" class="outline-2">
+<h2 id="orgcd9d870">Step 2: Clone the Emacs Repository</h2>
+<div class="outline-text-2" id="text-orgcd9d870">
 <p>
 You can clone Emacs from the official Savannah Git repository or its GitHub mirror:
 </p>
 <div class="org-src-container">
 <pre class="src src-bash">git clone https://git.savannah.gnu.org/git/emacs.git
-<span class="org-comment-delimiter"># </span><span class="org-comment">or</span>
-git clone https://github.com/emacs-mirror/emacs.git
+<span class="org-comment-delimiter"># </span><span class="org-comment">or
+</span>git clone https://github.com/emacs-mirror/emacs.git
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgff7dd23" class="outline-2">
-<h2 id="orgff7dd23">Step 3: Configure the Build</h2>
-<div class="outline-text-2" id="text-orgff7dd23">
+<div id="outline-container-orge321682" class="outline-2">
+<h2 id="orge321682">Step 3: Configure the Build</h2>
+<div class="outline-text-2" id="text-orge321682">
 <p>
 Navigate to the Emacs directory and run the following commands to prepare the build. You can tweak the options according to your preferences and recompile later if needed:
 </p>
@@ -109,9 +109,9 @@ Navigate to the Emacs directory and run the following commands to prepare the bu
 </div>
 </div>
 </div>
-<div id="outline-container-org96413e9" class="outline-2">
-<h2 id="org96413e9">Step 4: Build and Install</h2>
-<div class="outline-text-2" id="text-org96413e9">
+<div id="outline-container-org3cfe153" class="outline-2">
+<h2 id="org3cfe153">Step 4: Build and Install</h2>
+<div class="outline-text-2" id="text-org3cfe153">
 <div class="org-src-container">
 <pre class="src src-bash">make -j$(nproc) bootstrap
 sudo make install
@@ -120,9 +120,9 @@ sudo make install
 </div>
 </div>
 
-<div id="outline-container-org89a89d6" class="outline-2">
-<h2 id="org89a89d6">Optional Bash Script</h2>
-<div class="outline-text-2" id="text-org89a89d6">
+<div id="outline-container-org1938900" class="outline-2">
+<h2 id="org1938900">Optional Bash Script</h2>
+<div class="outline-text-2" id="text-org1938900">
 <p>
 To streamline this process, I wrote a bash script that automates cloning, configuring, and building Emacs. It also handles situations where cloning from the official repo times out (by falling back to GitHub).
 </p>
@@ -131,8 +131,8 @@ To streamline this process, I wrote a bash script that automates cloning, config
 Save the following script as emacs-build.sh
 </p>
 <div class="org-src-container">
-<pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/usr/bin/</span><span class="org-keyword">env</span><span class="org-comment"> bash</span>
-
+<pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/usr/bin/</span><span class="org-keyword">env</span><span class="org-comment"> bash
+</span>
 <span class="org-keyword">function</span> <span class="org-function-name">clone_and_build</span>()
 {
     <span class="org-variable-name">PRIMARY_URL</span>=<span class="org-string">"https://git.savannah.gnu.org/git/emacs.git"</span>

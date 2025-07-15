@@ -32,17 +32,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org327b87e">Building Cuda scripts into a Static Library</a>
+<li><a href="#orgd79e76c">Building Cuda scripts into a Static Library</a>
 <ul>
 <li>
 <ul>
-<li><a href="#org6a205ed">test_cudaue.h</a></li>
-<li><a href="#orgdf0ed95">test_cudaue.cu</a></li>
+<li><a href="#org88e0d14">test_cudaue.h</a></li>
+<li><a href="#org60c119f">test_cudaue.cu</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org3b81708">Linking with UE5 Project</a></li>
+<li><a href="#org9666497">Linking with UE5 Project</a></li>
 </ul>
 </div>
 </nav>
@@ -60,9 +60,9 @@ this is extremely useful if you are creating image/voxel analysis and visualizat
 Integration of Cuda invloves two phases, building Cuda code into a static library then linking them in UE5 project.
 </p>
 
-<div id="outline-container-org327b87e" class="outline-2">
-<h2 id="org327b87e">Building Cuda scripts into a Static Library</h2>
-<div class="outline-text-2" id="text-org327b87e">
+<div id="outline-container-orgd79e76c" class="outline-2">
+<h2 id="orgd79e76c">Building Cuda scripts into a Static Library</h2>
+<div class="outline-text-2" id="text-orgd79e76c">
 <ul class="org-ul">
 <li>Install Cuda toolkit in Windows from <a href="https://developer.nvidia.com/cuda-downloads">here</a>.</li>
 <li>Create a new project in Visual Studio with Cuda Runtime 11.7 (let say the name is <code>test_cudaue</code>).</li>
@@ -74,9 +74,9 @@ and <code>test_cudaue.h</code>. It has a basic function for testing the addition
 </ul>
 </div>
 
-<div id="outline-container-org6a205ed" class="outline-4">
-<h4 id="org6a205ed">test_cudaue.h</h4>
-<div class="outline-text-4" id="text-org6a205ed">
+<div id="outline-container-org88e0d14" class="outline-4">
+<h4 id="org88e0d14">test_cudaue.h</h4>
+<div class="outline-text-4" id="text-org88e0d14">
 <div class="org-src-container">
 <pre class="src src-C++">{`#pragma once
 
@@ -94,9 +94,9 @@ cudaError_t testCudaAddition(<span class="org-type">int</span>* <span class="org
 </div>
 </div>
 
-<div id="outline-container-orgdf0ed95" class="outline-4">
-<h4 id="orgdf0ed95">test_cudaue.cu</h4>
-<div class="outline-text-4" id="text-orgdf0ed95">
+<div id="outline-container-org60c119f" class="outline-4">
+<h4 id="org60c119f">test_cudaue.cu</h4>
+<div class="outline-text-4" id="text-org60c119f">
 <div class="org-src-container">
 <pre class="src src-C++">{`#include <span class="org-string">"test_cudaue.h"</span>
 
@@ -116,23 +116,23 @@ __global__ <span class="org-type">void</span> <span class="org-variable-name">ad
     c[i].w = a[i].w + b[i].w;
 }
 
-<span class="org-comment-delimiter">// </span><span class="org-comment">Helper function for using CUDA to add vectors in parallel.</span>
-<span class="org-type">cudaError_t</span> <span class="org-variable-name">testCudaAddition</span>(<span class="org-type">int</span>* c, <span class="org-keyword">const</span> <span class="org-type">int</span>* a, <span class="org-keyword">const</span> <span class="org-type">int</span>* b, <span class="org-type">unsigned</span> <span class="org-type">int</span> size, <span class="org-constant">std</span>::string* error_message)
+<span class="org-comment-delimiter">// </span><span class="org-comment">Helper function for using CUDA to add vectors in parallel.
+</span><span class="org-type">cudaError_t</span> <span class="org-variable-name">testCudaAddition</span>(<span class="org-type">int</span>* c, <span class="org-keyword">const</span> <span class="org-type">int</span>* a, <span class="org-keyword">const</span> <span class="org-type">int</span>* b, <span class="org-type">unsigned</span> <span class="org-type">int</span> size, <span class="org-constant">std</span>::string* error_message)
 {
     <span class="org-type">int</span>* <span class="org-variable-name">dev_a</span> = 0;
     <span class="org-type">int</span>* <span class="org-variable-name">dev_b</span> = 0;
     <span class="org-type">int</span>* <span class="org-variable-name">dev_c</span> = 0;
     <span class="org-type">cudaError_t</span> <span class="org-variable-name">cuda_status</span>;
 
-    <span class="org-comment-delimiter">// </span><span class="org-comment">Choose which GPU to run on, change this on a multi-GPU system.</span>
-    cuda_status = cudaSetDevice(0);
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Choose which GPU to run on, change this on a multi-GPU system.
+</span>    cuda_status = cudaSetDevice(0);
     <span class="org-keyword">if</span> (cuda_status != cudaSuccess) {
         *error_message = <span class="org-string">"cudaSetDevice failed!  Do you have a CUDA-capable GPU installed?"</span>;
         <span class="org-keyword">goto</span> <span class="org-constant">Error</span>;
     }
 
-    <span class="org-comment-delimiter">// </span><span class="org-comment">Allocate GPU buffers for three vectors (two input, one output)    .</span>
-    cuda_status = cudaMalloc((<span class="org-type">void</span>**)&amp;dev_c, size * <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>));
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Allocate GPU buffers for three vectors (two input, one output)    .
+</span>    cuda_status = cudaMalloc((<span class="org-type">void</span>**)&amp;dev_c, size * <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>));
     <span class="org-keyword">if</span> (cuda_status != cudaSuccess) {
         *error_message = <span class="org-string">"cudaMalloc failed!"</span>;
         <span class="org-keyword">goto</span> <span class="org-constant">Error</span>;
@@ -150,8 +150,8 @@ __global__ <span class="org-type">void</span> <span class="org-variable-name">ad
         <span class="org-keyword">goto</span> <span class="org-constant">Error</span>;
     }
 
-    <span class="org-comment-delimiter">// </span><span class="org-comment">Copy input vectors from host memory to GPU buffers.</span>
-    cuda_status = cudaMemcpy(dev_a, a, size * <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>), cudaMemcpyHostToDevice);
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Copy input vectors from host memory to GPU buffers.
+</span>    cuda_status = cudaMemcpy(dev_a, a, size * <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>), cudaMemcpyHostToDevice);
     <span class="org-keyword">if</span> (cuda_status != cudaSuccess) {
         *error_message = <span class="org-string">"cudaMemcpy failed!"</span>;
         <span class="org-keyword">goto</span> <span class="org-constant">Error</span>;
@@ -163,26 +163,26 @@ __global__ <span class="org-type">void</span> <span class="org-variable-name">ad
         <span class="org-keyword">goto</span> <span class="org-constant">Error</span>;
     }
 
-    <span class="org-comment-delimiter">// </span><span class="org-comment">Launch a kernel on the GPU with one thread for each element.</span>
-    addKernel &lt;&lt; &lt;1, size &gt;&gt; &gt; (dev_c, dev_a, dev_b);
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Launch a kernel on the GPU with one thread for each element.
+</span>    addKernel &lt;&lt; &lt;1, size &gt;&gt; &gt; (dev_c, dev_a, dev_b);
 
-    <span class="org-comment-delimiter">// </span><span class="org-comment">Check for any errors launching the kernel</span>
-    cuda_status = cudaGetLastError();
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Check for any errors launching the kernel
+</span>    cuda_status = cudaGetLastError();
     <span class="org-keyword">if</span> (cuda_status != cudaSuccess) {
         *error_message = <span class="org-string">"addKernel launch failed: "</span> + <span class="org-constant">std</span>::string(cudaGetErrorString(cuda_status));
         <span class="org-keyword">goto</span> <span class="org-constant">Error</span>;
     }
 
-    <span class="org-comment-delimiter">// </span><span class="org-comment">cudaDeviceSynchronize waits for the kernel to finish, and returns</span>
-    <span class="org-comment-delimiter">// </span><span class="org-comment">any errors encountered during the launch.</span>
-    cuda_status = cudaDeviceSynchronize();
+    <span class="org-comment-delimiter">// </span><span class="org-comment">cudaDeviceSynchronize waits for the kernel to finish, and returns
+</span>    <span class="org-comment-delimiter">// </span><span class="org-comment">any errors encountered during the launch.
+</span>    cuda_status = cudaDeviceSynchronize();
     <span class="org-keyword">if</span> (cuda_status != cudaSuccess) {
         *error_message = <span class="org-string">"cudaDeviceSynchronize returned error code "</span> + <span class="org-constant">std</span>::to_string(cuda_status) + <span class="org-string">" after launching addKernel!"</span>;
         <span class="org-keyword">goto</span> <span class="org-constant">Error</span>;
     }
 
-    <span class="org-comment-delimiter">// </span><span class="org-comment">Copy output vector from GPU buffer to host memory.</span>
-    cuda_status = cudaMemcpy(c, dev_c, size * <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>), cudaMemcpyDeviceToHost);
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Copy output vector from GPU buffer to host memory.
+</span>    cuda_status = cudaMemcpy(c, dev_c, size * <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>), cudaMemcpyDeviceToHost);
     <span class="org-keyword">if</span> (cuda_status != cudaSuccess) {
         *error_message = <span class="org-string">"cudaMemcpy failed!"</span>;
         <span class="org-keyword">goto</span> <span class="org-constant">Error</span>;
@@ -205,9 +205,9 @@ __global__ <span class="org-type">void</span> <span class="org-variable-name">ad
 </div>
 </div>
 
-<div id="outline-container-org3b81708" class="outline-2">
-<h2 id="org3b81708">Linking with UE5 Project</h2>
-<div class="outline-text-2" id="text-org3b81708">
+<div id="outline-container-org9666497" class="outline-2">
+<h2 id="org9666497">Linking with UE5 Project</h2>
+<div class="outline-text-2" id="text-org9666497">
 <ul class="org-ul">
 <li>Create <code>[UE5ProjectRoot]/ThirdParty/Cuda/include</code> &amp; <code>[UE5ProjectRoot]/ThirdParty/Cuda/lib</code>.</li>
 <li>Copy the header file (test_cudaue.h) from the cuda project in to this include folder.</li>
@@ -241,10 +241,10 @@ __global__ <span class="org-type">void</span> <span class="org-variable-name">ad
         PublicIncludePaths.<span class="org-function-name">Add</span>(Path.<span class="org-function-name">Combine</span>(cuda_path, cuda_include));
 
         PublicAdditionalLibraries.<span class="org-function-name">Add</span>(Path.<span class="org-function-name">Combine</span>(cuda_path, cuda_lib, <span class="org-string">"cudart_static.lib"</span>));
-        <span class="org-comment-delimiter">// </span><span class="org-comment">PublicAdditionalLibraries.Add(Path.Combine(cuda_path, cuda_lib, "nppif.lib"));</span>
-        <span class="org-comment-delimiter">// </span><span class="org-comment">PublicAdditionalLibraries.Add(Path.Combine(cuda_path, cuda_lib, "nppicc.lib"));</span>
-        <span class="org-comment-delimiter">// </span><span class="org-comment">PublicAdditionalLibraries.Add(Path.Combine(cuda_path, cuda_lib, "nppig.lib"));</span>
-        <span class="org-keyword">return</span> <span class="org-constant">true</span>;
+        <span class="org-comment-delimiter">// </span><span class="org-comment">PublicAdditionalLibraries.Add(Path.Combine(cuda_path, cuda_lib, "nppif.lib"));
+</span>        <span class="org-comment-delimiter">// </span><span class="org-comment">PublicAdditionalLibraries.Add(Path.Combine(cuda_path, cuda_lib, "nppicc.lib"));
+</span>        <span class="org-comment-delimiter">// </span><span class="org-comment">PublicAdditionalLibraries.Add(Path.Combine(cuda_path, cuda_lib, "nppig.lib"));
+</span>        <span class="org-keyword">return</span> <span class="org-constant">true</span>;
 }
 <span class="org-keyword">public</span> [projectname](<span class="org-type">ReadOnlyTargetRules</span> <span class="org-variable-name">Target</span>) : <span class="org-keyword">base</span>(Target)
 {
@@ -286,8 +286,8 @@ UCLASS()
         GENERATED_BODY()
         
 <span class="org-keyword">public</span>: 
-        <span class="org-comment-delimiter">// </span><span class="org-comment">Sets default values for this actor's properties</span>
-        <span class="org-function-name">ATestCudaActor</span>();
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Sets default values for this actor's properties
+</span>        <span class="org-function-name">ATestCudaActor</span>();
         UFUNCTION(BlueprintCallable, Category = <span class="org-string">"projectname"</span>)
         <span class="org-type">bool</span> <span class="org-function-name">CUDATest</span>() {
                 <span class="org-keyword">const</span> <span class="org-type">int</span> <span class="org-variable-name">size</span> = 2;
@@ -296,8 +296,8 @@ UCLASS()
                 <span class="org-type">int</span> <span class="org-variable-name">output</span>[size] = { 0 };
                 <span class="org-constant">std</span>::<span class="org-type">string</span> <span class="org-variable-name">error_message</span>;
         
-                <span class="org-comment-delimiter">// </span><span class="org-comment">run cuda code</span>
-                <span class="org-type">cudaError_t</span> <span class="org-variable-name">cuda_status</span> = testCudaAddition(output, arr1, arr2, size, &amp;error_message);
+                <span class="org-comment-delimiter">// </span><span class="org-comment">run cuda code
+</span>                <span class="org-type">cudaError_t</span> <span class="org-variable-name">cuda_status</span> = testCudaAddition(output, arr1, arr2, size, &amp;error_message);
                 <span class="org-keyword">if</span> (cuda_status != cudaSuccess) {
                 UE_LOG(LogTemp, Warning, TEXT(<span class="org-string">"Cuda addition failed!\n"</span>));
                 UE_LOG(LogTemp, Warning, TEXT(<span class="org-string">"%s"</span>), *FString(error_message.c_str()));
@@ -307,12 +307,12 @@ UCLASS()
                 <span class="org-keyword">return</span> <span class="org-constant">true</span>;
         }
 <span class="org-keyword">protected</span>:
-        <span class="org-comment-delimiter">// </span><span class="org-comment">Called when the game starts or when spawned</span>
-        <span class="org-keyword">virtual</span> <span class="org-type">void</span> <span class="org-function-name">BeginPlay</span>() <span class="org-keyword">override</span>;
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Called when the game starts or when spawned
+</span>        <span class="org-keyword">virtual</span> <span class="org-type">void</span> <span class="org-function-name">BeginPlay</span>() <span class="org-keyword">override</span>;
 
 <span class="org-keyword">public</span>: 
-        <span class="org-comment-delimiter">// </span><span class="org-comment">Called every frame</span>
-        <span class="org-keyword">virtual</span> <span class="org-type">void</span> <span class="org-function-name">Tick</span>(<span class="org-type">float</span> <span class="org-variable-name">DeltaTime</span>) <span class="org-keyword">override</span>;
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Called every frame
+</span>        <span class="org-keyword">virtual</span> <span class="org-type">void</span> <span class="org-function-name">Tick</span>(<span class="org-type">float</span> <span class="org-variable-name">DeltaTime</span>) <span class="org-keyword">override</span>;
 
 };
 </pre>
@@ -323,7 +323,7 @@ UCLASS()
 </ul>
 <div class="org-center">
 
-<figure id="org6d0965e">
+<figure id="org0589561">
 <img src="./figures/bpcuda.png" alt="bpcuda.png">
 
 <figcaption><span class="figure-number">Figure 1: </span>Blueprint Image</figcaption>
@@ -335,7 +335,7 @@ of the integration.</li>
 </ul>
 <div class="org-center">
 
-<figure id="org8105cf8">
+<figure id="orgc337877">
 <img src="./figures/cudaoutput.png" alt="cudaoutput.png">
 
 <figcaption><span class="figure-number">Figure 2: </span>Console Output</figcaption>
