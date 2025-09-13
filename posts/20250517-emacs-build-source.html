@@ -32,11 +32,11 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1c69dda">Step 1: Install Dependencies</a></li>
-<li><a href="#orgcd9d870">Step 2: Clone the Emacs Repository</a></li>
-<li><a href="#orge321682">Step 3: Configure the Build</a></li>
-<li><a href="#org3cfe153">Step 4: Build and Install</a></li>
-<li><a href="#org1938900">Optional Bash Script</a></li>
+<li><a href="#org1a68cba">Step 1: Install Dependencies</a></li>
+<li><a href="#org864649d">Step 2: Clone the Emacs Repository</a></li>
+<li><a href="#orgee1e79b">Step 3: Configure the Build</a></li>
+<li><a href="#orgf5f0581">Step 4: Build and Install</a></li>
+<li><a href="#org3ab3490">Optional Bash Script</a></li>
 </ul>
 </div>
 </nav>
@@ -47,9 +47,9 @@ Most Linux distributions include Emacs in their package repositories. For exampl
 <p>
 This post walks you through the manual steps and provides a handy bash script to automate the whole process.
 </p>
-<div id="outline-container-org1c69dda" class="outline-2">
-<h2 id="org1c69dda">Step 1: Install Dependencies</h2>
-<div class="outline-text-2" id="text-org1c69dda">
+<div id="outline-container-org1a68cba" class="outline-2">
+<h2 id="org1a68cba">Step 1: Install Dependencies</h2>
+<div class="outline-text-2" id="text-org1a68cba">
 <p>
 First, update your package lists and install the required development packages:
 </p>
@@ -80,9 +80,9 @@ sudo apt install -y <span class="org-sh-escaped-newline">\</span>
 </div>
 </div>
 </div>
-<div id="outline-container-orgcd9d870" class="outline-2">
-<h2 id="orgcd9d870">Step 2: Clone the Emacs Repository</h2>
-<div class="outline-text-2" id="text-orgcd9d870">
+<div id="outline-container-org864649d" class="outline-2">
+<h2 id="org864649d">Step 2: Clone the Emacs Repository</h2>
+<div class="outline-text-2" id="text-org864649d">
 <p>
 You can clone Emacs from the official Savannah Git repository or its GitHub mirror:
 </p>
@@ -94,9 +94,9 @@ You can clone Emacs from the official Savannah Git repository or its GitHub mirr
 </div>
 </div>
 </div>
-<div id="outline-container-orge321682" class="outline-2">
-<h2 id="orge321682">Step 3: Configure the Build</h2>
-<div class="outline-text-2" id="text-orge321682">
+<div id="outline-container-orgee1e79b" class="outline-2">
+<h2 id="orgee1e79b">Step 3: Configure the Build</h2>
+<div class="outline-text-2" id="text-orgee1e79b">
 <p>
 Navigate to the Emacs directory and run the following commands to prepare the build. You can tweak the options according to your preferences and recompile later if needed:
 </p>
@@ -109,20 +109,20 @@ Navigate to the Emacs directory and run the following commands to prepare the bu
 </div>
 </div>
 </div>
-<div id="outline-container-org3cfe153" class="outline-2">
-<h2 id="org3cfe153">Step 4: Build and Install</h2>
-<div class="outline-text-2" id="text-org3cfe153">
+<div id="outline-container-orgf5f0581" class="outline-2">
+<h2 id="orgf5f0581">Step 4: Build and Install</h2>
+<div class="outline-text-2" id="text-orgf5f0581">
 <div class="org-src-container">
-<pre class="src src-bash">make -j$(nproc) bootstrap
+<pre class="src src-bash">make -j$(<span class="org-sh-quoted-exec">nproc</span>) bootstrap
 sudo make install
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org1938900" class="outline-2">
-<h2 id="org1938900">Optional Bash Script</h2>
-<div class="outline-text-2" id="text-org1938900">
+<div id="outline-container-org3ab3490" class="outline-2">
+<h2 id="org3ab3490">Optional Bash Script</h2>
+<div class="outline-text-2" id="text-org3ab3490">
 <p>
 To streamline this process, I wrote a bash script that automates cloning, configuring, and building Emacs. It also handles situations where cloning from the official repo times out (by falling back to GitHub).
 </p>
@@ -156,7 +156,7 @@ Save the following script as emacs-build.sh
 {
     ./autogen.sh
     ./configure --with-native-compilation --with-modules --with-mailutils --with-tree-sitter --with-x-toolkit=gtk3 --with-compress-install
-    make -j$(nproc) bootstrap
+    make -j$(<span class="org-sh-quoted-exec">nproc</span>) bootstrap
 }
 
 <span class="org-variable-name">dest</span>=<span class="org-string">"${1:-$PWD}"</span>
