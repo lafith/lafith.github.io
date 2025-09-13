@@ -6,8 +6,5 @@
 #+HTML: <h1 style="text-align: center;">Now</h1>
 #+HTML: <h2 style="text-align: center;">[snapshot of my life at this moment in time]</h2>
 
-- Senior AI Engineer @ IGRS-IIT Madras. Leading the development of AI-driven computer vision for an autonomous antenatal ultrasound robot, integrating real-time deep learning models for fetal ultrasound analysis (standard plane detection, anatomical segmentation, biometry extraction etc).
-- Open to new career opportunities in AI and research.
+- Incoming AI Engineer @ MBZUAI
 - Currently deepening expertise in language modeling by following [[https://stanford-cs336.github.io/spring2025/][CS336: Language Modeling from Scratch]].
-- Actively learning JAX and Flax to build scalable and efficient deep learning systems.
-  
