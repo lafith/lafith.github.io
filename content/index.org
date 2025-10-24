@@ -2,7 +2,7 @@
 #+OPTIONS: toc:nil
 #+OPTIONS: title:nil
 
-Hi there! I work as a Senior AI Engineer with the [[https://igrs.hticlab.org/][Image-Guided Robotic Systems Group]] at [[https://www.hticiitm.org/][HTIC–IIT Madras]],  where I develop intelligent systems that bridge artificial intelligence, healthcare, and medical robotics. I build deep learning models from scratch, covering architecture design, training, and deployment across a range of real-world tasks.
+Hi there! I build deep learning models from scratch, covering architecture design, training, and deployment across a range of real-world tasks.
 \\
 
 #+BEGIN_CENTER

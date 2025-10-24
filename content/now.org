@@ -7,4 +7,3 @@
 #+HTML: <h2 style="text-align: center;">[snapshot of my life at this moment in time]</h2>
 
 - Incoming AI Engineer @ MBZUAI
-- Currently deepening expertise in language modeling by following [[https://stanford-cs336.github.io/spring2025/][CS336: Language Modeling from Scratch]].
