@@ -85,33 +85,49 @@ https://ogbe.net/blog/blogging_with_org.html"
   "Extract links from the specified HEADING in FILE, returning them as Org list items."
   (with-temp-buffer
     (insert-file-contents file)
-    (goto-char (point-min))
-    ;; Look for the specific heading (single star) and move to the next line
-    (when (re-search-forward (concat "^\\* " (regexp-quote heading)) nil t)
-      (forward-line 1)
-      (let ((start (point))
-            (end (progn
-                   ;; Look for the next top-level heading (single star)
-                   (if (re-search-forward "^\\* " nil t)
-                       (line-beginning-position)
-                     (point-max))))
-            (results ""))
-        (goto-char start)
-        ;; Iterate over the posts and extract date, file path, and title
-        (while (re-search-forward "^\\*\\* \\[\\([^]]+\\)\\] \\(\\[\\[file:\\([^]]+\\)\\]\\[\\([^]]+\\)\\]\\]\\)" end t)
+    (let ((case-fold-search t)
+          (results "")
+          (start nil)
+          (end nil))
+      (goto-char (point-min))
+      ;; Look for the specific heading (single star) and move to the next line.
+      (when (re-search-forward (concat "^\\* " (regexp-quote heading) "$") nil t)
+        (forward-line 1)
+        (setq start (point)
+              end (if (re-search-forward "^\\* " nil t)
+                      (line-beginning-position)
+                    (point-max))))
+      (goto-char (or start (point-min)))
+      ;; Iterate over the posts and extract date, file path, and title.
+      (while (re-search-forward "^\\*\\* \\[\\([^]]+\\)\\] \\(\\[\\[file:\\([^]]+\\)\\]\\[\\([^]]+\\)\\]\\]\\)" end t)
+        (let ((date (match-string 1))
+              (file-path (match-string 3))
+              (title (match-string 4)))
+          ;; Concatenate with Org-mode list item syntax.
+          (setq results (concat results
+                                "- "
+                                date
+                                ": [[file:"
+                                file-path
+                                "]["
+                                title
+                                "]]\n")))) ;; Single newline here to separate list items.
+      ;; Fallback: if heading exists but yielded nothing, scan the full file.
+      (when (and start (string= results ""))
+        (goto-char (point-min))
+        (while (re-search-forward "^\\*\\* \\[\\([^]]+\\)\\] \\(\\[\\[file:\\([^]]+\\)\\]\\[\\([^]]+\\)\\]\\]\\)" nil t)
           (let ((date (match-string 1))
                 (file-path (match-string 3))
                 (title (match-string 4)))
-            ;; Concatenate with Org-mode list item syntax
-            (setq results (concat results 
-                                  "- " 
-                                  date 
-                                  ": [[file:" 
-                                  file-path 
-                                  "][" 
-                                  title 
-                                  "]]\n")))) ;; Single newline here to separate list items
-        results))))
+            (setq results (concat results
+                                  "- "
+                                  date
+                                  ": [[file:"
+                                  file-path
+                                  "]["
+                                  title
+                                  "]]\n")))))
+      results)))
 (defun generate-posts-archive (input-file output-file heading)
   "Generate a posts archive in OUTPUT-FILE from INPUT-FILE under HEADING."
   (let ((content (extract-posts-as-list-items input-file heading)))
@@ -120,7 +136,7 @@ https://ogbe.net/blog/blogging_with_org.html"
       (insert "#+Author: Lafith Mattara\n")
       (insert "#+OPTIONS: toc:nil\n")
       (insert "#+OPTIONS: title:nil\n")
-      (insert content)
+      (insert (or content "")) ;; Allow empty archive when heading is missing.
       (write-file output-file))))
 
 ;;; Example usage
@@ -150,7 +166,7 @@ https://ogbe.net/blog/blogging_with_org.html"
              :html-doctype "html5"
              :html-html5-fancy t
              :htmlized-source t
-             :exclude ".*/posts/drafts/.*"  ; Exclude drafts directory from publishing
+             :exclude "^posts/drafts/"  ; Exclude drafts directory from publishing
              )
        (list "org-site:static"
              :base-directory "./content/"
@@ -158,7 +174,7 @@ https://ogbe.net/blog/blogging_with_org.html"
              :publishing-directory "./public"
              :recursive t
              :publishing-function 'org-publish-attachment
-             :exclude ".*/posts/drafts/.*"  ; Exclude drafts directory from publishing
+             :exclude "^posts/drafts/"  ; Exclude drafts directory from publishing
              )
        (list "org-site:assets"
              :base-directory "./assets/"

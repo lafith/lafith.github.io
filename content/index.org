@@ -2,17 +2,14 @@
 #+OPTIONS: toc:nil
 #+OPTIONS: title:nil
 
-Hi there! I build deep learning models from scratch, covering architecture design, training, and deployment across a range of real-world tasks.
+Well, hello there! Welcome to my site!
 \\
-
+\\
+I write here about stuff I find interesting. If you want to know what I'm currently doing visit the [[./now.org][now]] page.
+\\
+\\
 #+BEGIN_CENTER
-/ [[./media/lafith_resume.pdf][Resume]] / [[./media/lafith_cv.pdf][CV]] / [[http://github.com/lafith][Github]] / [[https://www.linkedin.com/in/lafith/][LinkedIn]] /
+[[http://github.com/lafith][/Github]]  [[https://www.linkedin.com/in/lafith/][/LinkedIn]]
 #+END_CENTER
-
-#+HTML: <div class="boxed-center">
-#+BEGIN_CENTER
-What I’m up to [[./now.org][now]].
-#+END_CENTER
-#+HTML: </div>
 
 [[./media/rain.gif]]
