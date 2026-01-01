@@ -137,6 +137,8 @@ https://ogbe.net/blog/blogging_with_org.html"
       (insert "#+OPTIONS: toc:nil\n")
       (insert "#+OPTIONS: title:nil\n")
       (insert (or content "")) ;; Allow empty archive when heading is missing.
+      (insert "\n#+ATTR_HTML: :class blog-footer-image\n")
+      (insert "[[file:media/birds.gif]]\n")
       (write-file output-file))))
 
 ;;; Example usage
