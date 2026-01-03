@@ -2,10 +2,10 @@
 #+OPTIONS: toc:nil
 #+OPTIONS: title:nil
 
-Well, hello there! Welcome to my site!
+Well, hello there! Welcome to my site.
 \\
 \\
-I write here about stuff I find interesting. If you want to know what I'm currently doing visit the [[./now.org][now]] page.
+This is where I write about things I find interesting. If you’re curious about what I’m up to right now, check out the [[./now.org][now]] page.
 \\
 \\
 #+BEGIN_CENTER

@@ -1,6 +1,6 @@
-* [Jan 02, 2026] [[file:blog.org][ Blog]]
-* [Jan 01, 2026] [[file:now.org][ Now]]
-* [Jan 01, 2026] [[file:index.org][ Lafith Mattara]]
+* [Jan 03, 2026] [[file:blog.org][ Blog]]
+* [Jan 03, 2026] [[file:now.org][ Now]]
+* [Jan 03, 2026] [[file:index.org][ Lafith Mattara]]
 * [Jan 01, 2026] [[file:projects.org][ Projects]]
 * posts
 ** [Oct 08, 2024] [[file:posts/20241008-robot-fetal-ultrasound-cusp.org][ AI-Powered Robotic Ultrasound: Transforming Prenatal Screening at CUSP Conference]]
