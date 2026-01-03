@@ -26,6 +26,14 @@ p {
     color: #bbbbbb;
 }
 
+strong, b {
+    color: #d0d0d0;
+}
+
+em, i {
+    color: #a7b4c2;
+}
+
 .title {
     text-align: left;
     margin: 0.8em auto;
@@ -173,5 +181,4 @@ pre.example {
   color: #eee; /* light text */
   font-size: 1.1em;
 }
-
 
