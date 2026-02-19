@@ -1,7 +1,7 @@
-* [Jan 03, 2026] [[file:blog.org][ Blog]]
-* [Jan 03, 2026] [[file:now.org][ Now]]
-* [Jan 03, 2026] [[file:index.org][ Lafith Mattara]]
-* [Jan 01, 2026] [[file:projects.org][ Projects]]
+* [Feb 19, 2026] [[file:blog.org][ Blog]]
+* [Feb 19, 2026] [[file:now.org][ Now]]
+* [Feb 19, 2026] [[file:projects.org][ Projects]]
+* [Feb 19, 2026] [[file:index.org][ Lafith Mattara]]
 * posts
 ** [Oct 08, 2024] [[file:posts/20241008-robot-fetal-ultrasound-cusp.org][ AI-Powered Robotic Ultrasound: Transforming Prenatal Screening at CUSP Conference]]
 ** [Mar 10, 2023] [[file:posts/20230310-auv-simulator-unity.org][ AUV-Simulator]]

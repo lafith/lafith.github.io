@@ -8,9 +8,8 @@
 
 Currently I am working at *MBZUAI*'s Research Office as an AI Engineer. I recently moved to Khalifa City, a calm and pleasant residential suburb near Masdar, and I really like it here.
 
-Outside of work, I have been reading  *A Short History of Humanity: How Migration Made Us Who We Are* by /Johannes Krause and Thomas Trappe/. It is a fascinating look at human history from an archaeogenetics perspective. I am planning to get back into my old habit of reading a lot in 2026. We will see how that goes.
-
-I also picked up a BambuLab P1S 3D printer recently. It has been a lot of fun printing small, silly but useful things for my apartment.
+* Reading
+- *A Short History of Humanity: How Migration Made Us Who We Are* by /Johannes Krause and Thomas Trappe/.
 
   [[./media/solarpunk.gif]]
 
