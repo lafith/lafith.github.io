@@ -6,9 +6,9 @@
 #+HTML: <h1 style="text-align: center;">Now</h1>
 #+HTML: <h2 style="text-align: center;">[01-01-26]</h2>
 
-Currently I am working at *MBZUAI*'s Agentic Robotics Lab as an AI Engineer in Abu Dhabi, UAE.
+I’m currently working as an /AI Engineer/ at MBZUAI’s *Agentic Robotics Lab* in Abu Dhabi, UAE.
 
-* Currently Reading
+* Reading
 - *A Short History of Humanity: How Migration Made Us Who We Are* by /Johannes Krause and Thomas Trappe/.
 - *The Dark Arts of Linear Algebra : An Intuitive Geometric Approach* by /Seth Braver./
 
