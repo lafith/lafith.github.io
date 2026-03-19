@@ -6,7 +6,7 @@
 #+HTML: <h1 style="text-align: center;">Now</h1>
 #+HTML: <h2 style="text-align: center;">[01-01-26]</h2>
 
-I’m currently working as an /AI Engineer/ at MBZUAI’s *Agentic Robotics Lab* in Abu Dhabi, UAE.
+I’m currently working as an /AI Engineer/ at MBZUAI’s *Agentic Robotics Lab* in Abu Dhabi, UAE. It’s the best place I’ve worked so far, giving me the opportunity to contribute to robotic projects across a wide range of domains. Beyond robotics, I also get to work across backend and frontend systems, while gradually deepening my focus on robotics in addition to AI. It has been a great playground for developing my skills as an engineer.
 
 * Reading
 - *A Short History of Humanity: How Migration Made Us Who We Are* by /Johannes Krause and Thomas Trappe/.
