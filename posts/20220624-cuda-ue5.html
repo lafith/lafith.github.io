@@ -32,17 +32,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgbbf08f5">Building Cuda scripts into a Static Library</a>
+<li><a href="#org2adf41e">Building Cuda scripts into a Static Library</a>
 <ul>
 <li>
 <ul>
-<li><a href="#orgc2b6752">test_cudaue.h</a></li>
-<li><a href="#org420d12c">test_cudaue.cu</a></li>
+<li><a href="#orgd01bef2">test_cudaue.h</a></li>
+<li><a href="#orgb578fc1">test_cudaue.cu</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orge69db1c">Linking with UE5 Project</a></li>
+<li><a href="#org8485e8b">Linking with UE5 Project</a></li>
 </ul>
 </div>
 </nav>
@@ -60,9 +60,9 @@ this is extremely useful if you are creating image/voxel analysis and visualizat
 Integration of Cuda invloves two phases, building Cuda code into a static library then linking them in UE5 project.
 </p>
 
-<div id="outline-container-orgbbf08f5" class="outline-2">
-<h2 id="orgbbf08f5">Building Cuda scripts into a Static Library</h2>
-<div class="outline-text-2" id="text-orgbbf08f5">
+<div id="outline-container-org2adf41e" class="outline-2">
+<h2 id="org2adf41e">Building Cuda scripts into a Static Library</h2>
+<div class="outline-text-2" id="text-org2adf41e">
 <ul class="org-ul">
 <li>Install Cuda toolkit in Windows from <a href="https://developer.nvidia.com/cuda-downloads">here</a>.</li>
 <li>Create a new project in Visual Studio with Cuda Runtime 11.7 (let say the name is <code>test_cudaue</code>).</li>
@@ -74,9 +74,9 @@ and <code>test_cudaue.h</code>. It has a basic function for testing the addition
 </ul>
 </div>
 
-<div id="outline-container-orgc2b6752" class="outline-4">
-<h4 id="orgc2b6752">test_cudaue.h</h4>
-<div class="outline-text-4" id="text-orgc2b6752">
+<div id="outline-container-orgd01bef2" class="outline-4">
+<h4 id="orgd01bef2">test_cudaue.h</h4>
+<div class="outline-text-4" id="text-orgd01bef2">
 <div class="org-src-container">
 <pre class="src src-C++">{`#pragma once
 
@@ -94,9 +94,9 @@ cudaError_t testCudaAddition(<span class="org-type">int</span>* <span class="org
 </div>
 </div>
 
-<div id="outline-container-org420d12c" class="outline-4">
-<h4 id="org420d12c">test_cudaue.cu</h4>
-<div class="outline-text-4" id="text-org420d12c">
+<div id="outline-container-orgb578fc1" class="outline-4">
+<h4 id="orgb578fc1">test_cudaue.cu</h4>
+<div class="outline-text-4" id="text-orgb578fc1">
 <div class="org-src-container">
 <pre class="src src-C++">{`#include <span class="org-string">"test_cudaue.h"</span>
 
@@ -205,9 +205,9 @@ __global__ <span class="org-type">void</span> <span class="org-variable-name">ad
 </div>
 </div>
 
-<div id="outline-container-orge69db1c" class="outline-2">
-<h2 id="orge69db1c">Linking with UE5 Project</h2>
-<div class="outline-text-2" id="text-orge69db1c">
+<div id="outline-container-org8485e8b" class="outline-2">
+<h2 id="org8485e8b">Linking with UE5 Project</h2>
+<div class="outline-text-2" id="text-org8485e8b">
 <ul class="org-ul">
 <li>Create <code>[UE5ProjectRoot]/ThirdParty/Cuda/include</code> &amp; <code>[UE5ProjectRoot]/ThirdParty/Cuda/lib</code>.</li>
 <li>Copy the header file (test_cudaue.h) from the cuda project in to this include folder.</li>
@@ -323,7 +323,7 @@ UCLASS()
 </ul>
 <div class="org-center">
 
-<figure id="orgc4467ed">
+<figure id="org2048f25">
 <img src="./figures/bpcuda.png" alt="bpcuda.png">
 
 <figcaption><span class="figure-number">Figure 1: </span>Blueprint Image</figcaption>
@@ -335,7 +335,7 @@ of the integration.</li>
 </ul>
 <div class="org-center">
 
-<figure id="orgf324fc3">
+<figure id="org805d0aa">
 <img src="./figures/cudaoutput.png" alt="cudaoutput.png">
 
 <figcaption><span class="figure-number">Figure 2: </span>Console Output</figcaption>
