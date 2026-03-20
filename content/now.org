@@ -6,14 +6,14 @@
 #+HTML: <h1 style="text-align: center;">Now</h1>
 #+HTML: <h2 style="text-align: center;">[01-01-26]</h2>
 
-I’m currently working as an /AI Engineer/ at MBZUAI’s *Agentic Robotics Lab* in Abu Dhabi, UAE. It’s the best place I’ve worked so far, giving me the opportunity to contribute to robotic projects across a wide range of domains. Beyond robotics, I also get to work across backend and frontend systems, while gradually deepening my focus on robotics in addition to AI. It has been a great playground for developing my skills as an engineer.
+I’m currently working as an /AI Engineer/ at MBZUAI’s *Agentic Robotics Lab* in Abu Dhabi, UAE. It’s the most exciting place I’ve worked so far, and I get to contribute to robotic projects across a pretty wide range of domains.
 
-* Reading
-- *A Short History of Humanity: How Migration Made Us Who We Are* by /Johannes Krause and Thomas Trappe/.
-- *The Dark Arts of Linear Algebra : An Intuitive Geometric Approach* by /Seth Braver./
 
-* Outside of Work
-In my free time, I’m building a small 3-DOF manipulator robot at home and playing ARC Raiders on my Steam Deck.
+At the moment, I’m reading:
+- /A Short History of Humanity: How Migration Made Us Who We Are/ by Johannes Krause and Thomas Trappe
+- /The Dark Arts of Linear Algebra: An Intuitive Geometric Approach/ by Seth Braver
+
+Outside work, I’m building a small 3-DOF manipulator robot at home and spending some downtime playing ARC Raiders on my Steam Deck.
 
 
   [[./media/solarpunk.gif]]
