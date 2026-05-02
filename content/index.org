@@ -2,14 +2,17 @@
 #+OPTIONS: toc:nil
 #+OPTIONS: title:nil
 
-Well, hello there! Welcome to my site.
-\\
-\\
-This is where I write about things I find interesting. If you’re curious about what I’m up to right now, check out the [[./now.org][now]] page.
-\\
-\\
-#+BEGIN_CENTER
-[[http://github.com/lafith][/Github]]  [[https://www.linkedin.com/in/lafith/][/LinkedIn]]
-#+END_CENTER
+#+HTML: <section class="home-hero">
+#+HTML: <p class="eyebrow">AI engineer / robotics / medical imaging</p>
+#+HTML: <h1>Real-time AI systems for robotics, imaging, and simulation.</h1>
+#+HTML: <p class="lede">I build applied AI, visualization, and image-processing systems for robotic and medical workflows.</p>
+#+HTML: <div class="home-links"><a href="./projects.html">Projects</a><a href="./blog.html">Blog</a><a href="./now.html">Now</a><a href="./media/lafith_resume.pdf">Resume</a><a href="https://github.com/lafith">GitHub</a></div>
+#+HTML: </section>
+
+#+HTML: <section class="home-grid">
+#+HTML: <a href="./projects.html"><span>Projects</span><p>Robotic ultrasound, VR endoscopy, computational pathology, CT enhancement, and AUV simulation.</p></a>
+#+HTML: <a href="./blog.html"><span>Blog</span><p>Technical notes on Unreal Engine, OpenCV, CUDA, simulation, and imaging workflows.</p></a>
+#+HTML: <a href="./now.html"><span>Now</span><p>Current work, reading, and side projects.</p></a>
+#+HTML: </section>
 
 [[./media/rain.gif]]
