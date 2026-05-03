@@ -80,6 +80,7 @@ body {
 .home-hero .eyebrow {
   min-height: 210px;
   padding: 18px;
+  color: #111111;
   background: var(--yellow);
   border-right: 5px solid var(--ink);
   border-bottom: 5px solid var(--ink);
