@@ -2,14 +2,17 @@
 #+OPTIONS: toc:nil
 #+OPTIONS: title:nil
 
-Well, hello there! Welcome to my site.
-\\
-\\
-This is where I write about things I find interesting. If you’re curious about what I’m up to right now, check out the [[./now.org][now]] page.
-\\
-\\
-#+BEGIN_CENTER
-[[http://github.com/lafith][/Github]]  [[https://www.linkedin.com/in/lafith/][/LinkedIn]]
-#+END_CENTER
+#+HTML: <section class="home-hero">
+#+HTML: <p class="eyebrow">Personal site</p>
+#+HTML: <h1>Hi, I'm Lafith Mattara.</h1>
+#+HTML: <p class="lede">I am an AI engineer based in Abu Dhabi. This is my personal website for projects, technical notes, and the things I am currently exploring.</p>
+#+HTML: <div class="home-links"><a href="./projects.html">Projects</a><a href="./blog.html">Blog</a><a href="./now.html">Now</a><a href="./media/lafith_resume.pdf">Resume</a><a href="https://github.com/lafith">GitHub</a></div>
+#+HTML: </section>
+
+#+HTML: <section class="home-grid">
+#+HTML: <a href="./projects.html"><span>Projects</span><p>Selected work across robotics, medical imaging, simulation, visualization, and software tools.</p></a>
+#+HTML: <a href="./blog.html"><span>Blog</span><p>Notes, tutorials, and writeups from technical work I want to keep around.</p></a>
+#+HTML: <a href="./now.html"><span>Now</span><p>What I am working on, reading, building, and thinking about lately.</p></a>
+#+HTML: </section>
 
 [[./media/rain.gif]]
