@@ -5,25 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Use OpenCV in Unreal Engine</title>
 <meta name="generator" content="Org Mode" />
-<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-<link rel="stylesheet" type="text/css" href="/orgstyle.css"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+<link rel="stylesheet" type="text/css" href="/orgstyle.css"/>
 <!-- <link rel="icon" href="spock-favicon.png" type="image/png"> -->
 </head>
 <body>
 <div id="preamble" class="status">
-<!-- <hr style="border-top: 1px solid black;"> -->
-<div class='topnav' style='display: flex; justify-content: space-between; align-items: center;'>
-  <a href="/index.html"><h2 style='margin-top: 0; margin-bottom: 0; margin-left:0px;'>Lafith Mattara</h2></a>
-  <div class='topnav2' style='color:#cfcaca;'>
-   <a href='/now.html' style='font-weight:bold; font-style:bold;'>/now</a>  
-   <a href='/blog.html' style='font-weight:bold; font-style:bold;'>/blog</a> 
-   <a href='/projects.html' style='font-weight:bold; font-style:bold;'>/projects</a>  
+<nav class="topnav" aria-label="Primary navigation">
+  <a class="site-title" href="/index.html">Lafith Mattara</a>
+  <div class="nav-links">
+    <a href="/now.html">/now</a>
+    <a href="/blog.html">/blog</a>
+    <a href="/projects.html">/projects</a>
   </div>
-</div>
-<hr style="border-top: 1px solid black;">
+</nav>
 </div>
 <div id="content" class="content">
 <header>
@@ -32,8 +30,8 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1cbb3bf">UE5</a></li>
-<li><a href="#org533f0af">UE4</a></li>
+<li><a href="#org9871c76">UE5</a></li>
+<li><a href="#org9ec34d4">UE4</a></li>
 </ul>
 </div>
 </nav>
@@ -43,9 +41,9 @@ is an extremely powerful game engine. By using OpenCV in Unreal engine one can c
 Integration of OpenCV is different between UE4 and UE5 as UE5 released a standalone plugin for OpenCV in beta.
 </p>
 
-<div id="outline-container-org1cbb3bf" class="outline-2">
-<h2 id="org1cbb3bf">UE5</h2>
-<div class="outline-text-2" id="text-org1cbb3bf">
+<div id="outline-container-org9871c76" class="outline-2">
+<h2 id="org9871c76">UE5</h2>
+<div class="outline-text-2" id="text-org9871c76">
 <p>
 After installing Unreal Engine 5 create a new C++ project. Open the project in the editor then go to <code>Edit-&gt;Plugins</code>.
 Search for OpenCV and install it, you may have to restart the engine after that.
@@ -175,9 +173,9 @@ dimensions of the cv::Mat object.
 </div>
 </div>
 
-<div id="outline-container-org533f0af" class="outline-2">
-<h2 id="org533f0af">UE4</h2>
-<div class="outline-text-2" id="text-org533f0af">
+<div id="outline-container-org9ec34d4" class="outline-2">
+<h2 id="org9ec34d4">UE4</h2>
+<div class="outline-text-2" id="text-org9ec34d4">
 <p>
 Incase of UE4 you need to manually include the binaries from OpenCV installation source in to your UE4 project.
 </p>

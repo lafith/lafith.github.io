@@ -5,41 +5,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>AUV-Simulator</title>
 <meta name="generator" content="Org Mode" />
-<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-<link rel="stylesheet" type="text/css" href="/orgstyle.css"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+<link rel="stylesheet" type="text/css" href="/orgstyle.css"/>
 <!-- <link rel="icon" href="spock-favicon.png" type="image/png"> -->
 </head>
 <body>
 <div id="preamble" class="status">
-<!-- <hr style="border-top: 1px solid black;"> -->
-<div class='topnav' style='display: flex; justify-content: space-between; align-items: center;'>
-  <a href="/index.html"><h2 style='margin-top: 0; margin-bottom: 0; margin-left:0px;'>Lafith Mattara</h2></a>
-  <div class='topnav2' style='color:#cfcaca;'>
-   <a href='/now.html' style='font-weight:bold; font-style:bold;'>/now</a>  
-   <a href='/blog.html' style='font-weight:bold; font-style:bold;'>/blog</a> 
-   <a href='/projects.html' style='font-weight:bold; font-style:bold;'>/projects</a>  
+<nav class="topnav" aria-label="Primary navigation">
+  <a class="site-title" href="/index.html">Lafith Mattara</a>
+  <div class="nav-links">
+    <a href="/now.html">/now</a>
+    <a href="/blog.html">/blog</a>
+    <a href="/projects.html">/projects</a>
   </div>
-</div>
-<hr style="border-top: 1px solid black;">
+</nav>
 </div>
 <div id="content" class="content">
 <header>
 <h1 class="title">AUV-Simulator</h1>
 </header><div class="org-center">
 
-<figure id="orge21d839">
+<figure id="orgc27a2ab">
 <img src="./figures/auvdemo.gif" alt="auvdemo.gif">
 
 <figcaption><span class="figure-number">Figure 1: </span>AUV Simulator</figcaption>
 </figure>
 </div>
 
-<div id="outline-container-orga87a22d" class="outline-2">
-<h2 id="orga87a22d">Overview</h2>
-<div class="outline-text-2" id="text-orga87a22d">
+<div id="outline-container-orgbab25b8" class="outline-2">
+<h2 id="orgbab25b8">Overview</h2>
+<div class="outline-text-2" id="text-orgbab25b8">
 <p>
 A simulator recreates a real-world system virtually such that one can test the system rigorously.
 In the case of robotics a simulator can be very useful for the software development team for testing and optimizing their code
@@ -66,9 +64,9 @@ contains  the arenas for <a href="https://sauvc.org/">SAUVC</a>-2020 and <a href
 </div>
 </div>
 
-<div id="outline-container-org3d0eb13" class="outline-2">
-<h2 id="org3d0eb13">What is simulated</h2>
-<div class="outline-text-2" id="text-org3d0eb13">
+<div id="outline-container-orge29ed9c" class="outline-2">
+<h2 id="orge29ed9c">What is simulated</h2>
+<div class="outline-text-2" id="text-orge29ed9c">
 <p>
 A noisy underwater environment using the fog system of Unity as well as the underwater caustics. Following the design of Tiburon's AUV the model
 has two cameras (front &amp; bottom). Now lets discuss about the important data transfer implemented.
