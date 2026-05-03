@@ -224,7 +224,91 @@ pre.src, pre.example {
 }
 
 @media (max-width: 760px) {
-  body { width: min(100% - 24px, 980px); }
-  .topnav, .home-hero, .home-grid { display: block; }
-  .nav-links a, .home-links a { border-left: 0; border-top: 5px solid var(--ink); }
+  body {
+    width: min(100% - 24px, 980px);
+    padding: 24px 0 56px;
+  }
+
+  .topnav {
+    display: block;
+    margin-bottom: 22px;
+  }
+
+  .site-title {
+    display: block;
+    width: max-content;
+    max-width: calc(100% - 32px);
+    padding: 10px 14px;
+  }
+
+  .nav-links {
+    border-top: 5px solid var(--ink);
+  }
+
+  .nav-links a {
+    padding: 12px 14px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 5px solid var(--ink);
+  }
+
+  .nav-links a:last-child {
+    border-right: 0;
+  }
+
+  .home-hero {
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  .home-hero .eyebrow {
+    min-height: 0;
+    padding: 12px 16px;
+    border-right: 0;
+  }
+
+  .home-hero h1 {
+    padding: 20px 16px 18px;
+    font-size: clamp(3rem, 17vw, 4.6rem);
+    line-height: 0.84;
+  }
+
+  .lede {
+    padding: 16px;
+    border-top: 5px solid var(--ink);
+    border-right: 0;
+  }
+
+  .home-links a {
+    flex: 0 0 auto;
+    padding: 12px 14px;
+    border-left: 0;
+    border-top: 5px solid var(--ink);
+    border-right: 5px solid var(--ink);
+  }
+
+  .home-links a:nth-child(3n),
+  .home-links a:last-child {
+    border-right: 0;
+  }
+
+  .home-grid {
+    display: block;
+    margin: 24px 0 40px;
+  }
+
+  .home-grid a {
+    min-height: 0;
+    padding: 18px;
+  }
+
+  .home-grid span {
+    font-size: 1.55rem;
+  }
+
+  .page-intro,
+  .outline-2 {
+    padding: 16px;
+    box-shadow: 8px 8px 0 var(--blue);
+  }
 }
