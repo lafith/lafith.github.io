@@ -1,14 +1,14 @@
 @charset "UTF-8";
 
 :root {
-  --bg: #f7f3e8;
-  --paper: #fffdf4;
-  --ink: #111111;
-  --muted: #4d4d4d;
-  --red: #d6291c;
-  --blue: #2354a6;
-  --yellow: #f1c52b;
-  --code: #eee8d9;
+  --bg: #070707;
+  --paper: #121212;
+  --ink: #f4f0e7;
+  --muted: #c9c0ad;
+  --red: #ff3428;
+  --blue: #3f7cff;
+  --yellow: #ffd633;
+  --code: #050505;
 }
 
 html {
@@ -33,6 +33,7 @@ body {
   grid-template-columns: 1fr auto;
   border: 5px solid var(--ink);
   background: var(--paper);
+  box-shadow: 0 0 0 1px #000;
   margin-bottom: 44px;
 }
 
@@ -134,6 +135,15 @@ body {
   color: white;
 }
 
+.home-grid a:nth-child(3) {
+  background: var(--yellow);
+}
+
+.home-grid a:nth-child(3) p,
+.home-grid a:nth-child(3) span {
+  color: #111111;
+}
+
 .home-grid a:nth-child(2) p,
 .home-grid a:nth-child(2) span {
   color: white;
@@ -166,7 +176,7 @@ p, li, strong, b, h1, h2, h3, h4 { color: var(--ink); }
 h1, h2, h3, h4 { line-height: 1.08; }
 
 a {
-  color: var(--blue);
+  color: var(--yellow);
   text-decoration: none;
 }
 
@@ -184,12 +194,14 @@ img {
 }
 
 code, li code, p code {
+  color: var(--ink);
   background: var(--code);
   border: 2px solid var(--ink);
   padding: 0.08em 0.25em;
 }
 
 pre.src, pre.example {
+  color: var(--ink);
   width: auto;
   padding: 16px;
   overflow-x: auto;
