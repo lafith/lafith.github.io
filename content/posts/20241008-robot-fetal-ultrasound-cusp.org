@@ -2,6 +2,10 @@
 #+DATE: <2024-10-08>
 #+OPTIONS: ^:nil
 
+#+BEGIN_PREVIEW
+Notes from showcasing an AI-assisted antenatal ultrasound robotics system to clinicians at CUSP.
+#+END_PREVIEW
+
 Attending the *XVIII Clinical Ultrasonography in Practice* (CUSP) conference was a remarkable experience, providing an opportunity to showcase our AI-driven autonomous antenatal ultrasound robotic system. We were excited to present our advancements in integrating deep learning for real-time fetal standard plane detection and segmentation. The system had both standalone AI assistance mode and a robotic assistance mode leveraging the same AI backbone. Prenatal screening is a critical aspect of maternal healthcare, yet traditional ultrasound examinations require skilled sonographers and can be time-consuming. Our AI-powered robotic system aims to bridge this gap by automating key ultrasound tasks, ensuring accuracy, efficiency, and accessibility.
 
 The CUSP conference provided an ideal platform to engage with leading clinicians and researchers in the field of ultrasonography. Our presentation generated significant interest, with many attendees recognizing the potential of our system to enable large-scale automated prenatal screening. Discussions centered on the practical implications of AI-assisted sonography in reducing the workload of healthcare professionals and expanding access to quality prenatal care in underserved regions.
@@ -16,4 +20,3 @@ The deep learning architecture is capable of detecting 20+2 standard planes with
 #+begin_center
 [[./figures/cusp_ai_assistance.gif]]
 #+end_center
-

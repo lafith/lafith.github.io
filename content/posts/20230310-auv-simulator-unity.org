@@ -3,6 +3,10 @@
 #+OPTIONS: ^:nil
 #+OPTIONS: toc:nil
 
+#+BEGIN_PREVIEW
+A Unity and ROS simulator for testing autonomous underwater vehicle software in virtual competition environments.
+#+END_PREVIEW
+
 #+begin_center
 #+CAPTION: AUV Simulator 
 [[./figures/auvdemo.gif]]

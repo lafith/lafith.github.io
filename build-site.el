@@ -20,6 +20,7 @@
 ;; (require 'ox-rss)
 ;; (require 'webfeeder)
 (require 'esxml)
+(require 'subr-x)
 
 ;;; Sitemap preprocessing
 ;;;; Get Preview
@@ -102,7 +103,8 @@ https://ogbe.net/blog/blogging_with_org.html"
       (while (re-search-forward "^\\*\\* \\[\\([^]]+\\)\\] \\(\\[\\[file:\\([^]]+\\)\\]\\[\\([^]]+\\)\\]\\]\\)" end t)
         (let ((date (match-string 1))
               (file-path (match-string 3))
-              (title (match-string 4)))
+              (title (match-string 4))
+              (preview (my/get-preview (concat "content/" (match-string 3)))))
           ;; Concatenate with Org-mode list item syntax.
           (setq results (concat results
                                 "- "
@@ -111,14 +113,21 @@ https://ogbe.net/blog/blogging_with_org.html"
                                 file-path
                                 "]["
                                 title
-                                "]]\n")))) ;; Single newline here to separate list items.
+                                "]]\n"
+                                (if preview
+                                    (concat "  "
+                                            (string-trim
+                                             (replace-regexp-in-string "[\n\r]+" " " preview))
+                                            "\n\n")
+                                  "")))))
       ;; Fallback: if heading exists but yielded nothing, scan the full file.
       (when (and start (string= results ""))
         (goto-char (point-min))
         (while (re-search-forward "^\\*\\* \\[\\([^]]+\\)\\] \\(\\[\\[file:\\([^]]+\\)\\]\\[\\([^]]+\\)\\]\\]\\)" nil t)
           (let ((date (match-string 1))
                 (file-path (match-string 3))
-                (title (match-string 4)))
+                (title (match-string 4))
+                (preview (my/get-preview (concat "content/" (match-string 3)))))
             (setq results (concat results
                                   "- "
                                   date
@@ -126,7 +135,13 @@ https://ogbe.net/blog/blogging_with_org.html"
                                   file-path
                                   "]["
                                   title
-                                  "]]\n")))))
+                                  "]]\n"
+                                  (if preview
+                                      (concat "  "
+                                              (string-trim
+                                               (replace-regexp-in-string "[\n\r]+" " " preview))
+                                              "\n\n")
+                                    ""))))))
       results)))
 (defun generate-posts-archive (input-file output-file heading)
   "Generate a posts archive in OUTPUT-FILE from INPUT-FILE under HEADING."
@@ -139,7 +154,8 @@ https://ogbe.net/blog/blogging_with_org.html"
       (insert (or content "")) ;; Allow empty archive when heading is missing.
       (insert "\n#+ATTR_HTML: :class blog-footer-image\n")
       (insert "[[file:media/birds.gif]]\n")
-      (write-file output-file))))
+      (let ((make-backup-files nil))
+        (write-region (point-min) (point-max) output-file nil 'silent)))))
 
 ;;; Example usage
 (generate-posts-archive "content/sitemap.org" "content/blog.org" "posts")

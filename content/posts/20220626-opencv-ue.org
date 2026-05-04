@@ -2,6 +2,10 @@
 #+DATE: <2022-06-26>
 #+OPTIONS: ^:nil
 
+#+BEGIN_PREVIEW
+A practical integration note for using OpenCV inside Unreal Engine projects.
+#+END_PREVIEW
+
 OpenCV is widely used to read, process, analyse and modify images and videos, while Unreal engine
 is an extremely powerful game engine. By using OpenCV in Unreal engine one can create interesting applications.
 Integration of OpenCV is different between UE4 and UE5 as UE5 released a standalone plugin for OpenCV in beta.
@@ -219,6 +223,5 @@ would be different in the .h file.
 #include "Misc/Paths.h"
 #include "TestActor.generated.h"
 #+end_src
-
 
 

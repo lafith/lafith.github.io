@@ -2,6 +2,10 @@
 #+DATE: <2022-06-24>
 #+OPTIONS: ^:nil
 
+#+BEGIN_PREVIEW
+A practical walkthrough for linking CUDA code into an Unreal Engine 5 project.
+#+END_PREVIEW
+
 CUDA stands for Compute Unified Device Architecture,  a parallel computing platform and an API (Application Programming Interface) model developed by Nvidia.
 Using Cuda programming language we can implement applications involving heavy computations in GPU, making use of it's parallelism.
 
