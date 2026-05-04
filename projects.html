@@ -24,112 +24,136 @@
 </nav>
 </div>
 <div id="content" class="content">
-<nav id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org9181ba3">Real-Time Self-Prompting Adaptation of a Foundation Model for Fetal Ultrasound</a></li>
-<li><a href="#org5f0f158">Deep Learning-Based Analysis of Breast Cancer Whole Slide Images</a></li>
-<li><a href="#orge0bcee8">Stereo-Endoscope VR System for Real-Time Medical Visualization</a></li>
-<li><a href="#org83a0c69">Contrast Enhancement of Industrial CT Scans Using Multi-Scale Image Processing</a></li>
-<li><a href="#org7b6feaa">Autonomous Underwater Vehicle Simulator</a></li>
-</ul>
-</div>
-</nav>
 <section class="page-intro">
-<p>Selected projects across applied AI, robotics, medical imaging, simulation, and visualization.</p>
+<p>Selected work across healthcare robotics, medical imaging, simulation, visualization, and applied AI systems. I care most about projects where models, sensors, interfaces, and deployment constraints have to meet.</p>
 </section>
 
-<div id="outline-container-org9181ba3" class="outline-2">
-<h2 id="org9181ba3">Real-Time Self-Prompting Adaptation of a Foundation Model for Fetal Ultrasound</h2>
-<div class="outline-text-2" id="text-org9181ba3">
-<p class="project-meta">Medical AI / robotics / real-time segmentation</p>
+<div id="outline-container-fetal-ultrasound-robotics" class="outline-2">
+<h2 id="fetal-ultrasound-robotics">Autonomous Antenatal Ultrasound Robotics</h2>
+<div class="outline-text-2" id="text-fetal-ultrasound-robotics">
+<p class="project-meta">Healthcare robotics / medical AI / real-time perception</p>
+
 <p>
-Adapted the Segment Anything (SAM) foundation model to be self-prompting for fetal ultrasound, achieving clinical-grade precision with real-time inference. Deployed in a robotic prototype, the system reduced manual scanning time by over 85%, enabling high-throughput prenatal screening and drawing strong interest from clinicians at the XVIII Clinical Ultrasonography in Practice (CUSP) conference.
+An AI-driven ultrasound robotics project for automated prenatal screening. The system used real-time fetal standard-plane detection, segmentation, and biometry estimation to reduce the amount of manual scanning needed during an antenatal ultrasound workflow.
 </p>
 
+<ul class="org-ul">
+<li><b>Role:</b> Led a 3-member AI/computer-vision effort as the principal model developer, coordinating with an interdisciplinary team across data, model training, integration, and deployment.</li>
+<li><b>Stack:</b> Python, C++, PyTorch, deep learning, Segment Anything, real-time inference, robotic ultrasound prototype.</li>
+<li><b>Result:</b> Adapted SAM into a self-prompting fetal ultrasound model, reaching 96% specificity and 12 ms inference per image. Deployed in a robotic prototype that reduced manual scanning from 30-45 minutes to about 4 minutes, an 85%+ efficiency improvement.</li>
+<li><b>Evidence:</b> Showcased at the XVIII Clinical Ultrasonography in Practice (CUSP) conference, where clinicians showed strong interest in its potential for large-scale prenatal screening.</li>
+</ul>
 
-<figure id="orge0c1126">
+
+<figure id="org3ed5ef6">
 <img src="./posts/figures/cusp_ai_assistance.gif" alt="cusp_ai_assistance.gif">
 
 </figure>
 
 
-<figure id="orge2c0c3b">
+<figure id="orgeb9a6ef">
 <img src="./posts/figures/cusp_robot.jpg" alt="cusp_robot.jpg" width="600px">
 
 </figure>
 </div>
 </div>
 
-<div id="outline-container-org5f0f158" class="outline-2">
-<h2 id="org5f0f158">Deep Learning-Based Analysis of Breast Cancer Whole Slide Images</h2>
-<div class="outline-text-2" id="text-org5f0f158">
+<div id="outline-container-breast-cancer-wsi" class="outline-2">
+<h2 id="breast-cancer-wsi">Breast Cancer Whole-Slide Image Analysis</h2>
+<div class="outline-text-2" id="text-breast-cancer-wsi">
 <p class="project-meta">Digital pathology / deep learning / graph analysis</p>
+
 <p>
-Developed convolutional and graph neural networks to analyze breast cancer whole slide images, enabling automated patch-level annotation and interpretation. Investigated associations between neighborhood deprivation, the tumor microenvironment, and racial disparities. Findings were presented at two research symposia.
+Deep learning research on breast cancer whole-slide images, focused on automated image interpretation and analysis of tumor microenvironment patterns.
 </p>
 
+<ul class="org-ul">
+<li><b>Role:</b> Developed convolutional and graph neural network workflows for WSI analysis, coordinated collaboration between research labs, and mentored students working on whole-slide image analysis.</li>
+<li><b>Stack:</b> Python, PyTorch, convolutional neural networks, graph neural networks, digital pathology, whole-slide image pipelines.</li>
+<li><b>Result:</b> Built a multi-stage patch-level annotation model reaching F1 0.95 across 24 classes. Investigated associations between neighborhood deprivation, tumor microenvironment, and race.</li>
+<li><b>Evidence:</b> Presented preliminary findings at ATTIS 2023 and other research symposium settings.</li>
+</ul>
 
-<figure id="orgf30c276">
+
+<figure id="orgd6ca82d">
 <img src="./media/uab.png" alt="uab.png">
 
 </figure>
 </div>
 </div>
 
-<div id="outline-container-orge0bcee8" class="outline-2">
-<h2 id="orge0bcee8">Stereo-Endoscope VR System for Real-Time Medical Visualization</h2>
-<div class="outline-text-2" id="text-orge0bcee8">
-<p class="project-meta">VR / medical imaging / real-time rendering</p>
+<div id="outline-container-stereo-endoscope-vr" class="outline-2">
+<h2 id="stereo-endoscope-vr">Stereo-Endoscope VR Visualization</h2>
+<div class="outline-text-2" id="text-stereo-endoscope-vr">
+<p class="project-meta">Medical visualization / VR / real-time rendering</p>
+
 <p>
-Designed and built a complete VR application for real-time visualization of stereo-endoscope video streams, integrating video capture, image processing, and 3D rendering. The system was showcased at MEDICA 2024, highlighting its innovation in medical imaging and interactive visualization.
+A real-time VR visualization system for stereo-endoscope video streams, built to make medical imaging more immersive and interactive.
 </p>
 
+<ul class="org-ul">
+<li><b>Role:</b> Designed and developed the application from start to completion, covering video capture, image processing, post-processing, and 3D rendering.</li>
+<li><b>Stack:</b> C++, Microsoft Media Foundation API, OpenCV, CUDA, real-time video processing, VR rendering.</li>
+<li><b>Result:</b> Delivered a functional end-to-end system before transitioning from the company, enabling the team to later showcase it at MEDICA 2024 after competitive selection.</li>
+<li><b>Evidence:</b> Demonstrated as a medical imaging and real-time visualization system at MEDICA 2024.</li>
+</ul>
 
-<figure id="orgb26adf0">
+
+<figure id="org4c5678c">
 <img src="./media/endovr.png" alt="endovr.png">
 
 </figure>
 </div>
 </div>
 
-<div id="outline-container-org83a0c69" class="outline-2">
-<h2 id="org83a0c69">Contrast Enhancement of Industrial CT Scans Using Multi-Scale Image Processing</h2>
-<div class="outline-text-2" id="text-org83a0c69">
-<p class="project-meta">Image processing / industrial CT / visualization</p>
+<div id="outline-container-industrial-ct-contrast" class="outline-2">
+<h2 id="industrial-ct-contrast">Industrial CT Contrast Enhancement</h2>
+<div class="outline-text-2" id="text-industrial-ct-contrast">
+<p class="project-meta">Image processing / industrial CT / nondestructive testing</p>
+
 <p>
-Enhanced contrast in industrial CT scans using multi-scale image processing techniques. This revealed subtle internal structures, improving clarity for inspection and analysis.
+An image-processing project for improving contrast in industrial CT scans, making subtle internal structures easier to inspect and analyze.
 </p>
 
+<ul class="org-ul">
+<li><b>Role:</b> Implemented multi-scale contrast enhancement methods for industrial CT imagery and worked with application constraints from nondestructive testing.</li>
+<li><b>Stack:</b> Python, image processing, MUSICA, industrial CT, visualization.</li>
+<li><b>Result:</b> Improved visibility of internal structures and sharpened subtle material variations for inspection workflows.</li>
+<li><b>Evidence:</b> Collaborated with Visiconsult, Germany, to align the enhancements with industrial nondestructive testing needs.</li>
+</ul>
 
-<figure id="org04698e3">
+
+<figure id="orgdeaaefd">
 <img src="./media/contrast.png" alt="contrast.png">
 
 </figure>
 </div>
 </div>
 
-<div id="outline-container-org7b6feaa" class="outline-2">
-<h2 id="org7b6feaa">Autonomous Underwater Vehicle Simulator</h2>
-<div class="outline-text-2" id="text-org7b6feaa">
-<p class="project-meta">Unity / ROS / robotics simulation</p>
-<p>
-A 3D underwater simulation environment built in Unity to model the dynamics and control of an Autonomous Underwater Vehicle (AUV). It enables realistic testing of navigation and control algorithms in a virtual underwater setting with support for simulated sensors. Designed for rapid prototyping and validation of AUV software stacks.
-</p>
+<div id="outline-container-auv-simulator" class="outline-2">
+<h2 id="auv-simulator">Autonomous Underwater Vehicle Simulator</h2>
+<div class="outline-text-2" id="text-auv-simulator">
+<p class="project-meta">Robotics simulation / Unity / ROS</p>
 
 <p>
-<b>Github Repo</b> : <a href="https://github.com/lafith/AUV-Simulator-Unity">AUV-Simulator-Unity</a>
+A 3D underwater simulation environment for testing Autonomous Underwater Vehicle software before real-world deployment.
 </p>
 
+<ul class="org-ul">
+<li><b>Role:</b> Led simulator development for the Tiburon AUV team, building the simulation environment and software interfaces needed for rapid robotics prototyping.</li>
+<li><b>Stack:</b> Unity, ROS, Blender, robotics simulation, sensor simulation, control testing.</li>
+<li><b>Result:</b> Built a virtual underwater environment with simulated cameras, vehicle dynamics, sensor data, and ROS communication for testing navigation and control algorithms.</li>
+<li><b>Link:</b> <a href="https://github.com/lafith/AUV-Simulator-Unity">AUV-Simulator-Unity</a></li>
+</ul>
 
-<figure id="org3c45d75">
+
+<figure id="orgfc8cc65">
 <img src="./media/auv2.gif" alt="auv2.gif">
 
 </figure>
 
 
-<figure id="org096560c">
+<figure id="org49f013c">
 <img src="./media/auv1.gif" alt="auv1.gif">
 
 </figure>
