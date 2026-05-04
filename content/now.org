@@ -4,17 +4,29 @@
 #+OPTIONS: title:nil
 
 #+HTML: <h1 style="text-align: center;">Now</h1>
-#+HTML: <h2 style="text-align: center;">[01-01-26]</h2>
+#+HTML: <h2 style="text-align: center;">Updated May 2026</h2>
 
-I’m currently working as an /AI Engineer/ at MBZUAI’s *Agentic Robotics Lab* in Abu Dhabi, UAE. It’s the most exciting place I’ve worked so far, and I get to contribute to robotic projects across a pretty wide range of domains.
+I’m currently based in Abu Dhabi, working as an /AI Engineer/ at MBZUAI’s *Agentic Robotics Lab*. Most of my work sits around robotics, applied AI, and research systems that need to become reliable tools.
 
+It has been one of the most interesting environments I’ve worked in so far: research-heavy, engineering-heavy, and close enough to hardware that small details matter.
+
+* Work
+
+I’m spending most of my time on robotics engineering work that sits between research and real-world use. The day-to-day work is a mix of software integration, perception, system reliability, testing, and making complex robot systems easier to understand and operate.
+
+I’m also working on language-model interpretability, mostly around understanding how model behavior emerges across intermediate layers. That gives me a second thread alongside robotics: one closer to model internals, representation analysis, and reasoning about what a model appears to know before its final output.
+
+Across both threads, I’m interested in making complex systems less opaque, less fragile, and easier to work with.
+
+* Reading
 
 At the moment, I’m reading:
-- /A Short History of Humanity: How Migration Made Us Who We Are/ by Johannes Krause and Thomas Trappe
-- /The Dark Arts of Linear Algebra: An Intuitive Geometric Approach/ by Seth Braver
 
-Outside work, I’m building a small 3-DOF manipulator robot at home and spending some downtime playing ARC Raiders on my Steam Deck.
+- /Replaceable You/ by Mary Roach
 
+* Outside Work
+
+For downtime, I’ve been exploring Abu Dhabi, reading, and playing Apex Legends.
 
   [[./media/solarpunk.gif]]
 
