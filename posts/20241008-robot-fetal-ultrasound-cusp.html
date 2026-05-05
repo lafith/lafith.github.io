@@ -8,8 +8,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:,">
+<script>
+  (function () {
+    try {
+      document.documentElement.dataset.theme = localStorage.getItem("theme") || "dark";
+    } catch (_) {
+      document.documentElement.dataset.theme = "dark";
+    }
+  })();
+</script>
 <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 <link rel="stylesheet" type="text/css" href="/orgstyle.css"/>
+<script defer src="/theme.js"></script>
 <!-- <link rel="icon" href="spock-favicon.png" type="image/png"> -->
 </head>
 <body>
@@ -21,12 +32,13 @@
     <a href="/blog.html">/blog</a>
     <a href="/projects.html">/projects</a>
   </div>
+  <button class="theme-toggle" type="button" aria-label="Theme is dark. Switch to light theme" aria-pressed="false">Theme: Dark</button>
 </nav>
 </div>
 <div id="content" class="content">
 <header>
 <h1 class="title">AI-Powered Robotic Ultrasound: Transforming Prenatal Screening at CUSP Conference</h1>
-</header><div class="PREVIEW" id="orgd2c9152">
+</header><div class="PREVIEW" id="org6ae06ff">
 <p>
 Notes from showcasing an AI-assisted antenatal ultrasound robotics system to clinicians at CUSP.
 </p>
@@ -42,7 +54,7 @@ The CUSP conference provided an ideal platform to engage with leading clinicians
 </p>
 <div class="org-center">
 
-<figure id="org885eb5c">
+<figure id="org8d475ec">
 <img src="./figures/cusp_robot.jpg" alt="cusp_robot.jpg" width="400px">
 
 </figure>
@@ -55,7 +67,7 @@ The deep learning architecture is capable of detecting 20+2 standard planes with
 </p>
 <div class="org-center">
 
-<figure id="orgf67b1f1">
+<figure id="org5332376">
 <img src="./figures/cusp_ai_assistance.gif" alt="cusp_ai_assistance.gif">
 
 </figure>

@@ -8,8 +8,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:,">
+<script>
+  (function () {
+    try {
+      document.documentElement.dataset.theme = localStorage.getItem("theme") || "dark";
+    } catch (_) {
+      document.documentElement.dataset.theme = "dark";
+    }
+  })();
+</script>
 <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 <link rel="stylesheet" type="text/css" href="/orgstyle.css"/>
+<script defer src="/theme.js"></script>
 <!-- <link rel="icon" href="spock-favicon.png" type="image/png"> -->
 </head>
 <body>
@@ -21,6 +32,7 @@
     <a href="/blog.html">/blog</a>
     <a href="/projects.html">/projects</a>
   </div>
+  <button class="theme-toggle" type="button" aria-label="Theme is dark. Switch to light theme" aria-pressed="false">Theme: Dark</button>
 </nav>
 </div>
 <div id="content" class="content">
@@ -45,13 +57,13 @@ An AI-driven ultrasound robotics project for automated prenatal screening. The s
 </ul>
 
 
-<figure id="org3ed5ef6">
+<figure id="org09828c5">
 <img src="./posts/figures/cusp_ai_assistance.gif" alt="cusp_ai_assistance.gif">
 
 </figure>
 
 
-<figure id="orgeb9a6ef">
+<figure id="orgb5a3dec">
 <img src="./posts/figures/cusp_robot.jpg" alt="cusp_robot.jpg" width="600px">
 
 </figure>
@@ -75,7 +87,7 @@ Deep learning research on breast cancer whole-slide images, focused on automated
 </ul>
 
 
-<figure id="orgd6ca82d">
+<figure id="org8072886">
 <img src="./media/uab.png" alt="uab.png">
 
 </figure>
@@ -99,7 +111,7 @@ A real-time VR visualization system for stereo-endoscope video streams, built to
 </ul>
 
 
-<figure id="org4c5678c">
+<figure id="org7d292bc">
 <img src="./media/endovr.png" alt="endovr.png">
 
 </figure>
@@ -123,7 +135,7 @@ An image-processing project for improving contrast in industrial CT scans, makin
 </ul>
 
 
-<figure id="orgdeaaefd">
+<figure id="orgdfc29b8">
 <img src="./media/contrast.png" alt="contrast.png">
 
 </figure>
@@ -147,13 +159,13 @@ A 3D underwater simulation environment for testing Autonomous Underwater Vehicle
 </ul>
 
 
-<figure id="orgfc8cc65">
+<figure id="orga2d2e27">
 <img src="./media/auv2.gif" alt="auv2.gif">
 
 </figure>
 
 
-<figure id="org49f013c">
+<figure id="org4150df5">
 <img src="./media/auv1.gif" alt="auv1.gif">
 
 </figure>

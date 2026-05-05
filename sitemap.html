@@ -8,8 +8,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:,">
+<script>
+  (function () {
+    try {
+      document.documentElement.dataset.theme = localStorage.getItem("theme") || "dark";
+    } catch (_) {
+      document.documentElement.dataset.theme = "dark";
+    }
+  })();
+</script>
 <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 <link rel="stylesheet" type="text/css" href="/orgstyle.css"/>
+<script defer src="/theme.js"></script>
 <!-- <link rel="icon" href="spock-favicon.png" type="image/png"> -->
 </head>
 <body>
@@ -21,6 +32,7 @@
     <a href="/blog.html">/blog</a>
     <a href="/projects.html">/projects</a>
   </div>
+  <button class="theme-toggle" type="button" aria-label="Theme is dark. Switch to light theme" aria-pressed="false">Theme: Dark</button>
 </nav>
 </div>
 <div id="content" class="content">
@@ -28,48 +40,48 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5999ec0">[May 04, 2026]  Blog</a></li>
-<li><a href="#orge1e668a">[May 04, 2026]  Projects</a></li>
-<li><a href="#org3416109">[May 04, 2026]  Now</a></li>
-<li><a href="#org7ffa686">[May 04, 2026]  Lafith Mattara</a></li>
-<li><a href="#org9b88397">posts</a>
+<li><a href="#orga5945e8">[May 05, 2026]  Blog</a></li>
+<li><a href="#orgc09c0a5">[May 05, 2026]  Projects</a></li>
+<li><a href="#org4d44ad3">[May 05, 2026]  Now</a></li>
+<li><a href="#orga9b1bfb">[May 05, 2026]  Lafith Mattara</a></li>
+<li><a href="#org1552cbd">posts</a>
 <ul>
-<li><a href="#org2a7c755">[Oct 08, 2024]  AI-Powered Robotic Ultrasound: Transforming Prenatal Screening at CUSP Conference</a></li>
-<li><a href="#org66ef9cc">[Mar 10, 2023]  AUV-Simulator</a></li>
-<li><a href="#org3392333">[Jun 26, 2022]  Use OpenCV in Unreal Engine</a></li>
-<li><a href="#org00ff765">[Jun 24, 2022]  Use Cuda code in Unreal Engine 5</a></li>
+<li><a href="#org3d226ae">[Oct 08, 2024]  AI-Powered Robotic Ultrasound: Transforming Prenatal Screening at CUSP Conference</a></li>
+<li><a href="#orgede9e44">[Mar 10, 2023]  AUV-Simulator</a></li>
+<li><a href="#org565a77d">[Jun 26, 2022]  Use OpenCV in Unreal Engine</a></li>
+<li><a href="#org68e18b7">[Jun 24, 2022]  Use Cuda code in Unreal Engine 5</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org5999ec0" class="outline-2">
-<h2 id="org5999ec0">[May 04, 2026] <a href="blog.html"> Blog</a></h2>
+<div id="outline-container-orga5945e8" class="outline-2">
+<h2 id="orga5945e8">[May 05, 2026] <a href="blog.html"> Blog</a></h2>
 </div>
-<div id="outline-container-orge1e668a" class="outline-2">
-<h2 id="orge1e668a">[May 04, 2026] <a href="projects.html"> Projects</a></h2>
+<div id="outline-container-orgc09c0a5" class="outline-2">
+<h2 id="orgc09c0a5">[May 05, 2026] <a href="projects.html"> Projects</a></h2>
 </div>
-<div id="outline-container-org3416109" class="outline-2">
-<h2 id="org3416109">[May 04, 2026] <a href="now.html"> Now</a></h2>
+<div id="outline-container-org4d44ad3" class="outline-2">
+<h2 id="org4d44ad3">[May 05, 2026] <a href="now.html"> Now</a></h2>
 </div>
-<div id="outline-container-org7ffa686" class="outline-2">
-<h2 id="org7ffa686">[May 04, 2026] <a href="index.html"> Lafith Mattara</a></h2>
+<div id="outline-container-orga9b1bfb" class="outline-2">
+<h2 id="orga9b1bfb">[May 05, 2026] <a href="index.html"> Lafith Mattara</a></h2>
 </div>
-<div id="outline-container-org9b88397" class="outline-2">
-<h2 id="org9b88397">posts</h2>
-<div class="outline-text-2" id="text-org9b88397">
+<div id="outline-container-org1552cbd" class="outline-2">
+<h2 id="org1552cbd">posts</h2>
+<div class="outline-text-2" id="text-org1552cbd">
 </div>
-<div id="outline-container-org2a7c755" class="outline-3">
-<h3 id="org2a7c755">[Oct 08, 2024] <a href="posts/20241008-robot-fetal-ultrasound-cusp.html"> AI-Powered Robotic Ultrasound: Transforming Prenatal Screening at CUSP Conference</a></h3>
+<div id="outline-container-org3d226ae" class="outline-3">
+<h3 id="org3d226ae">[Oct 08, 2024] <a href="posts/20241008-robot-fetal-ultrasound-cusp.html"> AI-Powered Robotic Ultrasound: Transforming Prenatal Screening at CUSP Conference</a></h3>
 </div>
-<div id="outline-container-org66ef9cc" class="outline-3">
-<h3 id="org66ef9cc">[Mar 10, 2023] <a href="posts/20230310-auv-simulator-unity.html"> AUV-Simulator</a></h3>
+<div id="outline-container-orgede9e44" class="outline-3">
+<h3 id="orgede9e44">[Mar 10, 2023] <a href="posts/20230310-auv-simulator-unity.html"> AUV-Simulator</a></h3>
 </div>
-<div id="outline-container-org3392333" class="outline-3">
-<h3 id="org3392333">[Jun 26, 2022] <a href="posts/20220626-opencv-ue.html"> Use OpenCV in Unreal Engine</a></h3>
+<div id="outline-container-org565a77d" class="outline-3">
+<h3 id="org565a77d">[Jun 26, 2022] <a href="posts/20220626-opencv-ue.html"> Use OpenCV in Unreal Engine</a></h3>
 </div>
-<div id="outline-container-org00ff765" class="outline-3">
-<h3 id="org00ff765">[Jun 24, 2022] <a href="posts/20220624-cuda-ue5.html"> Use Cuda code in Unreal Engine 5</a></h3>
+<div id="outline-container-org68e18b7" class="outline-3">
+<h3 id="org68e18b7">[Jun 24, 2022] <a href="posts/20220624-cuda-ue5.html"> Use Cuda code in Unreal Engine 5</a></h3>
 </div>
 </div>
 </div>

@@ -8,8 +8,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:,">
+<script>
+  (function () {
+    try {
+      document.documentElement.dataset.theme = localStorage.getItem("theme") || "dark";
+    } catch (_) {
+      document.documentElement.dataset.theme = "dark";
+    }
+  })();
+</script>
 <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 <link rel="stylesheet" type="text/css" href="/orgstyle.css"/>
+<script defer src="/theme.js"></script>
 <!-- <link rel="icon" href="spock-favicon.png" type="image/png"> -->
 </head>
 <body>
@@ -21,12 +32,13 @@
     <a href="/blog.html">/blog</a>
     <a href="/projects.html">/projects</a>
   </div>
+  <button class="theme-toggle" type="button" aria-label="Theme is dark. Switch to light theme" aria-pressed="false">Theme: Dark</button>
 </nav>
 </div>
 <div id="content" class="content">
 <header>
 <h1 class="title">AUV-Simulator</h1>
-</header><div class="PREVIEW" id="orgbfdd5d0">
+</header><div class="PREVIEW" id="org1c488a7">
 <p>
 A Unity and ROS simulator for testing autonomous underwater vehicle software in virtual competition environments.
 </p>
@@ -35,16 +47,16 @@ A Unity and ROS simulator for testing autonomous underwater vehicle software in 
 
 <div class="org-center">
 
-<figure id="org303379f">
+<figure id="org9b82452">
 <img src="./figures/auvdemo.gif" alt="auvdemo.gif">
 
 <figcaption><span class="figure-number">Figure 1: </span>AUV Simulator</figcaption>
 </figure>
 </div>
 
-<div id="outline-container-org61f51b6" class="outline-2">
-<h2 id="org61f51b6">Overview</h2>
-<div class="outline-text-2" id="text-org61f51b6">
+<div id="outline-container-org2bc4100" class="outline-2">
+<h2 id="org2bc4100">Overview</h2>
+<div class="outline-text-2" id="text-org2bc4100">
 <p>
 A simulator recreates a real-world system virtually such that one can test the system rigorously.
 In the case of robotics a simulator can be very useful for the software development team for testing and optimizing their code
@@ -71,9 +83,9 @@ contains  the arenas for <a href="https://sauvc.org/">SAUVC</a>-2020 and <a href
 </div>
 </div>
 
-<div id="outline-container-org6b51714" class="outline-2">
-<h2 id="org6b51714">What is simulated</h2>
-<div class="outline-text-2" id="text-org6b51714">
+<div id="outline-container-orgedfc6f3" class="outline-2">
+<h2 id="orgedfc6f3">What is simulated</h2>
+<div class="outline-text-2" id="text-orgedfc6f3">
 <p>
 A noisy underwater environment using the fog system of Unity as well as the underwater caustics. Following the design of Tiburon's AUV the model
 has two cameras (front &amp; bottom). Now lets discuss about the important data transfer implemented.
