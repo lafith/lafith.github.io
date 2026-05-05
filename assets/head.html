@@ -1,6 +1,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:,">
+<script>
+  (function () {
+    try {
+      document.documentElement.dataset.theme = localStorage.getItem("theme") || "dark";
+    } catch (_) {
+      document.documentElement.dataset.theme = "dark";
+    }
+  })();
+</script>
 <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 <link rel="stylesheet" type="text/css" href="/orgstyle.css"/>
+<script defer src="/theme.js"></script>
 <!-- <link rel="icon" href="spock-favicon.png" type="image/png"> -->
