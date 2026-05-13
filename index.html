@@ -7,14 +7,14 @@
 <meta name="generator" content="Org Mode" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
 <link rel="icon" href="data:,">
 <script>
   (function () {
     try {
-      document.documentElement.dataset.theme = localStorage.getItem("theme") || "dark";
+      document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
     } catch (_) {
-      document.documentElement.dataset.theme = "dark";
+      document.documentElement.dataset.theme = "light";
     }
   })();
 </script>
@@ -32,29 +32,27 @@
     <a href="/blog.html">/blog</a>
     <a href="/projects.html">/projects</a>
   </div>
-  <button class="theme-toggle" type="button" aria-label="Theme is dark. Switch to light theme" aria-pressed="false">Theme: Dark</button>
+  <button class="theme-toggle" type="button" aria-label="Theme is light. Switch to dark theme" aria-pressed="true" title="Switch to dark theme">
+    <span class="theme-icon theme-icon-sun" aria-hidden="true">◑</span>
+    <span class="theme-icon theme-icon-moon" aria-hidden="true">◐</span>
+    <span class="theme-label">Switch theme</span>
+  </button>
 </nav>
 </div>
 <div id="content" class="content">
 <section class="home-hero">
 <p class="eyebrow">Personal site</p>
 <h1>Hi, I am Lafith.</h1>
-<p class="lede">I’m an applied AI and robotics engineer in Abu Dhabi, turning research prototypes into usable tools for healthcare robotics, medical imaging, and model behavior analysis.</p>
+<p class="lede">I’m an applied AI and robotics engineer based in Abu Dhabi, building perception, robotics, and software systems that move research prototypes toward real-world use.</p>
 <div class="home-links"><a href="./projects.html">Projects</a><a href="./blog.html">Blog</a><a href="./now.html">Now</a><a href="./media/lafith_resume.pdf">Resume</a><a href="https://github.com/lafith">GitHub</a></div>
 </section>
 
-<section class="home-grid">
-<a href="./projects.html#fetal-ultrasound-robotics"><span>Ultrasound Robotics</span><p>Real-time fetal standard-plane detection, segmentation, and biometry in an autonomous ultrasound robot.</p></a>
-<a href="./projects.html#breast-cancer-wsi"><span>Digital Pathology</span><p>Deep learning and graph-based analysis for breast cancer whole-slide images.</p></a>
-<a href="./projects.html#stereo-endoscope-vr"><span>Stereo-Endoscope VR</span><p>A real-time medical visualization system from video capture to 3D rendering.</p></a>
-</section>
-
-<section class="page-intro">
-<p>I work where models meet systems: perception, visualization, integration, testing, and the details that turn prototypes into usable tools.</p>
+<section class="page-intro home-summary">
+<p>My work spans healthcare robotics, digital pathology, real-time visualization, and simulation, with a focus on reliable tools that connect models, sensors, interfaces, and deployment constraints.</p>
 </section>
 
 
-<figure id="org10cb001">
+<figure id="orgb85c58e">
 <img src="./media/rain.gif" alt="rain.gif">
 
 </figure>

@@ -7,14 +7,14 @@
 <meta name="generator" content="Org Mode" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
 <link rel="icon" href="data:,">
 <script>
   (function () {
     try {
-      document.documentElement.dataset.theme = localStorage.getItem("theme") || "dark";
+      document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
     } catch (_) {
-      document.documentElement.dataset.theme = "dark";
+      document.documentElement.dataset.theme = "light";
     }
   })();
 </script>
@@ -32,13 +32,14 @@
     <a href="/blog.html">/blog</a>
     <a href="/projects.html">/projects</a>
   </div>
-  <button class="theme-toggle" type="button" aria-label="Theme is dark. Switch to light theme" aria-pressed="false">Theme: Dark</button>
+  <button class="theme-toggle" type="button" aria-label="Theme is light. Switch to dark theme" aria-pressed="true" title="Switch to dark theme">
+    <span class="theme-icon theme-icon-sun" aria-hidden="true">◑</span>
+    <span class="theme-icon theme-icon-moon" aria-hidden="true">◐</span>
+    <span class="theme-label">Switch theme</span>
+  </button>
 </nav>
 </div>
 <div id="content" class="content">
-<section class="page-intro">
-<p>Selected work across healthcare robotics, medical imaging, simulation, visualization, and applied AI systems. I care most about projects where models, sensors, interfaces, and deployment constraints have to meet.</p>
-</section>
 
 <div id="outline-container-fetal-ultrasound-robotics" class="outline-2">
 <h2 id="fetal-ultrasound-robotics">Autonomous Antenatal Ultrasound Robotics</h2>
@@ -52,18 +53,18 @@ An AI-driven ultrasound robotics project for automated prenatal screening. The s
 <ul class="org-ul">
 <li><b>Role:</b> Led a 3-member AI/computer-vision effort as the principal model developer, coordinating with an interdisciplinary team across data, model training, integration, and deployment.</li>
 <li><b>Stack:</b> Python, C++, PyTorch, deep learning, Segment Anything, real-time inference, robotic ultrasound prototype.</li>
-<li><b>Result:</b> Adapted SAM into a self-prompting fetal ultrasound model, reaching 96% specificity and 12 ms inference per image. Deployed in a robotic prototype that reduced manual scanning from 30-45 minutes to about 4 minutes, an 85%+ efficiency improvement.</li>
+<li><b>Result:</b> Adapted SAM into a self-prompting fetal ultrasound model for real-time use and deployed it in a robotic prototype, substantially reducing manual scanning time during demonstration workflows.</li>
 <li><b>Evidence:</b> Showcased at the XVIII Clinical Ultrasonography in Practice (CUSP) conference, where clinicians showed strong interest in its potential for large-scale prenatal screening.</li>
 </ul>
 
 
-<figure id="org09828c5">
+<figure id="orgc856cf3">
 <img src="./posts/figures/cusp_ai_assistance.gif" alt="cusp_ai_assistance.gif">
 
 </figure>
 
 
-<figure id="orgb5a3dec">
+<figure id="org68459a9">
 <img src="./posts/figures/cusp_robot.jpg" alt="cusp_robot.jpg" width="600px">
 
 </figure>
@@ -82,12 +83,12 @@ Deep learning research on breast cancer whole-slide images, focused on automated
 <ul class="org-ul">
 <li><b>Role:</b> Developed convolutional and graph neural network workflows for WSI analysis, coordinated collaboration between research labs, and mentored students working on whole-slide image analysis.</li>
 <li><b>Stack:</b> Python, PyTorch, convolutional neural networks, graph neural networks, digital pathology, whole-slide image pipelines.</li>
-<li><b>Result:</b> Built a multi-stage patch-level annotation model reaching F1 0.95 across 24 classes. Investigated associations between neighborhood deprivation, tumor microenvironment, and race.</li>
+<li><b>Result:</b> Built a multi-stage patch-level annotation model for whole-slide image analysis, supporting automated interpretation across a broad set of tissue classes. Investigated associations between neighborhood deprivation, tumor microenvironment, and race.</li>
 <li><b>Evidence:</b> Presented preliminary findings at ATTIS 2023 and other research symposium settings.</li>
 </ul>
 
 
-<figure id="org8072886">
+<figure id="orgcd2615d">
 <img src="./media/uab.png" alt="uab.png">
 
 </figure>
@@ -111,7 +112,7 @@ A real-time VR visualization system for stereo-endoscope video streams, built to
 </ul>
 
 
-<figure id="org7d292bc">
+<figure id="orgb2079d8">
 <img src="./media/endovr.png" alt="endovr.png">
 
 </figure>
@@ -135,7 +136,7 @@ An image-processing project for improving contrast in industrial CT scans, makin
 </ul>
 
 
-<figure id="orgdfc29b8">
+<figure id="orgc79e535">
 <img src="./media/contrast.png" alt="contrast.png">
 
 </figure>
@@ -159,13 +160,13 @@ A 3D underwater simulation environment for testing Autonomous Underwater Vehicle
 </ul>
 
 
-<figure id="orga2d2e27">
+<figure id="org36a8c90">
 <img src="./media/auv2.gif" alt="auv2.gif">
 
 </figure>
 
 
-<figure id="org4150df5">
+<figure id="org41e4d4d">
 <img src="./media/auv1.gif" alt="auv1.gif">
 
 </figure>

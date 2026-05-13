@@ -7,14 +7,14 @@
 <meta name="generator" content="Org Mode" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
 <link rel="icon" href="data:,">
 <script>
   (function () {
     try {
-      document.documentElement.dataset.theme = localStorage.getItem("theme") || "dark";
+      document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
     } catch (_) {
-      document.documentElement.dataset.theme = "dark";
+      document.documentElement.dataset.theme = "light";
     }
   })();
 </script>
@@ -23,7 +23,7 @@
 <script defer src="/theme.js"></script>
 <!-- <link rel="icon" href="spock-favicon.png" type="image/png"> -->
 </head>
-<body>
+<body class="blog-post-page">
 <div id="preamble" class="status">
 <nav class="topnav" aria-label="Primary navigation">
   <a class="site-title" href="/index.html">Lafith Mattara</a>
@@ -32,7 +32,11 @@
     <a href="/blog.html">/blog</a>
     <a href="/projects.html">/projects</a>
   </div>
-  <button class="theme-toggle" type="button" aria-label="Theme is dark. Switch to light theme" aria-pressed="false">Theme: Dark</button>
+  <button class="theme-toggle" type="button" aria-label="Theme is light. Switch to dark theme" aria-pressed="true" title="Switch to dark theme">
+    <span class="theme-icon theme-icon-sun" aria-hidden="true">◑</span>
+    <span class="theme-icon theme-icon-moon" aria-hidden="true">◐</span>
+    <span class="theme-label">Switch theme</span>
+  </button>
 </nav>
 </div>
 <div id="content" class="content">
@@ -42,12 +46,12 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5b33ed1">UE5</a></li>
-<li><a href="#org8b055cc">UE4</a></li>
+<li><a href="#org27728bd">UE5</a></li>
+<li><a href="#orga87e7ef">UE4</a></li>
 </ul>
 </div>
 </nav>
-<div class="PREVIEW" id="org5c73edf">
+<div class="PREVIEW" id="org729e7c4">
 <p>
 A practical integration note for using OpenCV inside Unreal Engine projects.
 </p>
@@ -60,9 +64,9 @@ is an extremely powerful game engine. By using OpenCV in Unreal engine one can c
 Integration of OpenCV is different between UE4 and UE5 as UE5 released a standalone plugin for OpenCV in beta.
 </p>
 
-<div id="outline-container-org5b33ed1" class="outline-2">
-<h2 id="org5b33ed1">UE5</h2>
-<div class="outline-text-2" id="text-org5b33ed1">
+<div id="outline-container-org27728bd" class="outline-2">
+<h2 id="org27728bd">UE5</h2>
+<div class="outline-text-2" id="text-org27728bd">
 <p>
 After installing Unreal Engine 5 create a new C++ project. Open the project in the editor then go to <code>Edit-&gt;Plugins</code>.
 Search for OpenCV and install it, you may have to restart the engine after that.
@@ -192,9 +196,9 @@ dimensions of the cv::Mat object.
 </div>
 </div>
 
-<div id="outline-container-org8b055cc" class="outline-2">
-<h2 id="org8b055cc">UE4</h2>
-<div class="outline-text-2" id="text-org8b055cc">
+<div id="outline-container-orga87e7ef" class="outline-2">
+<h2 id="orga87e7ef">UE4</h2>
+<div class="outline-text-2" id="text-orga87e7ef">
 <p>
 Incase of UE4 you need to manually include the binaries from OpenCV installation source in to your UE4 project.
 </p>

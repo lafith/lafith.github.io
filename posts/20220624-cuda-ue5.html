@@ -7,14 +7,14 @@
 <meta name="generator" content="Org Mode" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
 <link rel="icon" href="data:,">
 <script>
   (function () {
     try {
-      document.documentElement.dataset.theme = localStorage.getItem("theme") || "dark";
+      document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
     } catch (_) {
-      document.documentElement.dataset.theme = "dark";
+      document.documentElement.dataset.theme = "light";
     }
   })();
 </script>
@@ -23,7 +23,7 @@
 <script defer src="/theme.js"></script>
 <!-- <link rel="icon" href="spock-favicon.png" type="image/png"> -->
 </head>
-<body>
+<body class="blog-post-page">
 <div id="preamble" class="status">
 <nav class="topnav" aria-label="Primary navigation">
   <a class="site-title" href="/index.html">Lafith Mattara</a>
@@ -32,7 +32,11 @@
     <a href="/blog.html">/blog</a>
     <a href="/projects.html">/projects</a>
   </div>
-  <button class="theme-toggle" type="button" aria-label="Theme is dark. Switch to light theme" aria-pressed="false">Theme: Dark</button>
+  <button class="theme-toggle" type="button" aria-label="Theme is light. Switch to dark theme" aria-pressed="true" title="Switch to dark theme">
+    <span class="theme-icon theme-icon-sun" aria-hidden="true">◑</span>
+    <span class="theme-icon theme-icon-moon" aria-hidden="true">◐</span>
+    <span class="theme-label">Switch theme</span>
+  </button>
 </nav>
 </div>
 <div id="content" class="content">
@@ -42,21 +46,21 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5574412">Building Cuda scripts into a Static Library</a>
+<li><a href="#org562bc7d">Building Cuda scripts into a Static Library</a>
 <ul>
 <li>
 <ul>
-<li><a href="#org532f56d">test_cudaue.h</a></li>
-<li><a href="#org2d1aaa1">test_cudaue.cu</a></li>
+<li><a href="#orgaadd3db">test_cudaue.h</a></li>
+<li><a href="#org26a1fdb">test_cudaue.cu</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org05bdd67">Linking with UE5 Project</a></li>
+<li><a href="#orgc365ab2">Linking with UE5 Project</a></li>
 </ul>
 </div>
 </nav>
-<div class="PREVIEW" id="orge1a74c9">
+<div class="PREVIEW" id="org70ad94e">
 <p>
 A practical walkthrough for linking CUDA code into an Unreal Engine 5 project.
 </p>
@@ -77,9 +81,9 @@ this is extremely useful if you are creating image/voxel analysis and visualizat
 Integration of Cuda invloves two phases, building Cuda code into a static library then linking them in UE5 project.
 </p>
 
-<div id="outline-container-org5574412" class="outline-2">
-<h2 id="org5574412">Building Cuda scripts into a Static Library</h2>
-<div class="outline-text-2" id="text-org5574412">
+<div id="outline-container-org562bc7d" class="outline-2">
+<h2 id="org562bc7d">Building Cuda scripts into a Static Library</h2>
+<div class="outline-text-2" id="text-org562bc7d">
 <ul class="org-ul">
 <li>Install Cuda toolkit in Windows from <a href="https://developer.nvidia.com/cuda-downloads">here</a>.</li>
 <li>Create a new project in Visual Studio with Cuda Runtime 11.7 (let say the name is <code>test_cudaue</code>).</li>
@@ -91,9 +95,9 @@ and <code>test_cudaue.h</code>. It has a basic function for testing the addition
 </ul>
 </div>
 
-<div id="outline-container-org532f56d" class="outline-4">
-<h4 id="org532f56d">test_cudaue.h</h4>
-<div class="outline-text-4" id="text-org532f56d">
+<div id="outline-container-orgaadd3db" class="outline-4">
+<h4 id="orgaadd3db">test_cudaue.h</h4>
+<div class="outline-text-4" id="text-orgaadd3db">
 <div class="org-src-container">
 <pre class="src src-C++">{`#pragma once
 
@@ -111,9 +115,9 @@ cudaError_t testCudaAddition(<span class="org-type">int</span>* <span class="org
 </div>
 </div>
 
-<div id="outline-container-org2d1aaa1" class="outline-4">
-<h4 id="org2d1aaa1">test_cudaue.cu</h4>
-<div class="outline-text-4" id="text-org2d1aaa1">
+<div id="outline-container-org26a1fdb" class="outline-4">
+<h4 id="org26a1fdb">test_cudaue.cu</h4>
+<div class="outline-text-4" id="text-org26a1fdb">
 <div class="org-src-container">
 <pre class="src src-C++">{`#include <span class="org-string">"test_cudaue.h"</span>
 
@@ -222,9 +226,9 @@ __global__ <span class="org-type">void</span> <span class="org-variable-name">ad
 </div>
 </div>
 
-<div id="outline-container-org05bdd67" class="outline-2">
-<h2 id="org05bdd67">Linking with UE5 Project</h2>
-<div class="outline-text-2" id="text-org05bdd67">
+<div id="outline-container-orgc365ab2" class="outline-2">
+<h2 id="orgc365ab2">Linking with UE5 Project</h2>
+<div class="outline-text-2" id="text-orgc365ab2">
 <ul class="org-ul">
 <li>Create <code>[UE5ProjectRoot]/ThirdParty/Cuda/include</code> &amp; <code>[UE5ProjectRoot]/ThirdParty/Cuda/lib</code>.</li>
 <li>Copy the header file (test_cudaue.h) from the cuda project in to this include folder.</li>
@@ -340,7 +344,7 @@ UCLASS()
 </ul>
 <div class="org-center">
 
-<figure id="orgb5dbbad">
+<figure id="orgecee837">
 <img src="./figures/bpcuda.png" alt="bpcuda.png">
 
 <figcaption><span class="figure-number">Figure 1: </span>Blueprint Image</figcaption>
@@ -352,7 +356,7 @@ of the integration.</li>
 </ul>
 <div class="org-center">
 
-<figure id="orgce101fd">
+<figure id="orgc20fd91">
 <img src="./figures/cudaoutput.png" alt="cudaoutput.png">
 
 <figcaption><span class="figure-number">Figure 2: </span>Console Output</figcaption>
