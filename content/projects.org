@@ -3,10 +3,6 @@
 #+OPTIONS: toc:nil
 #+OPTIONS: title:nil
 
-#+HTML: <section class="page-intro">
-#+HTML: <p>Selected work across healthcare robotics, medical imaging, simulation, visualization, and applied AI systems. I care most about projects where models, sensors, interfaces, and deployment constraints have to meet.</p>
-#+HTML: </section>
-
 * Autonomous Antenatal Ultrasound Robotics
 :PROPERTIES:
 :CUSTOM_ID: fetal-ultrasound-robotics
@@ -17,7 +13,7 @@ An AI-driven ultrasound robotics project for automated prenatal screening. The s
 
 - *Role:* Led a 3-member AI/computer-vision effort as the principal model developer, coordinating with an interdisciplinary team across data, model training, integration, and deployment.
 - *Stack:* Python, C++, PyTorch, deep learning, Segment Anything, real-time inference, robotic ultrasound prototype.
-- *Result:* Adapted SAM into a self-prompting fetal ultrasound model, reaching 96% specificity and 12 ms inference per image. Deployed in a robotic prototype that reduced manual scanning from 30-45 minutes to about 4 minutes, an 85%+ efficiency improvement.
+- *Result:* Adapted SAM into a self-prompting fetal ultrasound model for real-time use and deployed it in a robotic prototype, substantially reducing manual scanning time during demonstration workflows.
 - *Evidence:* Showcased at the XVIII Clinical Ultrasonography in Practice (CUSP) conference, where clinicians showed strong interest in its potential for large-scale prenatal screening.
 
 [[./posts/figures/cusp_ai_assistance.gif]]
@@ -35,7 +31,7 @@ Deep learning research on breast cancer whole-slide images, focused on automated
 
 - *Role:* Developed convolutional and graph neural network workflows for WSI analysis, coordinated collaboration between research labs, and mentored students working on whole-slide image analysis.
 - *Stack:* Python, PyTorch, convolutional neural networks, graph neural networks, digital pathology, whole-slide image pipelines.
-- *Result:* Built a multi-stage patch-level annotation model reaching F1 0.95 across 24 classes. Investigated associations between neighborhood deprivation, tumor microenvironment, and race.
+- *Result:* Built a multi-stage patch-level annotation model for whole-slide image analysis, supporting automated interpretation across a broad set of tissue classes. Investigated associations between neighborhood deprivation, tumor microenvironment, and race.
 - *Evidence:* Presented preliminary findings at ATTIS 2023 and other research symposium settings.
 
 [[./media/uab.png]]

@@ -7,12 +7,15 @@
   function setTheme(theme) {
     const nextTheme = theme === "light" ? "light" : "dark";
     root.dataset.theme = nextTheme;
-    toggle.textContent = nextTheme === "light" ? "Theme: Light" : "Theme: Dark";
     toggle.setAttribute(
       "aria-label",
       nextTheme === "light"
         ? "Theme is light. Switch to dark theme"
         : "Theme is dark. Switch to light theme"
+    );
+    toggle.setAttribute(
+      "title",
+      nextTheme === "light" ? "Switch to dark theme" : "Switch to light theme"
     );
     toggle.setAttribute("aria-pressed", String(nextTheme === "light"));
   }

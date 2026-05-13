@@ -9,14 +9,8 @@
 #+HTML: <div class="home-links"><a href="./projects.html">Projects</a><a href="./blog.html">Blog</a><a href="./now.html">Now</a><a href="./media/lafith_resume.pdf">Resume</a><a href="https://github.com/lafith">GitHub</a></div>
 #+HTML: </section>
 
-#+HTML: <section class="page-intro">
+#+HTML: <section class="page-intro home-summary">
 #+HTML: <p>My work spans healthcare robotics, digital pathology, real-time visualization, and simulation, with a focus on reliable tools that connect models, sensors, interfaces, and deployment constraints.</p>
-#+HTML: </section>
-
-#+HTML: <section class="home-grid">
-#+HTML: <a href="./projects.html#fetal-ultrasound-robotics"><span>Ultrasound Robotics</span><p>Real-time fetal standard-plane detection, segmentation, and biometry in an autonomous ultrasound robot.</p></a>
-#+HTML: <a href="./projects.html#breast-cancer-wsi"><span>Digital Pathology</span><p>Deep learning and graph-based analysis for breast cancer whole-slide images.</p></a>
-#+HTML: <a href="./projects.html#stereo-endoscope-vr"><span>Stereo-Endoscope VR</span><p>A real-time medical visualization system from video capture to 3D rendering.</p></a>
 #+HTML: </section>
 
 [[./media/rain.gif]]

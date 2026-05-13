@@ -79,11 +79,26 @@ https://ogbe.net/blog/blogging_with_org.html"
     (insert-file-contents file)
     (buffer-string)))
 
+(defun my/html-add-page-class (output backend info)
+  "Add page-specific body classes to exported HTML."
+  (if (and (org-export-derived-backend-p backend 'html)
+           (plist-get info :input-file))
+      (let* ((input-file (expand-file-name (plist-get info :input-file)))
+             (class (cond
+                     ((string-match-p "/content/posts/" input-file)
+                      "blog-post-page")
+                     ((string-match-p "/content/blog\\.org\\'" input-file)
+                      "blog-index-page"))))
+        (if class
+            (replace-regexp-in-string "<body>" (format "<body class=\"%s\">" class) output t t)
+          output))
+    output))
+
 
 ;;; Generate Posts Archive
 
 (defun extract-posts-as-list-items (file heading)
-  "Extract links from the specified HEADING in FILE, returning them as Org list items."
+  "Extract links from the specified HEADING in FILE, returning blog card HTML."
   (with-temp-buffer
     (insert-file-contents file)
     (let ((case-fold-search t)
@@ -105,21 +120,19 @@ https://ogbe.net/blog/blogging_with_org.html"
               (file-path (match-string 3))
               (title (match-string 4))
               (preview (my/get-preview (concat "content/" (match-string 3)))))
-          ;; Concatenate with Org-mode list item syntax.
           (setq results (concat results
-                                "- "
-                                date
-                                ": [[file:"
-                                file-path
-                                "]["
-                                title
-                                "]]\n"
+                                "#+HTML: <article class=\"blog-card\">\n"
+                                "#+HTML: <p class=\"blog-date\">" date "</p>\n"
+                                "#+HTML: <h2><a href=\""
+                                (concat (file-name-sans-extension file-path) ".html")
+                                "\">" (string-trim title) "</a></h2>\n"
                                 (if preview
-                                    (concat "  "
+                                    (concat "#+HTML: <p>"
                                             (string-trim
                                              (replace-regexp-in-string "[\n\r]+" " " preview))
-                                            "\n\n")
-                                  "")))))
+                                            "</p>\n")
+                                  "")
+                                "#+HTML: </article>\n\n"))))
       ;; Fallback: if heading exists but yielded nothing, scan the full file.
       (when (and start (string= results ""))
         (goto-char (point-min))
@@ -129,19 +142,18 @@ https://ogbe.net/blog/blogging_with_org.html"
                 (title (match-string 4))
                 (preview (my/get-preview (concat "content/" (match-string 3)))))
             (setq results (concat results
-                                  "- "
-                                  date
-                                  ": [[file:"
-                                  file-path
-                                  "]["
-                                  title
-                                  "]]\n"
+                                  "#+HTML: <article class=\"blog-card\">\n"
+                                  "#+HTML: <p class=\"blog-date\">" date "</p>\n"
+                                  "#+HTML: <h2><a href=\""
+                                  (concat (file-name-sans-extension file-path) ".html")
+                                  "\">" (string-trim title) "</a></h2>\n"
                                   (if preview
-                                      (concat "  "
+                                      (concat "#+HTML: <p>"
                                               (string-trim
                                                (replace-regexp-in-string "[\n\r]+" " " preview))
-                                              "\n\n")
-                                    ""))))))
+                                              "</p>\n")
+                                    "")
+                                  "#+HTML: </article>\n\n")))))
       results)))
 (defun generate-posts-archive (input-file output-file heading)
   "Generate a posts archive in OUTPUT-FILE from INPUT-FILE under HEADING."
@@ -151,7 +163,9 @@ https://ogbe.net/blog/blogging_with_org.html"
       (insert "#+Author: Lafith Mattara\n")
       (insert "#+OPTIONS: toc:nil\n")
       (insert "#+OPTIONS: title:nil\n")
+      (insert "#+HTML: <section class=\"blog-list\">\n")
       (insert (or content "")) ;; Allow empty archive when heading is missing.
+      (insert "#+HTML: </section>\n")
       (insert "\n#+ATTR_HTML: :class blog-footer-image\n")
       (insert "[[file:media/birds.gif]]\n")
       (let ((make-backup-files nil))
@@ -207,7 +221,8 @@ https://ogbe.net/blog/blogging_with_org.html"
 (setq org-html-validation-link nil
       org-html-htmlize-output-type 'css
       org-html-style-default (file-contents "assets/head.html")
-      org-export-use-babel nil)
+      org-export-use-babel nil
+      org-export-filter-final-output-functions '(my/html-add-page-class))
 
 ;;; generate site output
 (org-publish-all t)
