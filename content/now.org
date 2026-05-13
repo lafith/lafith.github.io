@@ -8,8 +8,6 @@
 
 I’m currently based in Abu Dhabi, working as an /AI Engineer/ at MBZUAI’s *Agentic Robotics Lab*. Most of my work sits around robotics, applied AI, and research systems that need to become reliable tools.
 
-It has been one of the most interesting environments I’ve worked in so far: research-heavy, engineering-heavy, and close enough to hardware that small details matter.
-
 * Work
 
 I’m spending most of my time on robotics engineering work that sits between research and real-world use. The day-to-day work is a mix of software integration, perception, system reliability, testing, and making complex robot systems easier to understand and operate.

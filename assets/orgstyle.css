@@ -10,7 +10,7 @@
   --yellow: #ffd633;
   --code: #050505;
   --link: var(--yellow);
-  --shadow: #000000;
+  --shadow: #255fff;
   color-scheme: dark;
 }
 
@@ -24,7 +24,7 @@
   --yellow: #ffd733;
   --code: #f8f0df;
   --link: var(--blue);
-  --shadow: #255fff;
+  --shadow: #000000;
   color-scheme: light;
 }
 
@@ -50,12 +50,8 @@ body {
   grid-template-columns: 1fr auto auto;
   border: 5px solid var(--ink);
   background: var(--paper);
-  box-shadow: 0 0 0 1px var(--shadow);
-  margin-bottom: 30px;
-}
-
-:root[data-theme="light"] .topnav {
   box-shadow: 12px 12px 0 var(--blue);
+  margin-bottom: 42px;
 }
 
 .site-title {
