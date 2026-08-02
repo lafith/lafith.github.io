@@ -1,39 +1,39 @@
 @charset "UTF-8";
 
-/* Gruvbox Material: material foreground palette + soft background palette. */
+/* Gruvbox Material: material foreground palette + medium background palette. */
 :root {
-  --bg: #32302f;
-  --paper: #3c3836;
+  --bg: #282828;
+  --paper: #32302f;
   --ink: #ddc7a1;
   --muted: #a89984;
-  --line: #665c54;
-  --primary-fill: #543937;
+  --line: #5a524c;
+  --primary-fill: #4c3432;
   --primary-text: #ea6962;
-  --secondary-fill: #404946;
+  --secondary-fill: #374141;
   --secondary-text: #7daea3;
-  --accent-fill: #574833;
-  --code: #252423;
+  --accent-fill: #4f422e;
+  --code: #1b1b1b;
   --link: var(--secondary-text);
-  --shadow: #5b534d;
+  --shadow: #504945;
   --on-strong: #ddc7a1;
   --on-accent: #ddc7a1;
   color-scheme: dark;
 }
 
 :root[data-theme="light"] {
-  --bg: #f2e5bc;
-  --paper: #eddeb5;
+  --bg: #fbf1c7;
+  --paper: #f4e8be;
   --ink: #4f3829;
   --muted: #654735;
   --line: #928374;
-  --primary-fill: #efd2b3;
+  --primary-fill: #f1d9b5;
   --primary-text: #c14a4a;
-  --secondary-fill: #d3d5b8;
+  --secondary-fill: #dadec0;
   --secondary-text: #45707a;
-  --accent-fill: #f3deaa;
-  --code: #ebdbb2;
+  --accent-fill: #fae7b3;
+  --code: #f2e5bc;
   --link: var(--secondary-text);
-  --shadow: #dac9a5;
+  --shadow: #e5d5ad;
   --on-strong: #4f3829;
   --on-accent: #4f3829;
   color-scheme: light;
