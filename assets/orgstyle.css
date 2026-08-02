@@ -1,30 +1,40 @@
 @charset "UTF-8";
 
 :root {
-  --bg: #070707;
-  --paper: #121212;
-  --ink: #f4f0e7;
-  --muted: #c9c0ad;
-  --red: #ff3428;
-  --blue: #3f7cff;
-  --yellow: #ffd633;
+  --bg: #141719;
+  --paper: #1d2123;
+  --ink: #ddd9d1;
+  --muted: #aaa79f;
+  --line: #777b78;
+  --red: #8f4f4a;
+  --red-text: #e5a19a;
+  --blue: #456c89;
+  --blue-text: #9bc4de;
+  --yellow: #c5af68;
   --code: #050505;
-  --link: var(--yellow);
-  --shadow: #255fff;
+  --link: var(--blue-text);
+  --shadow: #3f596b;
+  --on-strong: #f2eee7;
+  --on-yellow: #202220;
   color-scheme: dark;
 }
 
 :root[data-theme="light"] {
-  --bg: #f3efe4;
-  --paper: #fffaf0;
-  --ink: #111111;
-  --muted: #4a453d;
-  --red: #f12f27;
-  --blue: #255fff;
-  --yellow: #ffd733;
-  --code: #f8f0df;
-  --link: var(--blue);
-  --shadow: #000000;
+  --bg: #efeee9;
+  --paper: #faf8f2;
+  --ink: #292b29;
+  --muted: #636660;
+  --line: #6f726d;
+  --red: #8f433e;
+  --red-text: #8f433e;
+  --blue: #315f88;
+  --blue-text: #315f88;
+  --yellow: #d4bc72;
+  --code: #f3f1eb;
+  --link: var(--blue-text);
+  --shadow: #8ea3b2;
+  --on-strong: #faf8f2;
+  --on-yellow: #292b29;
   color-scheme: light;
 }
 
@@ -48,15 +58,15 @@ body {
 .topnav {
   display: grid;
   grid-template-columns: 1fr auto auto;
-  border: 5px solid var(--ink);
+  border: 5px solid var(--line);
   background: var(--paper);
-  box-shadow: 12px 12px 0 var(--blue);
+  box-shadow: 12px 12px 0 var(--shadow);
   margin-bottom: 42px;
 }
 
 .site-title {
   padding: 14px 18px;
-  color: #111111;
+  color: var(--on-yellow);
   background: var(--yellow);
   font-weight: 900;
 }
@@ -71,7 +81,7 @@ body {
 .home-links a,
 .theme-toggle {
   padding: 14px 16px;
-  border-left: 5px solid var(--ink);
+  border-left: 5px solid var(--line);
   color: var(--ink);
   font-family: "Space Mono", monospace;
   font-weight: 700;
@@ -85,7 +95,7 @@ body {
   border-right: 0;
   border-bottom: 0;
   background: var(--yellow);
-  color: #111111;
+  color: var(--on-yellow);
   cursor: pointer;
   font-size: 1.9rem;
   line-height: 1;
@@ -93,7 +103,7 @@ body {
 
 .theme-toggle:hover {
   background: var(--yellow);
-  color: #111111;
+  color: var(--on-yellow);
 }
 
 .theme-icon {
@@ -125,7 +135,7 @@ body {
   grid-template-columns: 1.15fr 1.85fr;
   gap: 0;
   margin-bottom: 30px;
-  border: 5px solid var(--ink);
+  border: 5px solid var(--line);
   background: var(--paper);
 }
 
@@ -142,10 +152,10 @@ body {
 .home-hero .eyebrow {
   min-height: 310px;
   padding: 18px;
-  color: #111111;
+  color: var(--on-yellow);
   background: var(--yellow);
-  border-right: 5px solid var(--ink);
-  border-bottom: 5px solid var(--ink);
+  border-right: 5px solid var(--line);
+  border-bottom: 5px solid var(--line);
 }
 
 .home-hero h1 {
@@ -162,25 +172,25 @@ body {
 .lede {
   margin: 0;
   padding: 22px;
-  border-right: 5px solid var(--ink);
+  border-right: 5px solid var(--line);
   color: var(--ink);
 }
 
 .home-links {
   grid-column: 1 / -1;
-  border-top: 5px solid var(--ink);
+  border-top: 5px solid var(--line);
   background: var(--red);
 }
 
 .home-links a {
-  color: white;
+  color: var(--on-strong);
 }
 
 .home-grid {
   display: grid;
   grid-template-columns: 1.35fr 1fr 1.55fr;
-  border-top: 5px solid var(--ink);
-  border-left: 5px solid var(--ink);
+  border-top: 5px solid var(--line);
+  border-left: 5px solid var(--line);
   margin: 32px 0 50px;
 }
 
@@ -188,14 +198,14 @@ body {
   display: block;
   min-height: 230px;
   padding: 22px;
-  border-right: 5px solid var(--ink);
-  border-bottom: 5px solid var(--ink);
+  border-right: 5px solid var(--line);
+  border-bottom: 5px solid var(--line);
   background: var(--paper);
 }
 
 .home-grid a:nth-child(2) {
   background: var(--red);
-  color: white;
+  color: var(--on-strong);
 }
 
 .home-grid a:nth-child(3) {
@@ -208,17 +218,17 @@ body {
 
 .home-grid a:first-child p,
 .home-grid a:first-child span {
-  color: white;
+  color: var(--on-strong);
 }
 
 .home-grid a:nth-child(3) p,
 .home-grid a:nth-child(3) span {
-  color: #111111;
+  color: var(--on-yellow);
 }
 
 .home-grid a:nth-child(2) p,
 .home-grid a:nth-child(2) span {
-  color: white;
+  color: var(--on-strong);
 }
 
 .home-grid span {
@@ -237,7 +247,7 @@ body {
 }
 
 .blog-card {
-  border: 5px solid var(--ink);
+  border: 5px solid var(--line);
   background: var(--paper);
   padding: 22px;
 }
@@ -266,7 +276,7 @@ body {
 
 .page-intro,
 .outline-2 {
-  border: 5px solid var(--ink);
+  border: 5px solid var(--line);
   background: var(--paper);
   padding: 20px;
   margin: 28px 0;
@@ -307,7 +317,7 @@ body {
 .outline-2 h2 {
   margin-top: 0;
   padding-bottom: 10px;
-  border-bottom: 5px solid var(--ink);
+  border-bottom: 5px solid var(--line);
 }
 
 p, li, strong, b, h1, h2, h3, h4 { color: var(--ink); }
@@ -319,7 +329,7 @@ a {
 }
 
 a:hover {
-  color: var(--red);
+  color: var(--red-text);
   text-decoration: underline;
 }
 
@@ -328,13 +338,13 @@ img {
   max-width: 100%;
   height: auto;
   margin: 20px auto;
-  border: 5px solid var(--ink);
+  border: 5px solid var(--line);
 }
 
 code, li code, p code {
   color: var(--ink);
   background: var(--code);
-  border: 2px solid var(--ink);
+  border: 2px solid var(--line);
   padding: 0.08em 0.25em;
 }
 
@@ -345,7 +355,7 @@ pre.src, pre.example {
   overflow-x: auto;
   white-space: pre-wrap;
   background: var(--code);
-  border: 5px solid var(--ink);
+  border: 5px solid var(--line);
   box-shadow: none;
 }
 
@@ -368,14 +378,14 @@ pre.src, pre.example {
   }
 
   .nav-links {
-    border-top: 5px solid var(--ink);
+    border-top: 5px solid var(--line);
   }
 
   .nav-links a {
     padding: 12px 14px;
     border-top: 0;
     border-left: 0;
-    border-right: 5px solid var(--ink);
+    border-right: 5px solid var(--line);
   }
 
   .nav-links a:last-child {
@@ -385,7 +395,7 @@ pre.src, pre.example {
   .theme-toggle {
     width: 100%;
     padding: 12px 14px;
-    border-top: 5px solid var(--ink);
+    border-top: 5px solid var(--line);
     border-left: 0;
     min-height: 52px;
   }
@@ -409,7 +419,7 @@ pre.src, pre.example {
 
   .lede {
     padding: 16px;
-    border-top: 5px solid var(--ink);
+    border-top: 5px solid var(--line);
     border-right: 0;
   }
 
@@ -417,8 +427,8 @@ pre.src, pre.example {
     flex: 0 0 auto;
     padding: 12px 14px;
     border-left: 0;
-    border-top: 5px solid var(--ink);
-    border-right: 5px solid var(--ink);
+    border-top: 5px solid var(--line);
+    border-right: 5px solid var(--line);
   }
 
   .home-links a:nth-child(3n),
