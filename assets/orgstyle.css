@@ -1,40 +1,40 @@
 @charset "UTF-8";
 
 :root {
-  --bg: #151a18;
-  --paper: #1e2522;
-  --ink: #dce2dc;
-  --muted: #a4aea8;
-  --line: #707b75;
-  --red: #86534b;
-  --red-text: #dba39a;
-  --blue: #446c72;
-  --blue-text: #9ec8cc;
-  --yellow: #bba55f;
-  --code: #111614;
-  --link: var(--blue-text);
-  --shadow: #3e5b55;
-  --on-strong: #f0f2ed;
-  --on-yellow: #20241f;
+  --bg: #282828;
+  --paper: #32302f;
+  --ink: #ebdbb2;
+  --muted: #a89984;
+  --line: #665c54;
+  --primary-fill: #9d0006;
+  --primary-text: #fe8019;
+  --secondary-fill: #076678;
+  --secondary-text: #83a598;
+  --accent-fill: #d79921;
+  --code: #1d2021;
+  --link: var(--secondary-text);
+  --shadow: #504945;
+  --on-strong: #fbf1c7;
+  --on-accent: #282828;
   color-scheme: dark;
 }
 
 :root[data-theme="light"] {
-  --bg: #eef1ec;
-  --paper: #f8faf5;
-  --ink: #25302b;
-  --muted: #5f6963;
-  --line: #78847d;
-  --red: #8b4f45;
-  --red-text: #8b4f45;
-  --blue: #315f69;
-  --blue-text: #315f69;
-  --yellow: #c7ad62;
-  --code: #edf1eb;
-  --link: var(--blue-text);
-  --shadow: #91a59b;
-  --on-strong: #f8faf5;
-  --on-yellow: #252b27;
+  --bg: #f2e5bc;
+  --paper: #fbf1c7;
+  --ink: #3c3836;
+  --muted: #665c54;
+  --line: #928374;
+  --primary-fill: #9d0006;
+  --primary-text: #9d0006;
+  --secondary-fill: #076678;
+  --secondary-text: #076678;
+  --accent-fill: #d79921;
+  --code: #ebdbb2;
+  --link: var(--secondary-text);
+  --shadow: #bdae93;
+  --on-strong: #fbf1c7;
+  --on-accent: #3c3836;
   color-scheme: light;
 }
 
@@ -66,8 +66,8 @@ body {
 
 .site-title {
   padding: 14px 18px;
-  color: var(--on-yellow);
-  background: var(--yellow);
+  color: var(--on-accent);
+  background: var(--accent-fill);
   font-weight: 900;
 }
 
@@ -94,16 +94,16 @@ body {
   border-top: 0;
   border-right: 0;
   border-bottom: 0;
-  background: var(--yellow);
-  color: var(--on-yellow);
+  background: var(--accent-fill);
+  color: var(--on-accent);
   cursor: pointer;
   font-size: 1.9rem;
   line-height: 1;
 }
 
 .theme-toggle:hover {
-  background: var(--yellow);
-  color: var(--on-yellow);
+  background: var(--accent-fill);
+  color: var(--on-accent);
 }
 
 .theme-icon {
@@ -152,8 +152,8 @@ body {
 .home-hero .eyebrow {
   min-height: 310px;
   padding: 18px;
-  color: var(--on-yellow);
-  background: var(--yellow);
+  color: var(--on-accent);
+  background: var(--accent-fill);
   border-right: 5px solid var(--line);
   border-bottom: 5px solid var(--line);
 }
@@ -179,7 +179,7 @@ body {
 .home-links {
   grid-column: 1 / -1;
   border-top: 5px solid var(--line);
-  background: var(--red);
+  background: var(--primary-fill);
 }
 
 .home-links a {
@@ -204,16 +204,16 @@ body {
 }
 
 .home-grid a:nth-child(2) {
-  background: var(--red);
+  background: var(--primary-fill);
   color: var(--on-strong);
 }
 
 .home-grid a:nth-child(3) {
-  background: var(--yellow);
+  background: var(--accent-fill);
 }
 
 .home-grid a:first-child {
-  background: var(--blue);
+  background: var(--secondary-fill);
 }
 
 .home-grid a:first-child p,
@@ -223,7 +223,7 @@ body {
 
 .home-grid a:nth-child(3) p,
 .home-grid a:nth-child(3) span {
-  color: var(--on-yellow);
+  color: var(--on-accent);
 }
 
 .home-grid a:nth-child(2) p,
@@ -283,7 +283,7 @@ body {
 }
 
 .page-intro {
-  box-shadow: 16px 16px 0 var(--yellow);
+  box-shadow: 16px 16px 0 var(--accent-fill);
 }
 
 .home-summary {
@@ -291,15 +291,15 @@ body {
 }
 
 .outline-2:nth-of-type(3n + 1) {
-  box-shadow: 16px 16px 0 var(--blue);
+  box-shadow: 16px 16px 0 var(--secondary-fill);
 }
 
 .outline-2:nth-of-type(3n + 2) {
-  box-shadow: 16px 16px 0 var(--red);
+  box-shadow: 16px 16px 0 var(--primary-fill);
 }
 
 .outline-2:nth-of-type(3n + 3) {
-  box-shadow: 16px 16px 0 var(--yellow);
+  box-shadow: 16px 16px 0 var(--accent-fill);
 }
 
 .blog-post-page .outline-2 {
@@ -329,7 +329,7 @@ a {
 }
 
 a:hover {
-  color: var(--red-text);
+  color: var(--primary-text);
   text-decoration: underline;
 }
 
@@ -468,7 +468,7 @@ pre.src, pre.example {
   }
 
   .page-intro {
-    box-shadow: 8px 8px 0 var(--yellow);
+    box-shadow: 8px 8px 0 var(--accent-fill);
   }
 
   .home-summary {
@@ -476,15 +476,15 @@ pre.src, pre.example {
   }
 
   .outline-2:nth-of-type(3n + 1) {
-    box-shadow: 8px 8px 0 var(--blue);
+    box-shadow: 8px 8px 0 var(--secondary-fill);
   }
 
   .outline-2:nth-of-type(3n + 2) {
-    box-shadow: 8px 8px 0 var(--red);
+    box-shadow: 8px 8px 0 var(--primary-fill);
   }
 
   .outline-2:nth-of-type(3n + 3) {
-    box-shadow: 8px 8px 0 var(--yellow);
+    box-shadow: 8px 8px 0 var(--accent-fill);
   }
 
   .blog-post-page .outline-2 {
