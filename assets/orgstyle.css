@@ -179,12 +179,17 @@ body {
 
 .home-links {
   grid-column: 1 / -1;
+  justify-content: center;
   border-top: 5px solid var(--line);
   background: var(--primary-fill);
 }
 
 .home-links a {
   color: var(--on-strong);
+}
+
+.home-links a:last-child {
+  border-right: 5px solid var(--line);
 }
 
 .home-grid {
@@ -432,9 +437,12 @@ pre.src, pre.example {
     border-right: 5px solid var(--line);
   }
 
-  .home-links a:nth-child(3n),
-  .home-links a:last-child {
+  .home-links a:nth-child(3n) {
     border-right: 0;
+  }
+
+  .home-links a:last-child {
+    border-right: 5px solid var(--line);
   }
 
   .home-grid {

@@ -5,9 +5,9 @@
 <script>
   (function () {
     try {
-      document.documentElement.dataset.theme = localStorage.getItem("theme") || "dark";
+      document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
     } catch (_) {
-      document.documentElement.dataset.theme = "dark";
+      document.documentElement.dataset.theme = "light";
     }
   })();
 </script>
