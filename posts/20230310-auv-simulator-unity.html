@@ -12,9 +12,9 @@
 <script>
   (function () {
     try {
-      document.documentElement.dataset.theme = localStorage.getItem("theme") || "dark";
+      document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
     } catch (_) {
-      document.documentElement.dataset.theme = "dark";
+      document.documentElement.dataset.theme = "light";
     }
   })();
 </script>
@@ -42,7 +42,7 @@
 <div id="content" class="content">
 <header>
 <h1 class="title">AUV-Simulator</h1>
-</header><div class="PREVIEW" id="org4a4298a">
+</header><div class="PREVIEW" id="org59f978d">
 <p>
 A Unity and ROS simulator for testing autonomous underwater vehicle software in virtual competition environments.
 </p>
@@ -51,16 +51,16 @@ A Unity and ROS simulator for testing autonomous underwater vehicle software in 
 
 <div class="org-center">
 
-<figure id="orgfaded11">
+<figure id="orgaee2b68">
 <img src="./figures/auvdemo.gif" alt="auvdemo.gif">
 
 <figcaption><span class="figure-number">Figure 1: </span>AUV Simulator</figcaption>
 </figure>
 </div>
 
-<div id="outline-container-org57f1b57" class="outline-2">
-<h2 id="org57f1b57">Overview</h2>
-<div class="outline-text-2" id="text-org57f1b57">
+<div id="outline-container-orga098b47" class="outline-2">
+<h2 id="orga098b47">Overview</h2>
+<div class="outline-text-2" id="text-orga098b47">
 <p>
 A simulator recreates a real-world system virtually such that one can test the system rigorously.
 In the case of robotics a simulator can be very useful for the software development team for testing and optimizing their code
@@ -87,9 +87,9 @@ contains  the arenas for <a href="https://sauvc.org/">SAUVC</a>-2020 and <a href
 </div>
 </div>
 
-<div id="outline-container-org4c9bf7c" class="outline-2">
-<h2 id="org4c9bf7c">What is simulated</h2>
-<div class="outline-text-2" id="text-org4c9bf7c">
+<div id="outline-container-org211459d" class="outline-2">
+<h2 id="org211459d">What is simulated</h2>
+<div class="outline-text-2" id="text-org211459d">
 <p>
 A noisy underwater environment using the fog system of Unity as well as the underwater caustics. Following the design of Tiburon's AUV the model
 has two cameras (front &amp; bottom). Now lets discuss about the important data transfer implemented.

@@ -12,9 +12,9 @@
 <script>
   (function () {
     try {
-      document.documentElement.dataset.theme = localStorage.getItem("theme") || "dark";
+      document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
     } catch (_) {
-      document.documentElement.dataset.theme = "dark";
+      document.documentElement.dataset.theme = "light";
     }
   })();
 </script>
@@ -46,12 +46,12 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0076aa4">UE5</a></li>
-<li><a href="#org019e8c2">UE4</a></li>
+<li><a href="#orgd7d4095">UE5</a></li>
+<li><a href="#org507e67c">UE4</a></li>
 </ul>
 </div>
 </nav>
-<div class="PREVIEW" id="org04a82a8">
+<div class="PREVIEW" id="org64fe2e9">
 <p>
 A practical integration note for using OpenCV inside Unreal Engine projects.
 </p>
@@ -64,9 +64,9 @@ is an extremely powerful game engine. By using OpenCV in Unreal engine one can c
 Integration of OpenCV is different between UE4 and UE5 as UE5 released a standalone plugin for OpenCV in beta.
 </p>
 
-<div id="outline-container-org0076aa4" class="outline-2">
-<h2 id="org0076aa4">UE5</h2>
-<div class="outline-text-2" id="text-org0076aa4">
+<div id="outline-container-orgd7d4095" class="outline-2">
+<h2 id="orgd7d4095">UE5</h2>
+<div class="outline-text-2" id="text-orgd7d4095">
 <p>
 After installing Unreal Engine 5 create a new C++ project. Open the project in the editor then go to <code>Edit-&gt;Plugins</code>.
 Search for OpenCV and install it, you may have to restart the engine after that.
@@ -196,9 +196,9 @@ dimensions of the cv::Mat object.
 </div>
 </div>
 
-<div id="outline-container-org019e8c2" class="outline-2">
-<h2 id="org019e8c2">UE4</h2>
-<div class="outline-text-2" id="text-org019e8c2">
+<div id="outline-container-org507e67c" class="outline-2">
+<h2 id="org507e67c">UE4</h2>
+<div class="outline-text-2" id="text-org507e67c">
 <p>
 Incase of UE4 you need to manually include the binaries from OpenCV installation source in to your UE4 project.
 </p>
